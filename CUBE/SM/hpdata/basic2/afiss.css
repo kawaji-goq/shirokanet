@@ -1,0 +1,45 @@
+.text1 {
+	font-size: 11px;
+	line-height: 15px;
+	color: #666666;
+}
+.text2 {
+	font-size: 12px;
+	line-height: 19px;
+	color:#000000;
+
+}
+.text2_25 {
+	font-size: 12px;
+	line-height: 25px;
+	color:#333333;
+}
+.texttitle_1 {
+	font-size: 13px;
+	line-height: 17px;
+	color:#000000;
+	font-weight: bold;	
+}
+.text_small {
+	font-size: 11px;
+	line-height: 15px;
+	color:#333333;
+}
+.texttitle_20 {
+	font-size: 20px;
+	line-height: 28px;
+	color:#000000;
+	font-weight: bolder;	
+}
+.textmenu {
+	font-size: 12px;
+	line-height: 19px;
+	color:#000000;
+	font-weight: bold;
+}
+.texttitle_16 {
+	font-size: 16px;
+	line-height: 25px;
+	color:#000000;
+	font-weight: bolder;	
+}

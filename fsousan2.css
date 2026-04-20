@@ -1,0 +1,497 @@
+/* CSS Document */
+body,
+div,
+dl, dt, dd,
+ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+pre,
+form, fieldset, input, textarea,
+p, blockquote,
+th, td {  
+	margin: 0;
+	padding: 0;
+}
+#dispcaution {
+	position:absolute;
+	left:176px;
+	top:35px;
+	width:600px;
+	height:200px;
+	z-index:1;
+}
+body{
+	text-align: center;	 
+}
+ul,li{
+	padding:0px;
+	margin:0px;
+	list-style-type: none;
+}
+#container{
+	width:818px;
+	 margin: auto;
+
+}
+#mainbody{
+	
+	background-image:url("img/template/bg.jpg");
+}
+#topmenux {
+	text-align:center;
+	width:786px;
+	height:320px;
+}
+
+#toptopics {
+	text-align:center;
+		height:auto;
+}
+#topnewbukken {
+	text-align:center;
+}
+#toposusumebukken {
+	text-align:center;
+}
+#chintanimenu {
+	width:200px;
+	height:157px;
+	background-image:url("img/top/TopBUkkenMenuChintai.jpg");
+}
+#chintanimenu .title {
+display:block;
+	text-indent:-9999px;
+	height:70px;
+}
+#chintanimenu a {
+display:block;
+	text-indent:-9999px;
+	width:200px;
+	height:22px;
+
+}
+#baibaimenu {
+	width:200px;
+	height:157px;
+	background-image:url("img/top/TopBukkenMenuBaibai.jpg");
+}
+#baibaimenu .title {
+display:block;
+	text-indent:-9999px;
+	height:70px;
+}
+#baibaimenu a {
+display:block;
+	text-indent:-9999px;
+	width:200px;
+	height:22px;
+
+}
+/* TOP */
+#topmenuxleft {
+	float:left;
+}
+#topmenuxright{
+	padding-right:5px;
+	float:right;
+}
+#topmenux{
+	width:768px;
+}
+h3{
+padding:0px;
+margin:0px;	
+}
+#toptopics1 h3 a{
+display:block;
+padding:0px;
+margin:0px;
+text-indent:-9999px;
+background-image:url(img/top/TopNewsTopicsHeader.jpg);
+width:768px;
+height:33px;
+background-repeat:no-repeat;
+}
+#toptopics1 {
+	width:768px;
+	background-image:url(img/top/TopContentsBottom.jpg);
+	background-position:center bottom;
+	background-repeat: no-repeat;
+	padding-bottom:10px;
+	height:auto;	
+	margin-left:20px;
+		
+}
+#toptopics1bodys{
+	background-image:url(img/top/TopNewsTopicsBG0.jpg);
+	width:768px;
+	background-repeat:repeat-y;
+	height:auto;	
+	
+}
+#toptopics1 .leftdata{
+	width:340px;
+	display:block;
+	float:left;
+	padding-bottom:5px;
+	background-image:url(img/top/TopTopicsLine.jpg);
+	background-repeat:repeat-x;
+	background-position:bottom;
+	margin-left:10px;
+}
+#toptopics1 .rightdata{
+	display:block;
+width:340px;
+	float:right;
+	padding-bottom:5px;
+	background-repeat:repeat-x;
+	background-image:url(img/top/TopTopicsLine.jpg);
+	background-position:bottom;
+	margin-right:10px;
+}
+
+#toptopics1 .topiimage {
+	width:100px;
+	float:left;
+}
+#toptopics1 .topititle {
+	width:240px;
+	text-align:left;
+	float:right;
+	font-size:12px;
+}
+#toptopics1 .topicomment {
+	width:218px;
+	text-align:left;
+	margin-left:22px;
+	float:right;
+	font-size:12px;
+	height:50px;
+}
+#toptopics1 .topititle2 {
+	padding-left:5px;
+	width:340px;
+	text-align:left;
+	font-size:12px;
+}
+#toptopics1 .topicomment2 {
+	width:335px;
+	text-align:left;
+	padding-left:27px;
+	font-size:12px;
+	height:50px;
+}
+
+/* toptopics2 */
+#toptopics2 h3 a{
+display:block;
+padding:0px;
+margin:0px;
+text-indent:-9999px;
+background-image:url(img/top/TopNewsTopicsHeader2.jpg);
+width:560px;
+height:33px;
+background-repeat:no-repeat;
+}
+#toptopics2{
+	width:562px;
+	display:block;
+	float:left;
+	padding-bottom:15px;
+	background-image:url(img/top/TopNewsTopicsFoot2.jpg);
+	background-repeat:no-repeat;
+	background-position:bottom;
+	margin-left:20px;
+	
+}
+#topibanner{
+	width:205px;
+	display:block;
+	float:right;
+	margin-right:25px;
+		height:210px;
+}
+#toptopics2 .topiimage {
+	width:100px;
+	float:left;
+}
+#toptopics2 .topititle {
+	padding-left:5px;
+	width:400px;
+	text-align:left;
+	font-size:12px;
+}
+#toptopics2 .topicomment {
+	width:385px;
+	text-align:left;
+	padding-left:20px;
+	font-size:12px;
+	height:50px;
+	font-weight:normal;
+}
+.toptopics2bodys{
+display:block;
+	width:560px;
+	display:block;
+	float:left;
+	padding-top:5px;	
+	padding-bottom:15px;
+	background-position:bottom;
+	margin-left:20px;
+
+}
+#toptopics2 .topititle2 {
+	padding-left:5px;
+	width:450px;
+	text-align:left;
+	font-size:12px;
+}
+#toptopics2 .topicomment2 {
+	width:450px;
+	text-align:left;
+	padding-left:20px;
+	font-size:12px;
+	height:50px;
+	font-weight:normal;
+}
+#toptopics2 .topiarea2 {
+	padding:0px;
+	margin:0px;
+	display:block;
+	width:560px;
+	height:auto;
+	background-image:url(img/top/TopNewsTopicsSideLine.jpg);
+	background-repeat:repeat-y;
+}
+/*
+ topbukken
+*/
+#topnbukken{
+	display:block;
+	width:768px;
+	background-image:url(img/top/TopContentsBottom.jpg);
+	background-position:center bottom;
+	background-repeat: no-repeat;
+	padding-bottom:15px;
+	height:auto;
+	
+}
+#topnbukken p {
+	padding:0px;
+	margin:0px;
+}
+#topnbukken h3 a{
+	display:block;
+	width:768px;
+	background-image:url(img/top/TopNewBukkenHeader.jpg);
+	background-repeat:no-repeat;
+	height:33px;
+	text-indent:-9999px;
+	padding:0px;
+	margin:0px;
+}
+#topnbukken .bg{
+	padding-left:20px;
+	display:block;
+	width:748px;
+	background-image:url(img/top/TopNewsTopicsBG0.jpg);
+	height:auto;
+		
+}
+#topnbukken dl{
+color:#666666;
+	display:block;
+	width:170px;
+	margin-left:10px;
+	background-image:url(img/index/bukken_border4.jpg);
+	background-position:bottom;
+	padding-bottom:10px;
+	background-repeat:no-repeat;
+	margin-bottom:10px;
+	height:auto;
+
+}
+#topnbukken dt{
+	display:block;
+	width:170px;
+	background-image:url(img/index/bukken_border1.jpg);
+	height:6px;
+	text-indent:-9999px;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+#topnbukken dd{
+	display:block;
+	background-image:url(img/top/BukkenSideLine.jpg);
+	background-repeat:repeat-y;
+	font-size:12px;
+	height:auto;
+}
+#topnbukken dd .image{
+	display:block;
+	width:170px;
+	height:120px;
+}
+#topnbukken dd .price{
+	display:block;
+	width:160px;	
+text-align:right;
+	background-image:url(img/top/TopBukkenNewPriceBG.jpg);
+	background-repeat:no-repeat;
+	background-position: center;
+	vertical-align: middle;
+}
+#topnbukken dd .type{
+	display:block;
+	width:85px;
+	float:left;
+		height:20px;
+}
+#topnbukken dd .status{
+	display:block;
+	width:85px;
+	float:right;	
+			height:20px;
+
+}
+#topnbukken dd .ensen{
+	display:block;
+	width:170px;
+	text-align:left;
+}
+#topnbukken dd .madori{
+	display:block;
+	width:170px;
+	text-align:left;	
+}
+#topnbukken dd .hirosa{
+	display:block;
+	width:170px;
+	text-align:left;	
+}
+#topnbukken dl{
+	display:block;
+	width:170px;
+	float:left;
+}
+/*
+ topbukken
+*/
+#topobukken{
+	display:block;
+	width:768px;
+	background-image:url(img/top/TopContentsBottom.jpg);
+	background-position:center bottom;
+	background-repeat: no-repeat;
+	padding-bottom:15px;
+	height:auto;
+
+}
+#topobukken p {
+	padding:0px;
+	margin:0px;
+	display:block;
+}
+#topobukken h3 a{
+	display:block;
+	width:768px;
+	background-image:url(img/top/TopOsusumeHeader.jpg);
+	background-repeat:no-repeat;
+	height:33px;
+	text-indent:-9999px;
+	padding:0px;
+	margin:0px;
+}
+#topobukken .bg{
+	padding-left:20px;
+	display:block;
+	width:748px;
+	background-image:url(img/top/TopNewsTopicsBG0.jpg);
+	height:auto;
+}
+dd{
+	line-height:20px;
+
+}
+#topobukken dl{
+color:#666666;
+
+	display:block;
+	width:170px;
+	margin-left:10px;
+	background-image:url(img/index/bukken_border4.jpg);
+	background-position:bottom;
+	padding-bottom:10px;
+	background-repeat:no-repeat;
+	margin-bottom:8px;
+	height:auto;
+}
+#topobukken dt{
+	display:block;
+	width:170px;
+	background-image:url(img/index/bukken_border1.jpg);
+	height:6px;
+	text-indent:-9999px;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+#topobukken dd{
+	display:block;
+	background-image:url(img/top/BukkenSideLine.jpg);
+	background-repeat:repeat-y;
+	font-size:12px;
+	height:auto;
+}
+#topobukken dd .image{
+	display:block;
+	width:170px;
+	height:120px;
+}
+#topobukken dd .price1{
+	display:block;
+	width:160px;
+	text-align:right;
+	background-image:url(img/top/TopBukkenOsusumePriceBG1.jpg);
+background-repeat:no-repeat;
+	background-position: center;
+}
+#topobukken dd .price2{
+	display:block;
+	width:160px;
+	text-align:right;
+	background-image:url(img/top/TopBukkenOsusumePriceBG2.jpg);
+background-repeat:no-repeat;
+	background-position: center;
+}
+#topobukken dd .type{
+	display:block;
+	width:85px;
+	float:left;
+		height:20px;
+}
+#topobukken dd .status{
+	display:block;
+	width:85px;
+	float:right;
+		height:20px;
+
+}
+#topobukken dd .ensen{
+	display:block;
+	width:170px;
+	text-align:left;	
+}
+#topobukken dd .madori{
+	display:block;
+	width:170px;
+	text-align:left;
+	}
+#topobukken dl{
+	display:block;
+	width:170px;
+	float:left;
+}
+#topobukken dd .hirosa{
+	display:block;
+	width:170px;
+	text-align:left;	
+}

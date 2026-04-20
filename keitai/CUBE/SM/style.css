@@ -1,0 +1,79 @@
+@charset("euc-jp");
+
+body{
+	text-align:center;
+	color:#666666;
+	font-size:11px;
+	font-family: "£Í£Ó £Ð¥´¥·¥Ã¥¯", Osaka, "¥Ò¥é¥®¥Î³Ñ¥´ Pro W3";	
+}
+
+th,td{
+	font-size:12px;
+}
+
+th {
+	background-image: url(/members/img/temp/thbg.gif);	
+}
+
+.title {
+	font-size: 16px;
+	font-weight: bold;
+	color: #666666;	
+}
+.line {
+	background-image: url(/members/img/temp/line.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 5px;
+	color: #FF6600;
+}
+#tree{
+	line-height: normal;	
+}
+
+#head_iconmenu a{
+	font-size:14px;
+	line-height: 20px;
+}
+#iconsubmenu a{
+	font-size:14px;
+	line-height: 20px;
+}
+#container {
+	width:840px;
+	background-color:#ffffff;
+	text-align: center;	
+}
+#tb_out {
+	width:740px;
+}
+#container .subtitle{
+	font-size:14px;
+	color:#666666;
+	font-weight: bold;
+}
+
+
+#headmenu a{
+color:#ffffff;
+font-size:14px;
+}
+
+#tree .top{
+	font-size:24px;
+	color:#CC9900;
+}
+
+#tree .gt{
+	font-size:24px;
+}
+
+#tree .sub {
+	font-size:16px;
+	
+}
+
+
+a:link,a:visited{
+	color:#666666;
+	text-decoration: no

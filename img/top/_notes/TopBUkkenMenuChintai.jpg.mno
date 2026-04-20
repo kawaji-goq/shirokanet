@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="fw_source" value="file://///Server/server/アイティーキューブ/不動産ASP/サイトテンプレ/png/2.png" />
+	<infoitem key="fw_slice_info" value="792de464 bb8 fa0 3a1 69 ce 9d 0" />
+	<infoitem key="dw_new_image_map" value="&lt;MAP name=&quot;MapMapMap&quot;&gt;&#xD;        &lt;AREA SHAPE=&quot;rect&quot; COORDS=&quot;12,70,160,93&quot; HREF=&quot;chintai.php?cid=1&quot;&gt;&#xD;        &lt;AREA SHAPE=&quot;rect&quot; COORDS=&quot;13,91,159,116&quot; HREF=&quot;chintai.php?cid=2&quot;&gt;&#xD;        &lt;AREA SHAPE=&quot;rect&quot; COORDS=&quot;12,115,160,139&quot; HREF=&quot;chintai.php?cid=3&quot;&gt;&#xD;    &lt;/MAP&gt;" />
+</info>

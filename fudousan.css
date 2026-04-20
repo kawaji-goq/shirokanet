@@ -1,0 +1,231 @@
+@charset "euc-jp";
+body {
+	background-color:#FFFCEE;
+	margin:0px;
+	padding:0px;
+	font:"£Í£Ó £Ð¥´¥·¥Ã¥¯", Osaka, "¥Ò¥é¥®¥Î³Ñ¥´6";
+}
+.fudousan {
+	font-size: 12px;
+	font-weight: bolder;
+	line-height: 17px;
+}
+.title {
+	font-size: 16px;
+	font-weight: bolder;
+}
+a:link {
+	color: #0066FF;
+}
+a:visited {
+	color: #0066FF;
+}
+a:active {
+	color: #FF0000;
+}
+a:hover {
+	color: #FF0000;
+}
+.noda1 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #333333;
+}
+.noda2 {
+	font-size: 12px;
+	line-height: 20px;
+	color: #333333;
+}
+.noda3 {
+	font-size: 11px;
+	color: #FF0000;
+}
+font16 {
+	font-size:16px;
+}
+<!--
+a:link {
+	color: #0066FF;
+}
+a:active {
+	color: #0066FF;
+}
+a:visited {
+	color: #0066FF;
+}
+a:hover {
+	color: #FF0000;
+}
+.top_osusume_date {
+	color:#999999;
+	font-weight: bold;
+	font-size:12px;
+}
+body {
+	background-color:#ffffff;
+}
+.list_price{
+	font-weight:bolder;
+	font-size:24px;
+	color:#FF6600;
+}
+.list_price_tani{
+	font-weight:bolder;
+	font-size:14px;
+	color:#FF6600;
+}
+.bukken_detail_title {
+	font-size:15px;
+}
+.bukken_detail_price {
+	font-size:25px;
+	color:#FF6600;
+	
+}
+.bukken_detail_price_tani {
+	font-size:14px;
+	color:#FF6600;
+}
+
+.bukken_detail_madori {
+	font-size:16px;
+}
+.madori_detail{
+	font-size:16px;
+}
+.bukkentablelist{
+	line-height:18px;
+	background-color:#CCCCEE;	
+	width:99%;
+}
+
+.bukkentablelist td{
+	background-color:#FFFFFF;
+	padding:3px;
+	margin:3px;
+}
+
+.bukkentablelist th {
+	background-color:#ececFF;
+	font-weight:normal;
+	padding:3px;
+	margin:3px;	
+}
+.bukkentable{
+	background-color:#CCCCEE;	
+}
+
+.bukkentable td{
+	background-color:#FFFFFF;
+}
+
+.bukkentable th {
+	background-color:#ececFF;
+	font-weight:normal;
+}
+
+
+.newbukkenprice{
+background-image:url(img/top/TopBukkenNewPriceBG.jpg);
+background-repeat:no-repeat;
+	background-position: center;
+}
+
+.osusumebukkenprice1{
+	background-image:url(img/top/TopBukkenOsusumePriceBG1.jpg);
+	background-repeat:no-repeat;
+	background-position: center;
+}
+
+.osusumebukkenprice2{
+	background-image:url(img/top/TopBukkenOsusumePriceBG2.jpg);
+	background-repeat:no-repeat;
+	background-position: center;
+}
+
+#company .goaisatsutext{
+	line-height:24px;
+	font-size:14px;
+}
+#company .stafftitle{
+		font-size:12px;
+		color:#666666;
+		font-weight:bold;
+}
+
+#company .staffcomment{
+	line-height:20px;
+		color:#666666;
+	font-size:12px;
+}
+#qanda .q{
+		color:#868686;
+		font-weight:bold;
+	font-size:17px;
+	
+}
+#qanda .a{
+		color:#666666;
+	font-size:13px;
+	line-height:20px;
+	
+}
+#footer a:link,#footer a:visited {
+	color:#666666;
+}
+#footer a:hover,#footer a:active {
+	color:#FF3300;
+}
+#toptopics{
+font-weight:bold;
+color:#3E3E3E;
+line-height:20px;
+}
+#toptopics .date{
+font-weight:bold;
+color:#666666;
+font-size:10px;
+}
+
+#toptopics a:link,#toptopics a:visited {
+	color:#0000CC;
+}
+#toptopics a:hover,#toptopics a:active {
+	color:#FF3300;
+}
+
+#topnewbukken,#toposusumebukken{
+	font-weight:bold;
+	color:#666666;	
+}
+#topnewbukken .newbukkenprice,#toposusumebukken .osusumebukkenprice{
+font-size:13px;
+}
+#topics .date{
+	color:#6666CC;
+	font-size:13px;
+	font-weight:bold;
+}
+
+#topics .topics{
+line-height:18px;
+}
+#topics .yearmonth{
+	color:#333333;
+	font-size:12px;
+	font-weight:bold;
+}
+
+#topics .title{
+	color:#808080;
+	font-size:20px;
+	font-weight:bold;
+}
+#topics .text{
+	color:#575757;
+	font-size:12px;
+}
+#topics .cate{
+line-height:18px;
+}
+-->

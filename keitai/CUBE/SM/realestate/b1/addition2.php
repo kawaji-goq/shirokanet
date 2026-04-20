@@ -1,0 +1,2833 @@
+<?php
+$re1obj=new Ad_RealEstate($dbobj);
+	$maxdata=$dbobj->GetData("select max(id) as maxid from bukken");
+$bsetdata=$dbobj->GetData("select * from bukken_setting2 where cate_id =4");
+	$maxid=1+$maxdata["maxid"];
+if($_REQUEST["update_re"]=="更新する") {
+if($_REQUEST["banchichk"]==NULL||$_REQUEST["banchichk"]==""){
+$_REQUEST["banchichk"]=0;
+}
+	if($_REQUEST["menseki"]==NULL||$_REQUEST["menseki"]==""){
+		$_REQUEST["menseki"]="null";
+	}
+	else {
+		$_REQUEST["menseki"]=str_replace(",","",$_REQUEST["menseki"]);
+	}
+
+	if($_REQUEST["tsubosu"]==NULL||$_REQUEST["tsubosu"]==""){
+		$_REQUEST["tsubosu"]="null";
+	}
+	else {
+		$_REQUEST["tsubosu"]=str_replace(",","",$_REQUEST["tsubosu"]);
+	}
+
+	if($_REQUEST["tsubotanka"]==NULL||$_REQUEST["tsubotanka"]==""){
+		$_REQUEST["tsubotanka"]="null";
+	}
+	else {
+		$_REQUEST["tsubotanka"]=str_replace(",","",$_REQUEST["tsubotanka"]);
+	}
+
+	if($_REQUEST["kakaku"]==NULL||$_REQUEST["kakaku"]==""){
+		$_REQUEST["kakaku"]="null";
+	}
+	else {		$_REQUEST["kakaku"]=str_replace(",",".",$_REQUEST["kakaku"]);
+}
+	
+	
+	if($_REQUEST["madori"]==NULL||$_REQUEST["madori"]==""){
+		$_REQUEST["madori"]="null";
+	}
+	else {
+		$_REQUEST["madori"]=str_replace(",","",$_REQUEST["madori"]);
+	}
+	
+	if($_REQUEST["buntankin"]==NULL||$_REQUEST["buntankin"]==""){
+		$_REQUEST["buntankin"]="null";
+	}
+	else {
+		$_REQUEST["buntankin"]=str_replace(",","",$_REQUEST["buntankin"]);
+	}
+	
+	if($_REQUEST["kenpei_ritsu"]==NULL||$_REQUEST["kenpei_ritsu"]==""){
+		$_REQUEST["kenpei_ritsu"]="null";
+	}
+	else {
+		$_REQUEST["kenpei_ritsu"]=str_replace(",","",$_REQUEST["kenpei_ritsu"]);
+	}
+	
+	if($_REQUEST["youseki_ritsu"]==NULL||$_REQUEST["youseki_ritsu"]==""){
+		$_REQUEST["youseki_ritsu"]="null";
+	}
+	else {
+		$_REQUEST["youseki_ritsu"]=str_replace(",","",$_REQUEST["youseki_ritsu"]);
+	}
+	
+	if($_REQUEST["chiku_nen"]==NULL||$_REQUEST["chiku_nen"]==""){
+		$_REQUEST["chiku_nen"]="null";
+	}
+	else {
+		$_REQUEST["chiku_nen"]=str_replace(",","",$_REQUEST["chiku_nen"]);
+	}
+	
+	if($_REQUEST["chiku_tsuki"]==NULL||$_REQUEST["chiku_tsuki"]==""){
+		$_REQUEST["chiku_tsuki"]="null";
+	}
+	else {
+		$_REQUEST["chiku_tsuki"]=str_replace(",","",$_REQUEST["chiku_tsuki"]);
+	}
+	
+	if($_REQUEST["ekiho"]==NULL||$_REQUEST["ekiho"]==""){
+		$_REQUEST["ekiho"]="null";
+	}
+	else {
+		$_REQUEST["ekiho"]=str_replace(",","",$_REQUEST["ekiho"]);
+	}
+	
+	if($_REQUEST["basu_hun"]==NULL||$_REQUEST["basu_hun"]==""){
+		$_REQUEST["basu_hun"]="null";
+	}
+	else {
+		$_REQUEST["basu_hun"]=str_replace(",","",$_REQUEST["basu_hun"]);
+	}
+	
+	if($_REQUEST["basu_ho"]==NULL||$_REQUEST["basu_ho"]==""){
+		$_REQUEST["basu_ho"]="null";
+	}
+	else {
+		$_REQUEST["basu_ho"]=str_replace(",","",$_REQUEST["basu_ho"]);
+	}
+	
+	if($_REQUEST["kuruma"]==NULL||$_REQUEST["kuruma"]==""){
+		$_REQUEST["kuruma"]="null";
+	}
+	else {
+		$_REQUEST["kuruma"]=str_replace(",","",$_REQUEST["kuruma"]);
+	}
+	
+	if($_REQUEST["kyori"]==NULL||$_REQUEST["kyori"]==""){
+		$_REQUEST["kyori"]="null";
+	}
+	else {
+		$_REQUEST["kyori"]=str_replace(",","",$_REQUEST["kyori"]);
+	}
+	
+	if($_REQUEST["shikikin"]==NULL||$_REQUEST["shikikin"]==""){
+		$_REQUEST["shikikin"]="null";
+	}
+	else {
+		$_REQUEST["shikikin"]=str_replace(",","",$_REQUEST["shikikin"]);
+	}
+	
+	if($_REQUEST["shikibiki_kakaku"]==NULL||$_REQUEST["shikibiki_kakaku"]==""){
+		$_REQUEST["shikibiki_kakaku"]="null";
+	}
+	else {
+		$_REQUEST["shikibiki_kakaku"]=str_replace(",","",$_REQUEST["shikibiki_kakaku"]);
+	}
+	
+	if($_REQUEST["shikibiki_tsuki"]==NULL||$_REQUEST["shikibiki_tsuki"]==""){
+		$_REQUEST["shikibiki_tsuki"]="null";
+	}
+	else {
+		$_REQUEST["shikibiki_tsuki"]=str_replace(",","",$_REQUEST["shikibiki_tsuki"]);
+	}
+	
+	if($_REQUEST["shikibiki_jippi"]==NULL||$_REQUEST["shikibiki_jippi"]==""){
+		$_REQUEST["shikibiki_jippi"]="null";
+	}
+	else {
+		$_REQUEST["shikibiki_jippi"]=str_replace(",","",$_REQUEST["shikibiki_jippi"]);
+	}
+	
+	if($_REQUEST["reikin"]==NULL||$_REQUEST["reikin"]==""){
+		$_REQUEST["reikin"]="null";
+	}
+	else {
+		$_REQUEST["reikin"]=str_replace(",","",$_REQUEST["reikin"]);
+	}
+	
+	if($_REQUEST["kyouekihi"]==NULL||$_REQUEST["kyouekihi"]==""){
+		$_REQUEST["kyouekihi"]="null";
+	}
+	else {
+		$_REQUEST["kyouekihi"]=str_replace(",","",$_REQUEST["kyouekihi"]);
+	}
+	
+	if($_REQUEST["setsubi_naka1"]==NULL||$_REQUEST["setsubi_naka1"]==""){
+		$_REQUEST["setsubi_naka1"]="null";
+	}
+	if($_REQUEST["setsubi_naka2"]==NULL||$_REQUEST["setsubi_naka2"]==""){
+		$_REQUEST["setsubi_naka2"]="null";
+	}
+	if($_REQUEST["setsubi_naka3"]==NULL||$_REQUEST["setsubi_naka3"]==""){
+		$_REQUEST["setsubi_naka3"]="null";
+	}
+	if($_REQUEST["setsubi_naka4"]==NULL||$_REQUEST["setsubi_naka4"]==""){
+		$_REQUEST["setsubi_naka4"]="null";
+	}
+	if($_REQUEST["setsubi_naka5"]==NULL||$_REQUEST["setsubi_naka5"]==""){
+		$_REQUEST["setsubi_naka5"]="null";
+	}
+	if($_REQUEST["setsubi_naka6"]==NULL||$_REQUEST["setsubi_naka6"]==""){
+		$_REQUEST["setsubi_naka6"]="null";
+	}
+	if($_REQUEST["setsubi_naka7"]==NULL||$_REQUEST["setsubi_naka7"]==""){
+		$_REQUEST["setsubi_naka7"]="null";
+	}
+	if($_REQUEST["setsubi_naka8"]==NULL||$_REQUEST["setsubi_naka8"]==""){
+		$_REQUEST["setsubi_naka8"]="null";
+	}
+	if($_REQUEST["setsubi_naka9"]==NULL||$_REQUEST["setsubi_naka9"]==""){
+		$_REQUEST["setsubi_naka9"]="null";
+	}
+	if($_REQUEST["setsubi_naka10"]==NULL||$_REQUEST["setsubi_naka10"]==""){
+		$_REQUEST["setsubi_naka10"]="null";
+	}
+	if($_REQUEST["setsubi_naka11"]==NULL||$_REQUEST["setsubi_naka11"]==""){
+		$_REQUEST["setsubi_naka11"]="null";
+	}
+	if($_REQUEST["setsubi_naka12"]==NULL||$_REQUEST["setsubi_naka12"]==""){
+		$_REQUEST["setsubi_naka12"]="null";
+	}
+	if($_REQUEST["setsubi_naka13"]==NULL||$_REQUEST["setsubi_naka13"]==""){
+		$_REQUEST["setsubi_naka13"]="null";
+	}
+	if($_REQUEST["setsubi_naka14"]==NULL||$_REQUEST["setsubi_naka14"]==""){
+		$_REQUEST["setsubi_naka14"]="null";
+	}
+	if($_REQUEST["setsubi_naka15"]==NULL||$_REQUEST["setsubi_naka15"]==""){
+		$_REQUEST["setsubi_naka15"]="null";
+	}
+	if($_REQUEST["setsubi_naka16"]==NULL||$_REQUEST["setsubi_naka16"]==""){
+		$_REQUEST["setsubi_naka16"]="null";
+	}
+	if($_REQUEST["setsubi_naka17"]==NULL||$_REQUEST["setsubi_naka17"]==""){
+		$_REQUEST["setsubi_naka17"]="null";
+	}
+	if($_REQUEST["setsubi_naka18"]==NULL||$_REQUEST["setsubi_naka18"]==""){
+		$_REQUEST["setsubi_naka18"]="null";
+	}
+	if($_REQUEST["setsubi_naka19"]==NULL||$_REQUEST["setsubi_naka19"]==""){
+		$_REQUEST["setsubi_naka19"]="null";
+	}
+	if($_REQUEST["setsubi_naka20"]==NULL||$_REQUEST["setsubi_naka20"]==""){
+		$_REQUEST["setsubi_naka20"]="null";
+	}
+	if($_REQUEST["setsubi_soto1"]==NULL||$_REQUEST["setsubi_soto1"]==""){
+		$_REQUEST["setsubi_soto1"]="null";
+	}
+	if($_REQUEST["setsubi_soto2"]==NULL||$_REQUEST["setsubi_soto2"]==""){
+		$_REQUEST["setsubi_soto2"]="null";
+	}
+	if($_REQUEST["setsubi_soto3"]==NULL||$_REQUEST["setsubi_soto3"]==""){
+		$_REQUEST["setsubi_soto3"]="null";
+	}
+	if($_REQUEST["setsubi_soto4"]==NULL||$_REQUEST["setsubi_soto4"]==""){
+		$_REQUEST["setsubi_soto4"]="null";
+	}
+	if($_REQUEST["setsubi_soto5"]==NULL||$_REQUEST["setsubi_soto5"]==""){
+		$_REQUEST["setsubi_soto5"]="null";
+	}
+	if($_REQUEST["setsubi_soto6"]==NULL||$_REQUEST["setsubi_soto6"]==""){
+		$_REQUEST["setsubi_soto6"]="null";
+	}
+	if($_REQUEST["setsubi_soto7"]==NULL||$_REQUEST["setsubi_soto7"]==""){
+		$_REQUEST["setsubi_soto7"]="null";
+	}
+	if($_REQUEST["setsubi_soto8"]==NULL||$_REQUEST["setsubi_soto8"]==""){
+		$_REQUEST["setsubi_soto8"]="null";
+	}
+	if($_REQUEST["setsubi_soto9"]==NULL||$_REQUEST["setsubi_soto9"]==""){
+		$_REQUEST["setsubi_soto9"]="null";
+	}
+	if($_REQUEST["setsubi_soto10"]==NULL||$_REQUEST["setsubi_soto10"]==""){
+		$_REQUEST["setsubi_soto10"]="null";
+	}
+	if($_REQUEST["jouken1"]==NULL||$_REQUEST["jouken1"]==""){
+		$_REQUEST["jouken1"]="null";
+	}
+	if($_REQUEST["jouken2"]==NULL||$_REQUEST["jouken2"]==""){
+		$_REQUEST["jouken2"]="null";
+	}
+	if($_REQUEST["jouken3"]==NULL||$_REQUEST["jouken3"]==""){
+		$_REQUEST["jouken3"]="null";
+	}
+	if($_REQUEST["jouken4"]==NULL||$_REQUEST["jouken4"]==""){
+		$_REQUEST["jouken4"]="null";
+	}
+	if($_REQUEST["jouken5"]==NULL||$_REQUEST["jouken5"]==""){
+		$_REQUEST["jouken5"]="null";
+	}
+	if($_REQUEST["jouken6"]==NULL||$_REQUEST["jouken6"]==""){
+		$_REQUEST["jouken6"]="null";
+	}
+	if($_REQUEST["jouken7"]==NULL||$_REQUEST["jouken7"]==""){
+		$_REQUEST["jouken7"]="null";
+	}
+	if($_REQUEST["jouken8"]==NULL||$_REQUEST["jouken8"]==""){
+		$_REQUEST["jouken8"]="null";
+	}
+	if($_REQUEST["jouken9"]==NULL||$_REQUEST["jouken9"]==""){
+		$_REQUEST["jouken9"]="null";
+	}
+	if($_REQUEST["jouken10"]==NULL||$_REQUEST["jouken10"]==""){
+		$_REQUEST["jouken10"]="null";
+	}
+	if($_REQUEST["osusume"]==NULL||$_REQUEST["osusume"]==""){
+		$_REQUEST["osusume"]="null";
+	}
+	if($_REQUEST["setsubi_other1"]==NULL||$_REQUEST["setsubi_other1"]==""){
+		$_REQUEST["setsubi_other1"]="null";
+	}
+	if($_REQUEST["setsubi_other2"]==NULL||$_REQUEST["setsubi_other2"]==""){
+		$_REQUEST["setsubi_other2"]="null";
+	}
+	if($_REQUEST["setsubi_other3"]==NULL||$_REQUEST["setsubi_other3"]==""){
+		$_REQUEST["setsubi_other3"]="null";
+	}
+	if($_REQUEST["setsubi_other4"]==NULL||$_REQUEST["setsubi_other4"]==""){
+		$_REQUEST["setsubi_other4"]="null";
+	}
+	if($_REQUEST["setsubi_other5"]==NULL||$_REQUEST["setsubi_other5"]==""){
+		$_REQUEST["setsubi_other5"]="null";
+	}
+	if($_REQUEST["setsubi_other6"]==NULL||$_REQUEST["setsubi_other6"]==""){
+		$_REQUEST["setsubi_other6"]="null";
+	}
+	if($_REQUEST["setsubi_other7"]==NULL||$_REQUEST["setsubi_other7"]==""){
+		$_REQUEST["setsubi_other7"]="null";
+	}
+	if($_REQUEST["setsubi_other8"]==NULL||$_REQUEST["setsubi_other8"]==""){
+		$_REQUEST["setsubi_other8"]="null";
+	}
+	if($_REQUEST["setsubi_other9"]==NULL||$_REQUEST["setsubi_other9"]==""){
+		$_REQUEST["setsubi_other9"]="null";
+	}
+	if($_REQUEST["setsubi_other10"]==NULL||$_REQUEST["setsubi_other10"]==""){
+		$_REQUEST["setsubi_other10"]="null";
+	}
+	
+	$imgobj=new Upload();
+	$bname="bukken";
+	$setdata["listimg_w"]=800;
+	$setdata["listimg_h"]=0;
+	$imagesize["big"]["w"]=800;
+	$imagesize["big"]["h"]=0;
+	$imagesize["top"]["w"]=145;
+	$imagesize["top"]["h"]=102;
+	$imagesize["normal"]["w"]=300;
+	$imagesize["normal"]["h"]=211;
+	$imagesize["osusume"]["w"]=120;
+	$imagesize["osusume"]["h"]=84;
+	$imagesize["keitai"]["w"]=250;
+	$imagesize["keitai"]["h"]=176;
+	$imagesize["pop1"]["w"]=230;
+	$imagesize["pop1"]["h"]=161;
+	$imagesize["list"]["w"]=70;
+	$imagesize["list"]["h"]=50;
+	
+	
+	@mkdir($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/");
+	@mkdir($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/");
+	@chmod($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/",0777);
+	
+	@system("chmod -Rf 0777 ".$_SERVER['DOCUMENT_ROOT']."/tmp/bukken_data/".$maxid);
+	
+	$imgobj->path=$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/";
+	$imgobj->rpath="/tmp/".$bname."_data/".$maxid."/";
+	$imagefile1=$imgobj->UpImgAndResize("photo1",$imagesize["big"]["w"],$imagesize["big"]["h"]);	
+	
+	if(@file_exists($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile1["name"])&&$imagefile1["name"]!=NULL) {
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile1["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"300".$fdata["basename"],$fdata["dirname"]."/",$imagesize["normal"]["w"],$imagesize["normal"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile1["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"o_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["osusume"]["w"],$imagesize["osusume"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile1["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"k_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["keitai"]["w"],$imagesize["keitai"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile1["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"pop1".$fdata["basename"],$fdata["dirname"]."/",$imagesize["pop1"]["w"],$imagesize["pop1"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile1["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"top".$fdata["basename"],$fdata["dirname"]."/",$imagesize["top"]["w"],$imagesize["top"]["h"]);
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"list".$fdata["basename"],$fdata["dirname"]."/",$imagesize["list"]["w"],$imagesize["list"]["h"]);
+	}
+
+	$imgobj2=new Upload();
+	$imgobj2->path=$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/";
+	$imgobj2->rpath="/tmp/".$bname."_data/".$maxid."/";
+	$imagefile2=$imgobj2->UpImgAndResize("photo2",$imagesize["big"]["w"],$imagesize["big"]["h"]);	
+	
+	if(@file_exists($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile2["name"])&&$imagefile2["name"]!=NULL) {
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile2["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"300".$fdata["basename"],$fdata["dirname"]."/",$imagesize["normal"]["w"],$imagesize["normal"]["h"]);
+	
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile2["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"o_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["osusume"]["w"],$imagesize["osusume"]["h"]);
+	
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile2["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"k_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["keitai"]["w"],$imagesize["keitai"]["h"]);
+	
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile2["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"pop1".$fdata["basename"],$fdata["dirname"]."/",$imagesize["pop1"]["w"],$imagesize["pop1"]["h"]);
+	
+	}
+	
+	$imgobj3=new Upload();
+	$imgobj3->path=$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/";
+	$imgobj3->rpath="/tmp/".$bname."_data/".$maxid."/";
+	$imagefile3=$imgobj3->UpImgAndResize("photo3",$imagesize["big"]["w"],$imagesize["big"]["h"]);	
+	
+	if(@file_exists($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile3["name"])&&$imagefile3["name"]!=NULL) {
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile3["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"300".$fdata["basename"],$fdata["dirname"]."/",$imagesize["normal"]["w"],$imagesize["normal"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile3["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"o_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["osusume"]["w"],$imagesize["osusume"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile3["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"k_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["keitai"]["w"],$imagesize["keitai"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile3["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"pop1".$fdata["basename"],$fdata["dirname"]."/",$imagesize["pop1"]["w"],$imagesize["pop1"]["h"]);
+		
+	}
+	
+	
+	$imgobj4=new Upload();
+	$imgobj4->path=$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/";
+	$imgobj4->rpath="/tmp/".$bname."_data/".$maxid."/";
+	$imagefile4=$imgobj4->UpImgAndResize("photo4",$imagesize["big"]["w"],$imagesize["big"]["h"]);
+	
+	if(@file_exists($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile4["name"])&&$imagefile4["name"]!=NULL) {
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile4["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"300".$fdata["basename"],$fdata["dirname"]."/",$imagesize["normal"]["w"],$imagesize["normal"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile4["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"o_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["osusume"]["w"],$imagesize["osusume"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile4["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"k_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["keitai"]["w"],$imagesize["keitai"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile4["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"pop1".$fdata["basename"],$fdata["dirname"]."/",$imagesize["pop1"]["w"],$imagesize["pop1"]["h"]);
+	}
+	
+	$imgobj5=new Upload();
+	$imgobj5->path=$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/";
+	$imgobj5->rpath="/tmp/".$bname."_data/".$maxid."/";
+	$imagefile5=$imgobj5->UpImgAndResize("photo5",$imagesize["big"]["w"],$imagesize["big"]["h"]);	
+	
+	if(@file_exists($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile5["name"])&&$imagefile5["name"]!=NULL) {
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile5["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"300".$fdata["basename"],$fdata["dirname"]."/",$imagesize["normal"]["w"],$imagesize["normal"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile5["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"o_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["osusume"]["w"],$imagesize["osusume"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile5["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"k_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["keitai"]["w"],$imagesize["keitai"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile5["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"pop1".$fdata["basename"],$fdata["dirname"]."/",$imagesize["pop1"]["w"],$imagesize["pop1"]["h"]);
+		
+	}
+	
+	$mimgobj1=new Upload();
+	$mimgobj1->path=$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/";
+	$mimgobj1->rpath="/tmp/".$bname."_data/".$maxid."/";
+	$mimagefile1=$mimgobj1->UpImgAndResize("madorizu1",$imagesize["big"]["w"],$imagesize["big"]["h"]);
+
+	if(@file_exists($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile1["name"])&&$mimagefile1["name"]!=NULL) {
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile1["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"o_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["osusume"]["w"],$imagesize["osusume"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile1["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"k_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["keitai"]["w"],$imagesize["keitai"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile1["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"300".$fdata["basename"],$fdata["dirname"]."/",$imagesize["normal"]["w"],$imagesize["normal"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile1["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"pop1".$fdata["basename"],$fdata["dirname"]."/",$imagesize["pop1"]["w"],$imagesize["pop1"]["h"]);
+	}
+
+	$mimgobj2=new Upload();
+	$mimgobj2->path=$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/";
+	$mimgobj2->rpath="/tmp/".$bname."_data/".$maxid."/";
+	$mimagefile2=$mimgobj2->UpImgAndResize("madorizu2",$imagesize["big"]["w"],$imagesize["big"]["h"]);
+	
+	if(@file_exists($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile2["name"])&&$mimagefile2["name"]!=NULL) {
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile2["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"o_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["osusume"]["w"],$imagesize["osusume"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile2["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"300".$fdata["basename"],$fdata["dirname"]."/",300,211);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile2["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"k_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["keitai"]["w"],$imagesize["keitai"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile2["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"pop1".$fdata["basename"],$fdata["dirname"]."/",$imagesize["pop1"]["w"],$imagesize["pop1"]["h"]);
+	}
+	$mimgobj3=new Upload();
+	$mimgobj3->path=$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/";
+	$mimgobj3->rpath="/tmp/".$bname."_data/".$_REQUEST["bid"]."/";
+	$mimagefile3=$mimgobj3->UpImgAndResize("madorizu3",$imagesize["big"]["w"],$imagesize["big"]["h"]);
+	
+	if(@file_exists($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile3["name"])&&$mimagefile2["name"]!=NULL) {
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile3["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"o_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["osusume"]["w"],$imagesize["osusume"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile3["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"300".$fdata["basename"],$fdata["dirname"]."/",300,211);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile3["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"k_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["keitai"]["w"],$imagesize["keitai"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile3["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"pop1".$fdata["basename"],$fdata["dirname"]."/",$imagesize["pop1"]["w"],$imagesize["pop1"]["h"]);
+	}
+
+	$mimgobj4=new Upload();
+	$mimgobj4->path=$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/";
+	$mimgobj4->rpath="/tmp/".$bname."_data/".$_REQUEST["bid"]."/";
+	$mimagefile4=$mimgobj4->UpImgAndResize("madorizu4",$imagesize["big"]["w"],$imagesize["big"]["h"]);
+	
+	if(@file_exists($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile4["name"])&&$mimagefile4["name"]!=NULL) {
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile4["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"o_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["osusume"]["w"],$imagesize["osusume"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile4["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"300".$fdata["basename"],$fdata["dirname"]."/",300,211);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile4["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"k_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["keitai"]["w"],$imagesize["keitai"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile4["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"pop1".$fdata["basename"],$fdata["dirname"]."/",$imagesize["pop1"]["w"],$imagesize["pop1"]["h"]);
+	}
+
+	$mimgobj5=new Upload();
+	$mimgobj5->path=$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/";
+	$mimgobj5->rpath="/tmp/".$bname."_data/".$_REQUEST["bid"]."/";
+	$mimagefile5=$mimgobj5->UpImgAndResize("madorizu5",$imagesize["big"]["w"],$imagesize["big"]["h"]);
+	
+	if(@file_exists($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile5["name"])&&$mimagefile5["name"]!=NULL) {
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile5["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"o_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["osusume"]["w"],$imagesize["osusume"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile5["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"300".$fdata["basename"],$fdata["dirname"]."/",300,211);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile5["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"k_".$fdata["basename"],$fdata["dirname"]."/",$imagesize["keitai"]["w"],$imagesize["keitai"]["h"]);
+		$fdata=(pathinfo($_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$_REQUEST["bid"]."/".$mimagefile5["name"]));
+		ImgMagic :: cpandconv_Size($fdata["dirname"]."/".$fdata["basename"],"pop1".$fdata["basename"],$fdata["dirname"]."/",$imagesize["pop1"]["w"],$imagesize["pop1"]["h"]);
+	}
+	
+	$fary[]="id";
+	$dary[]=$maxid;
+	$fary[]="kaiin_id";
+	$dary[]="'".$_SESSION["login_id"]."'";
+	$fary[]="bukkenn_id";
+	$dary[]="'".pg_escape_string($_REQUEST["bukkenn_id"])."'";
+	$fary[]="bunrui";
+	$dary[]=2;
+	$fary[]="tourokubi";
+	$dary[]="'".date("Y-m-d")."'";
+	$fary[]="syumoku";
+	$dary[]="'".pg_escape_string($_REQUEST["syumoku"])."'";
+	$fary[]="bukken_mei";
+	$dary[]="'".pg_escape_string($_REQUEST["bukken_mei"])."'";
+	$fary[]="bukken_hurigana";
+	$dary[]="'".pg_escape_string($_REQUEST["bukken_hurigana"])."'";
+	$fary[]="heya_bangou";
+	$dary[]="'".pg_escape_string($_REQUEST["heya_bangou"])."'";
+	$fary[]="shinchiku";
+	$dary[]="'".pg_escape_string($_REQUEST["shinchiku"])."'";
+	$fary[]="kouzou";
+	$dary[]="'".pg_escape_string($_REQUEST["kouzou"])."'";
+	$fary[]="tatemono_muki";
+	$dary[]="'".pg_escape_string($_REQUEST["tatemono_muki"])."'";
+	$fary[]="kaisou";
+	$dary[]="'".pg_escape_string($_REQUEST["kaisou"])."'";
+	$fary[]="chijoukaisou";
+	$dary[]="'".pg_escape_string($_REQUEST["chijoukaisou"])."'";
+	$fary[]="chikakaisou";
+	$dary[]="'".pg_escape_string($_REQUEST["chikakaisou"])."'";
+	$fary[]="kosu";
+	$dary[]="'".pg_escape_string($_REQUEST["kosu"])."'";
+	$fary[]="menseki";
+	$dary[]="".$_REQUEST["menseki"]."";
+	$fary[]="tsubosu";
+	$dary[]="".$_REQUEST["tsubosu"]."";
+	$fary[]="tsubotanka";
+	$dary[]="".$_REQUEST["tsubotanka"]."";
+	$fary[]="buntankin";
+	$dary[]="".$_REQUEST["buntankin"]."";
+	$fary[]="kenpei_ritsu";
+	$dary[]="".$_REQUEST["kenpei_ritsu"]."";
+	$fary[]="youseki_ritsu";
+	$dary[]="".$_REQUEST["youseki_ritsu"]."";
+	$fary[]="chiku_nen";
+	$dary[]="".$_REQUEST["chiku_nen"]."";
+	$fary[]="chiku_tsuki";
+	$dary[]="".$_REQUEST["chiku_tsuki"]."";
+	$fary[]="chimoku";
+	$dary[]="'".pg_escape_string($_REQUEST["chimoku"])."'";
+	$fary[]="chisei";
+	$dary[]="'".pg_escape_string($_REQUEST["chisei"])."'";
+	$fary[]="youtochiiki";
+	$dary[]="'".pg_escape_string($_REQUEST["youtochiiki"])."'";
+	$fary[]="toshikeikaku";
+	$dary[]="'".pg_escape_string($_REQUEST["toshikeikaku"])."'";
+	$fary[]="saitekiyouto";
+	$dary[]="'".pg_escape_string($_REQUEST["saitekiyouto"])."'";
+	$fary[]="syozaichikodo";
+	$dary[]="'".pg_escape_string($_REQUEST["syozaichikodo"])."'";
+	$fary[]="yubinbangou";
+	$dary[]="'".pg_escape_string($_REQUEST["yubinbangou"])."'";
+	$fary[]="todouhuken";
+	$dary[]="'".pg_escape_string($_REQUEST["todouhuken"])."'";
+	$fary[]="jyusyo1";
+	$dary[]="'".pg_escape_string($_REQUEST["jyusyo1"])."'";
+	$fary[]="jyusyo2";
+	$dary[]="'".pg_escape_string($_REQUEST["jyusyo2"])."'";
+	$fary[]="jyusyo3";
+	$dary[]="'".pg_escape_string($_REQUEST["jyusyo3"])."'";
+	$fary[]="syougakkouku";
+	$dary[]="'".pg_escape_string($_REQUEST["syougakkouku"].$_REQUEST["syougakkou"])."小学校'";
+	$fary[]="chuugakouku";
+	$dary[]="'".pg_escape_string($_REQUEST["chuugakouku"].$_REQUEST["chugakkou"])."中学校'";
+	$fary[]="ensen";
+	$dary[]="'".pg_escape_string($_REQUEST["ensen"])."'";
+	$fary[]="eki";
+	$dary[]="'".pg_escape_string($_REQUEST["eki"])."'";
+	$fary[]="ekiho";
+	$dary[]="".$_REQUEST["ekiho"]."";
+	$fary[]="basu";
+	$dary[]="'".pg_escape_string($_REQUEST["basu"])."'";
+	$fary[]="basutei";
+	$dary[]="'".pg_escape_string($_REQUEST["basutei"])."'";
+	$fary[]="basu_hun";
+	$dary[]="".$_REQUEST["basu_hun"]."";
+	$fary[]="basu_ho";
+	$dary[]="".$_REQUEST["basu_ho"]."";
+	$fary[]="kuruma";
+	$dary[]="".$_REQUEST["kuruma"]."";
+	$fary[]="kyori";
+	$dary[]="".$_REQUEST["kyori"]."";
+	$fary[]="michi_houkou";
+	$dary[]="'".pg_escape_string($_REQUEST["michi_houkou"])."'";
+	$fary[]="kakaku";
+	$dary[]="".$_REQUEST["kakaku"]."";
+	$fary[]="shikikin";
+	$dary[]="".$_REQUEST["shikikin"]."";
+	$fary[]="sikikintani";
+	$dary[]="'".pg_escape_string($_REQUEST["sikikintani"])."'";
+	$fary[]="shikibiki_kakaku";
+	$dary[]="".$_REQUEST["shikibiki_kakaku"]."";
+	$fary[]="shikibiki_tsuki";
+	$dary[]="".$_REQUEST["shikibiki_tsuki"]."";
+	$fary[]="shikibiki_jippi";
+	$dary[]="".$_REQUEST["shikibiki_jippi"]."";
+	$fary[]="reikin";
+	$dary[]="".$_REQUEST["reikin"]."";
+	$fary[]="reikin_tani";
+	$dary[]="'".pg_escape_string($_REQUEST["reikin_tani"])."'";
+	$fary[]="kyouekihi_tani";
+	$dary[]="'".pg_escape_string($_REQUEST["kyouekihi_tani"])."'";
+	$fary[]="kyouekihi";
+	$dary[]="".$_REQUEST["kyouekihi"]."";
+	$fary[]="hosyoukin_kikan";
+	$dary[]="'".pg_escape_string($_REQUEST["hosyoukin_kikan"])."'";
+	$fary[]="hosyoukin_kakaku";
+	$dary[]="'".pg_escape_string($_REQUEST["hosyoukin_kakaku"])."'";
+	$fary[]="hosyoukin_syoukyaku";
+	$dary[]="'".pg_escape_string($_REQUEST["hosyoukin_syoukyaku"])."'";
+	$fary[]="hosyoukin_syoukyaku_per";
+	$dary[]="'".pg_escape_string($_REQUEST["hosyoukin_syoukyaku_per"])."'";
+	$fary[]="kenrikin";
+	$dary[]="'".pg_escape_string($_REQUEST["kenrikin"])."'";
+	$fary[]="kenrikin_tani";
+	$dary[]="'".pg_escape_string($_REQUEST["kenrikin_tani"])."'";
+	$fary[]="syuzenhi_tsumitate";
+	$dary[]="'".pg_escape_string($_REQUEST["syuzenhi_tsumitate"])."'";
+	$fary[]="zappi";
+	$dary[]="'".pg_escape_string($_REQUEST["zappi"])."'";
+	$fary[]="zappi2";
+	$dary[]="'".pg_escape_string($_REQUEST["zappi2"])."'";
+	$fary[]="syakuchisyou";
+	$dary[]="'".pg_escape_string($_REQUEST["syakuchisyou"])."'";
+	$fary[]="kanrihi";
+	$dary[]="'".pg_escape_string($_REQUEST["kanrihi"])."'";
+	$fary[]="zousajouto";
+	$dary[]="'".pg_escape_string($_REQUEST["zousajouto"])."'";
+	$fary[]="chusyajou";
+	$dary[]="'".pg_escape_string($_REQUEST["chusyajou"])."'";
+	$fary[]="chusya_ryoukin";
+	$dary[]="'".pg_escape_string($_REQUEST["chusya_ryoukin"])."'";
+	$fary[]="chusya_shikikin_kikan";
+	$dary[]="'".pg_escape_string($_REQUEST["chusya_shikikin_kikan"])."'";
+	$fary[]="chusya_shikikin_kakaku";
+	$dary[]="'".pg_escape_string($_REQUEST["chusya_shikikin_kakaku"])."'";
+	$fary[]="daimeikou";
+	$dary[]="'".pg_escape_string($_REQUEST["daimeikou"])."'";
+	$fary[]="daimeikou_kakaku";
+	$dary[]="'".pg_escape_string($_REQUEST["daimeikou_kakaku"])."'";
+	$fary[]="syoukyakukin_sentaku";
+	$dary[]="'".pg_escape_string($_REQUEST["syoukyakukin_sentaku"])."'";
+	$fary[]="syoukyakukin_kakaku";
+	$dary[]="'".pg_escape_string($_REQUEST["syoukyakukin_kakaku"])."'";
+	$fary[]="madori";
+	$dary[]="".$_REQUEST["madori"]."";
+	$fary[]="madori_tani";
+	$dary[]="'".pg_escape_string($_REQUEST["madori_tani"])."'";
+	$fary[]="madori_syousai";
+	$dary[]="'".pg_escape_string($_REQUEST["madori_syousai"])."'";
+	$fary[]="senyumenseki";
+	$dary[]="'".pg_escape_string($_REQUEST["senyumenseki"])."'";
+	$fary[]="senyumenseki2";
+	$dary[]="'".pg_escape_string($_REQUEST["senyumenseki2"])."'";
+	$fary[]="barukoni_houkou";
+	$dary[]="'".pg_escape_string($_REQUEST["barukoni_houkou"])."'";
+	$fary[]="barukoni_menseki";
+	$dary[]="'".pg_escape_string($_REQUEST["barukoni_menseki"])."'";
+	$fary[]="shidoumenseki";
+	$dary[]="'".pg_escape_string($_REQUEST["shidoumenseki"])."'";
+	$fary[]="setsudou1";
+	$dary[]="'".pg_escape_string($_REQUEST["setsudou1"])."'";
+	$fary[]="setsudou2";
+	$dary[]="'".pg_escape_string($_REQUEST["setsudou2"])."'";
+	$fary[]="setsudou3";
+	$dary[]="'".pg_escape_string($_REQUEST["setsudou3"])."'";
+	$fary[]="setsudou_joukyou";
+	$dary[]="'".pg_escape_string($_REQUEST["setsudou_joukyou"])."'";
+	$fary[]="keisoku_houshiki";
+	$dary[]="'".pg_escape_string($_REQUEST["keisoku_houshiki"])."'";
+	$fary[]="tochi_kenri";
+	$dary[]="'".pg_escape_string($_REQUEST["tochi_kenri"])."'";
+	$fary[]="syakutiken_syurui";
+	$dary[]="'".pg_escape_string($_REQUEST["syakutiken_syurui"])."'";
+	$fary[]="tatemono_chintaisyaku_kubun";
+	$dary[]="'".pg_escape_string($_REQUEST["tatemono_chintaisyaku_kubun"])."'";
+	$fary[]="torihikitaiyou";
+	$dary[]="'".pg_escape_string($_REQUEST["torihikitaiyou"])."'";
+	$fary[]="genkyou";
+	$dary[]="'".pg_escape_string($_REQUEST["genkyou"])."'";
+	$fary[]="hikiwatashi";
+	$dary[]="'".pg_escape_string($_REQUEST["hikiwatashi"])."'";
+	$fary[]="hikiwatashi_nen";
+	$dary[]="'".pg_escape_string($_REQUEST["hikiwatashi_nen"])."'";
+	$fary[]="hikiwatashi_tsuki";
+	$dary[]="'".pg_escape_string($_REQUEST["hikiwatashi_tsuki"])."'";
+	$fary[]="hikiwatashi_syun";
+	$dary[]="'".pg_escape_string($_REQUEST["hikiwatashi_syun"])."'";
+	$fary[]="kokudohou";
+	$dary[]="'".pg_escape_string($_REQUEST["kokudohou"])."'";
+	$fary[]="bikou";
+	$dary[]="'".pg_escape_string($_REQUEST["bikou"])."'";
+	$fary[]="jouken";
+	$dary[]="'".pg_escape_string($_REQUEST["jouken"])."'";
+	$fary[]="kensetsukakunin";
+	$dary[]="'".pg_escape_string($_REQUEST["kensetsukakunin"])."'";
+	$fary[]="tokki1";
+	$dary[]="'".pg_escape_string($_REQUEST["tokki1"])."'";
+	$fary[]="tokki2";
+	$dary[]="'".pg_escape_string($_REQUEST["tokki2"])."'";
+	$fary[]="tokki3";
+	$dary[]="'".pg_escape_string($_REQUEST["tokki3"])."'";
+	$fary[]="tokki4";
+	$dary[]="'".pg_escape_string($_REQUEST["tokki4"])."'";
+	$fary[]="tokki5";
+	$dary[]="'".pg_escape_string($_REQUEST["tokki5"])."'";
+	$fary[]="hokankanyugimu";
+	$dary[]="'".pg_escape_string($_REQUEST["hokankanyugimu"])."'";
+	$fary[]="hokenkikan";
+	$dary[]="'".pg_escape_string($_REQUEST["hokenkikan"])."'";
+	$fary[]="hokenkingaku";
+	$dary[]="'".pg_escape_string($_REQUEST["hokenkingaku"])."'";
+	$fary[]="tesuryou_hutan_kashi";
+	$dary[]="'".pg_escape_string($_REQUEST["tesuryou_hutan_kashi"])."'";
+	$fary[]="tesuryou_hutan_kari";
+	$dary[]="'".pg_escape_string($_REQUEST["tesuryou_hutan_kari"])."'";
+	$fary[]="tesuryou_haibun_moto";
+	$dary[]="'".pg_escape_string($_REQUEST["tesuryou_haibun_moto"])."'";
+	$fary[]="tesuryou_haibun_kyaku";
+	$dary[]="'".pg_escape_string($_REQUEST["tesuryou_haibun_kyaku"])."'";
+	$fary[]="housyu_keitai";
+	$dary[]="'".pg_escape_string($_REQUEST["housyu_keitai"])."'";
+	$fary[]="tesuryou_ritsu";
+	$dary[]="'".pg_escape_string($_REQUEST["tesuryou_ritsu"])."'";
+	$fary[]="tesuryou_kingaku";
+	$dary[]="'".pg_escape_string($_REQUEST["tesuryou_kingaku"])."'";
+	$fary[]="keiyaku_kikan";
+	$dary[]="'".pg_escape_string($_REQUEST["keiyaku_kikan"])."'";
+	$fary[]="admin_bikou";
+	$dary[]="'".pg_escape_string($_REQUEST["admin_bikou"])."'";
+	$fary[]="ichijikin";
+	$dary[]="'".pg_escape_string($_REQUEST["ichijikin"])."'";
+	$fary[]="syakuchikikan_chidai";
+	$dary[]="'".pg_escape_string($_REQUEST["syakuchikikan_chidai"])."'";
+	$fary[]="osusume";
+	$dary[]="".$_REQUEST["osusume"]."";
+	$fary[]="setsubi_naka1";
+	$dary[]="".$_REQUEST["setsubi_naka1"]."";
+	$fary[]="setsubi_naka2";
+	$dary[]="".$_REQUEST["setsubi_naka2"]."";
+	$fary[]="setsubi_naka3";
+	$dary[]="".$_REQUEST["setsubi_naka3"]."";
+	$fary[]="setsubi_naka4";
+	$dary[]="".$_REQUEST["setsubi_naka4"]."";
+	$fary[]="setsubi_naka5";
+	$dary[]="".$_REQUEST["setsubi_naka5"]."";
+	$fary[]="setsubi_naka6";
+	$dary[]="".$_REQUEST["setsubi_naka6"]."";
+	$fary[]="setsubi_naka7";
+	$dary[]="".$_REQUEST["setsubi_naka7"]."";
+	$fary[]="setsubi_naka8";
+	$dary[]="".$_REQUEST["setsubi_naka8"]."";
+	$fary[]="setsubi_naka9";
+	$dary[]="".$_REQUEST["setsubi_naka9"]."";
+	$fary[]="setsubi_naka10";
+	$dary[]="".$_REQUEST["setsubi_naka10"]."";
+	$fary[]="setsubi_naka11";
+	$dary[]="".$_REQUEST["setsubi_naka11"]."";
+	$fary[]="setsubi_naka12";
+	$dary[]="".$_REQUEST["setsubi_naka12"]."";
+	$fary[]="setsubi_naka13";
+	$dary[]="".$_REQUEST["setsubi_naka13"]."";
+	$fary[]="setsubi_naka14";
+	$dary[]="".$_REQUEST["setsubi_naka14"]."";
+	$fary[]="setsubi_naka15";
+	$dary[]="".$_REQUEST["setsubi_naka15"]."";
+	$fary[]="setsubi_naka16";
+	$dary[]="".$_REQUEST["setsubi_naka16"]."";
+	$fary[]="setsubi_naka17";
+	$dary[]="".$_REQUEST["setsubi_naka17"]."";
+	$fary[]="setsubi_naka18";
+	$dary[]="".$_REQUEST["setsubi_naka18"]."";
+	$fary[]="setsubi_naka19";
+	$dary[]="".$_REQUEST["setsubi_naka19"]."";
+	$fary[]="setsubi_naka20";
+	$dary[]="".$_REQUEST["setsubi_naka20"]."";
+	$fary[]="setsubi_soto1";
+	$dary[]="".$_REQUEST["setsubi_soto1"]."";
+	$fary[]="setsubi_soto2";
+	$dary[]="".$_REQUEST["setsubi_soto2"]."";
+	$fary[]="setsubi_soto3";
+	$dary[]="".$_REQUEST["setsubi_soto3"]."";
+	$fary[]="setsubi_soto4";
+	$dary[]="".$_REQUEST["setsubi_soto4"]."";
+	$fary[]="setsubi_soto5";
+	$dary[]="".$_REQUEST["setsubi_soto5"]."";
+	$fary[]="setsubi_soto6";
+	$dary[]="".$_REQUEST["setsubi_soto6"]."";
+	$fary[]="setsubi_soto7";
+	$dary[]="".$_REQUEST["setsubi_soto7"]."";
+	$fary[]="setsubi_soto8";
+	$dary[]="".$_REQUEST["setsubi_soto8"]."";
+	$fary[]="setsubi_soto9";
+	$dary[]="".$_REQUEST["setsubi_soto9"]."";
+	$fary[]="setsubi_soto10";
+	$dary[]="".$_REQUEST["setsubi_soto10"]."";
+	$fary[]="jouken1";
+	$dary[]="".$_REQUEST["jouken1"]."";
+	$fary[]="jouken2";
+	$dary[]="".$_REQUEST["jouken2"]."";
+	$fary[]="jouken3";
+	$dary[]="".$_REQUEST["jouken3"]."";
+	$fary[]="jouken4";
+	$dary[]="".$_REQUEST["jouken4"]."";
+	$fary[]="jouken5";
+	$dary[]="".$_REQUEST["jouken5"]."";
+	$fary[]="jouken6";
+	$dary[]="".$_REQUEST["jouken6"]."";
+	$fary[]="jouken7";
+	$dary[]="".$_REQUEST["jouken7"]."";
+	$fary[]="jouken8";
+	$dary[]="".$_REQUEST["jouken8"]."";
+	$fary[]="jouken9";
+	$dary[]="".$_REQUEST["jouken9"]."";
+	$fary[]="del_chk";
+	$dary[]="".$_REQUEST["del_chk"]."";
+	$fary[]="banchichk";
+	$dary[]="'".pg_escape_string($_REQUEST["banchichk"])."'";
+	$fary[]="setsubi_other1";
+	$dary[]="".$_REQUEST["setsubi_other1"]."";
+	$fary[]="setsubi_other2";
+	$dary[]="".$_REQUEST["setsubi_other2"]."";
+	$fary[]="setsubi_other3";
+	$dary[]="".$_REQUEST["setsubi_other3"]."";
+	$fary[]="setsubi_other4";
+	$dary[]="".$_REQUEST["setsubi_other4"]."";
+	$fary[]="setsubi_other5";
+	$dary[]="".$_REQUEST["setsubi_other5"]."";
+	$fary[]="setsubi_other6";
+	$dary[]="".$_REQUEST["setsubi_other6"]."";
+	$fary[]="setsubi_other7";
+	$dary[]="".$_REQUEST["setsubi_other7"]."";
+	$fary[]="setsubi_other8";
+	$dary[]="".$_REQUEST["setsubi_other8"]."";
+	$fary[]="setsubi_other9";
+	$dary[]="".$_REQUEST["setsubi_other9"]."";
+	$fary[]="setsubi_other10";
+	$dary[]="".$_REQUEST["setsubi_other10"]."";
+	$fary[]="keyword";
+	$dary[]="'".pg_escape_string(implode(" ",$_POST))."'";
+
+	if($imagefile1["filepath"]!=NULL||$data["delimage"]==1){
+		
+		$ftp=new Cube_FTP();
+		$ftp->Connect($_SESSION["DomainData"]["id"],$_SESSION["DomainData"]["pass"]);
+		
+			if($imagefile1["filepath"]!=NULL) {
+			
+				@chmod($imagefile1["filepath"],0777);
+				@chmod("k_".$imagefile1["filepath"],0777);
+				@chmod("o_".$imagefile1["filepath"],0777);
+				@chmod("300".$imagefile1["filepath"],0777);
+				@chmod("pop1".$imagefile1["filepath"],0777);
+				@chmod("top".$imagefile1["filepath"],0777);
+				@chmod("list".$imagefile1["filepath"],0777);
+				
+		if($_SERVER['HTTP_HOST']=="siteadmin.itcube.ne.jp"){
+				$ftp->MkDir("tmp/",$bname."_data");
+				$ftp->MkDir("tmp/".$bname."_data",$maxid);
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/",$imagefile1["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile1["name"],"b");
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","o_".$imagefile1["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/o_".$imagefile1["name"],"b");
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","k_".$imagefile1["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/k_".$imagefile1["name"],"b");
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","300".$imagefile1["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/300".$imagefile1["name"],"b");
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","pop1".$imagefile1["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/pop1".$imagefile1["name"],"b");
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","top".$imagefile1["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/pop1".$imagefile1["name"],"b");
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","list".$imagefile1["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/list".$imagefile1["name"],"b");
+				}
+				$fary[]="photo1";
+				$dary[]="'300".$imagefile1["name"]."'";
+				
+			}
+			else if($setdata["listimg_defalt"]!=NULL){
+				if($data["delimage"]==1) {
+
+				}
+			}
+			else if($data["delimage"]==1) {
+			}
+
+	}
+	if($imagefile2["filepath"]!=NULL||$data["delimage"]==1){
+		
+		$ftp=new Cube_FTP();
+		$ftp->Connect($_SESSION["DomainData"]["id"],$_SESSION["DomainData"]["pass"]);
+		
+			if($imagefile2["filepath"]!=NULL) {
+			
+				@chmod($imagefile2["filepath"],0777);
+				@chmod("k_".$imagefile2["filepath"],0777);
+				@chmod("o_".$imagefile2["filepath"],0777);
+				@chmod("300".$imagefile2["filepath"],0777);
+		if($_SERVER['HTTP_HOST']=="siteadmin.itcube.ne.jp"){
+				$ftp->MkDir("tmp/",$bname."_data");
+				$ftp->MkDir("tmp/".$bname."_data",$maxid);
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/",$imagefile2["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile2["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","o_".$imagefile2["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/o_".$imagefile2["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","k_".$imagefile2["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/k_".$imagefile2["name"],"b");
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","300".$imagefile2["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/300".$imagefile2["name"],"b");
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","pop1".$imagefile2["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/pop1".$imagefile2["name"],"b");
+				}
+				$fary[]="photo2";
+				$dary[]="'300".$imagefile2["name"]."'";
+				
+			}
+			else if($setdata["listimg_defalt"]!=NULL){
+				if($data["delimage"]==1) {
+
+				}
+			}
+			else if($data["delimage"]==1) {
+			
+			}
+
+	}
+	
+	if($imagefile3["filepath"]!=NULL||$data["delimage"]==1){
+		
+		$ftp=new Cube_FTP();
+		$ftp->Connect($_SESSION["DomainData"]["id"],$_SESSION["DomainData"]["pass"]);
+		
+			if($imagefile3["filepath"]!=NULL) {
+			
+				@chmod($imagefile3["filepath"],0777);
+				@chmod("k_".$imagefile3["filepath"],0777);
+				@chmod("o_".$imagefile3["filepath"],0777);
+				@chmod("300".$imagefile3["filepath"],0777);
+		if($_SERVER['HTTP_HOST']=="siteadmin.itcube.ne.jp"){
+				$ftp->MkDir("tmp/",$bname."_data");
+				$ftp->MkDir("tmp/".$bname."_data",$maxid);
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/",$imagefile3["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile3["name"],"b");
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","o_".$imagefile3["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/o_".$imagefile3["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","k_".$imagefile3["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/k_".$imagefile3["name"],"b");
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","300".$imagefile3["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/300".$imagefile3["name"],"b");
+}
+				$fary[]="photo3";
+				$dary[]="'300".$imagefile3["name"]."'";
+				
+			}
+			else if($setdata["listimg_defalt"]!=NULL){
+				if($data["delimage"]==1) {
+
+				}
+			}
+			else if($data["delimage"]==1) {
+			}
+
+	}
+	if($imagefile4["filepath"]!=NULL||$data["delimage"]==1){
+		
+		$ftp=new Cube_FTP();
+		$ftp->Connect($_SESSION["DomainData"]["id"],$_SESSION["DomainData"]["pass"]);
+		
+			if($imagefile4["filepath"]!=NULL) {
+			
+				@chmod($imagefile4["filepath"],0777);
+				@chmod("k_".$imagefile4["filepath"],0777);
+				@chmod("o_".$imagefile4["filepath"],0777);
+				@chmod("300".$imagefile4["filepath"],0777);
+		if($_SERVER['HTTP_HOST']=="siteadmin.itcube.ne.jp"){
+				$ftp->MkDir("tmp/",$bname."_data");
+				$ftp->MkDir("tmp/".$bname."_data",$maxid);
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/",$imagefile4["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile4["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","o_".$imagefile4["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/o_".$imagefile4["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","k_".$imagefile4["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/k_".$imagefile4["name"],"b");
+
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","300".$imagefile4["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/300".$imagefile4["name"],"b");
+
+				}
+				$fary[]="photo4";
+				$dary[]="'300".$imagefile4["name"]."'";
+				
+			}
+			else if($setdata["listimg_defalt"]!=NULL){
+				if($data["delimage"]==1) {
+
+				}
+			}
+			else if($data["delimage"]==1) {
+			}
+
+
+	}
+	if($imagefile5["filepath"]!=NULL||$data["delimage"]==1){
+		
+		$ftp=new Cube_FTP();
+		$ftp->Connect($_SESSION["DomainData"]["id"],$_SESSION["DomainData"]["pass"]);
+		
+			if($imagefile5["filepath"]!=NULL) {
+			
+				@chmod($imagefile5["filepath"],0777);
+				@chmod("k_".$imagefile5["filepath"],0777);
+				@chmod("o_".$imagefile5["filepath"],0777);
+				@chmod("300".$imagefile5["filepath"],0777);
+		if($_SERVER['HTTP_HOST']=="siteadmin.itcube.ne.jp"){
+				$ftp->MkDir("tmp/",$bname."_data");
+				$ftp->MkDir("tmp/".$bname."_data",$maxid);
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/",$imagefile5["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$imagefile5["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","o_".$imagefile5["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/o_".$imagefile5["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","k_".$imagefile5["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/k_".$imagefile5["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","300".$imagefile5["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/300".$imagefile5["name"],"b");
+				}
+				$fary[]="photo5";
+				$dary[]="'300".$imagefile5["name"]."'";
+				
+			}
+			else if($setdata["listimg_defalt"]!=NULL){
+				if($data["delimage"]==1) {
+
+				}
+			}
+			else if($data["delimage"]==1) {
+			}
+
+	}
+	
+	if($mimagefile1["filepath"]!=NULL||$data["delimage"]==1){
+		$ftp=new Cube_FTP();
+		$ftp->Connect($_SESSION["DomainData"]["id"],$_SESSION["DomainData"]["pass"]);
+		
+			if($mimagefile1["filepath"]!=NULL) {
+			
+				@chmod($mimagefile1["filepath"],0777);
+				@chmod("k_".$mimagefile1["filepath"],0777);
+				@chmod("o_".$mimagefile1["filepath"],0777);
+				@chmod("300".$mimagefile1["filepath"],0777);
+		if($_SERVER['HTTP_HOST']=="siteadmin.itcube.ne.jp"){
+				$ftp->MkDir("tmp/",$bname."_data");
+				$ftp->MkDir("tmp/".$bname."_data",$maxid);
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/",$mimagefile1["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile1["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","o_".$mimagefile1["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/o_".$mimagefile1["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","k_".$mimagefile1["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/k_".$mimagefile1["name"],"b");
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","300".$mimagefile1["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/300".$mimagefile1["name"],"b");
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","pop1".$mimagefile1["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/pop1".$mimagefile1["name"],"b");
+				}
+				$fary[]="madorizu1";
+				$dary[]="'300".$mimagefile1["name"]."'";
+				
+			}
+			else if($setdata["listimg_defalt"]!=NULL){
+				if($data["delimage"]==1) {
+
+				}
+			}
+			else if($data["delimage"]==1) {
+			}
+
+	}
+	
+	if($mimagefile2["filepath"]!=NULL||$data["delimage"]==1){
+		
+		$ftp=new Cube_FTP();
+		$ftp->Connect($_SESSION["DomainData"]["id"],$_SESSION["DomainData"]["pass"]);
+		
+			if($mimagefile2["filepath"]!=NULL) {
+			
+				@chmod($mimagefile2["filepath"],0777);
+				@chmod("k_".$mimagefile2["filepath"],0777);
+				@chmod("o_".$mimagefile2["filepath"],0777);
+				@chmod("300".$mimagefile2["filepath"],0777);
+		if($_SERVER['HTTP_HOST']=="siteadmin.itcube.ne.jp"){
+				$ftp->MkDir("tmp/",$bname."_data");
+				$ftp->MkDir("tmp/".$bname."_data",$maxid);
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/",$mimagefile2["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile2["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","o_".$mimagefile2["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/o_".$mimagefile2["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","k_".$mimagefile2["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/k_".$mimagefile2["name"],"b");
+
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","300".$mimagefile2["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/300".$mimagefile2["name"],"b");
+					}
+				$fary[]="madorizu2";
+				$dary[]="'300".$mimagefile2["name"]."'";
+				
+			}
+			else if($setdata["listimg_defalt"]!=NULL){
+				if($data["delimage"]==1) {
+
+				}
+			}
+			else if($data["delimage"]==1) {
+			
+			}
+	}
+	if($mimagefile3["filepath"]!=NULL||$data["delimage"]==1){
+		
+		$ftp=new Cube_FTP();
+		$ftp->Connect($_SESSION["DomainData"]["id"],$_SESSION["DomainData"]["pass"]);
+		
+			if($mimagefile3["filepath"]!=NULL) {
+			
+				@chmod($mimagefile3["filepath"],0777);
+				@chmod("k_".$mimagefile3["filepath"],0777);
+				@chmod("o_".$mimagefile3["filepath"],0777);
+				@chmod("300".$mimagefile3["filepath"],0777);
+		if($_SERVER['HTTP_HOST']=="siteadmin.itcube.ne.jp"){
+				$ftp->MkDir("tmp/",$bname."_data");
+				$ftp->MkDir("tmp/".$bname."_data",$maxid);
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/",$mimagefile3["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile3["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","o_".$mimagefile3["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/o_".$mimagefile3["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","k_".$mimagefile3["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/k_".$mimagefile3["name"],"b");
+
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","300".$mimagefile3["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/300".$mimagefile3["name"],"b");
+					}
+				$fary[]="madorizu3";
+				$dary[]="'300".$mimagefile3["name"]."'";
+				
+			}
+			else if($setdata["listimg_defalt"]!=NULL){
+				if($data["delimage"]==1) {
+
+				}
+			}
+			else if($data["delimage"]==1) {
+			
+			}
+	}
+	if($mimagefile4["filepath"]!=NULL||$data["delimage"]==1){
+		
+		$ftp=new Cube_FTP();
+		$ftp->Connect($_SESSION["DomainData"]["id"],$_SESSION["DomainData"]["pass"]);
+		
+			if($mimagefile4["filepath"]!=NULL) {
+			
+				@chmod($mimagefile4["filepath"],0777);
+				@chmod("k_".$mimagefile4["filepath"],0777);
+				@chmod("o_".$mimagefile4["filepath"],0777);
+				@chmod("300".$mimagefile4["filepath"],0777);
+		if($_SERVER['HTTP_HOST']=="siteadmin.itcube.ne.jp"){
+				$ftp->MkDir("tmp/",$bname."_data");
+				$ftp->MkDir("tmp/".$bname."_data",$maxid);
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/",$mimagefile4["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile4["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","o_".$mimagefile4["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/o_".$mimagefile4["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","k_".$mimagefile4["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/k_".$mimagefile4["name"],"b");
+
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","300".$mimagefile4["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/300".$mimagefile4["name"],"b");
+					}
+				$fary[]="madorizu4";
+				$dary[]="'300".$mimagefile4["name"]."'";
+				
+			}
+			else if($setdata["listimg_defalt"]!=NULL){
+				if($data["delimage"]==1) {
+
+				}
+			}
+			else if($data["delimage"]==1) {
+			
+			}
+	}
+	if($mimagefile5["filepath"]!=NULL||$data["delimage"]==1){
+		
+		$ftp=new Cube_FTP();
+		$ftp->Connect($_SESSION["DomainData"]["id"],$_SESSION["DomainData"]["pass"]);
+		
+			if($mimagefile5["filepath"]!=NULL) {
+			
+				@chmod($mimagefile5["filepath"],0777);
+				@chmod("k_".$mimagefile5["filepath"],0777);
+				@chmod("o_".$mimagefile5["filepath"],0777);
+				@chmod("300".$mimagefile5["filepath"],0777);
+		if($_SERVER['HTTP_HOST']=="siteadmin.itcube.ne.jp"){
+				$ftp->MkDir("tmp/",$bname."_data");
+				$ftp->MkDir("tmp/".$bname."_data",$maxid);
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/",$mimagefile5["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/".$mimagefile5["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","o_".$mimagefile5["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/o_".$mimagefile5["name"],"b");
+				
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","k_".$mimagefile5["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/k_".$mimagefile5["name"],"b");
+
+				$ftp->UpData("tmp/".$bname."_data/".$maxid."/","300".$mimagefile5["name"],$_SERVER['DOCUMENT_ROOT']."/tmp/".$bname."_data/".$maxid."/300".$mimagefile5["name"],"b");
+					}
+				$fary[]="madorizu5";
+				$dary[]="'300".$mimagefile5["name"]."'";
+				
+			}
+			else if($setdata["listimg_defalt"]!=NULL){
+				if($data["delimage"]==1) {
+
+				}
+			}
+			else if($data["delimage"]==1) {
+			
+			}
+	}	
+	@system("chmod -Rf 0777 ".$_SERVER['DOCUMENT_ROOT']."/tmp/bukken_data/".$maxid);
+	
+	
+	$fary[]="pop_txt";
+	$dary[]="'".implode(",",$_REQUEST["pop_txt"])."'";
+	
+	$insql="insert into bukken(".
+	implode(",",$fary).
+	") values (".
+	implode(",",$dary).
+	")";
+	$dbobj->Query($insql);
+	$dbobj->Query("update lastupdate set lastupdate=".time()."");
+ 	?>
+	<script language="javascript">
+	location.replace("index.php?PID=re_b1");
+	</script>
+	<?php
+}
+
+$re1data=$re1obj->GetReData($_GET["bid"]);
+$syougakulist=$dbobj->GetList("select distinct syougakkouku from bukken where syougakkouku <>''");
+$chuugakoulist=$dbobj->GetList("select distinct chuugakouku from bukken where chuugakouku <>''");
+?>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-jp" />
+<script language="JavaScript" src="/tool/keypress.js" type="text/javascript">
+function hback() {
+history.back();
+}
+</script>
+<style type="text/css">
+<!--
+.btmwidth_100 {
+	width: 100px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	height: 40px;
+}
+-->
+</style>
+<script language="javascript">
+function realestate_move(mode) {
+	location.replace("index.php?mode=lease_"+mode+"&realestate_id=");
+}
+
+function chsyougaku(){
+	//alert(data.value);
+	if(document.bukken_form.syougakkou.value==null) {
+		document.bukken_form.syougakkouku.value="";
+		document.bukken_form.syougakkouku.disabled=true;
+	}
+	else {
+		document.bukken_form.syougakkouku.value="";
+		document.bukken_form.syougakkouku.style.disabled=false;
+	}
+}
+function chchugaku(){
+	//alert(data.value);
+	//document.bukken_form.chuugakouku.value=document.bukken_form.chugakkou.value;
+	//alert(data.value);
+	if(document.bukken_form.chugakkou.value==null) {
+		document.bukken_form.chuugakouku.value="";
+		document.bukken_form.chuugakouku.disabled=true;
+	}
+	else {
+		document.bukken_form.chuugakouku.value="";
+		document.bukken_form.chuugakouku.style.disabled=false;
+	}
+}
+
+function zipcode() {
+	var zipcode;
+	var address;
+	zipcode=document.bukken_form.yubinbangou.value;
+	result=showModalDialog("tool/zipsearch.php?zipcode="+zipcode,"test");
+	address=result.split(",");
+	document.bukken_form.todouhuken.value=address[0];
+	document.bukken_form.jyusyo1.value=address[1];
+	document.bukken_form.jyusyo2.value=address[2];
+}
+
+function realestate_move(mode) {
+	location.replace("index.php?PAGEID=realestate&mode=lease_"+mode+"&realestate_id=");
+}
+//リスト内の移動をする関数
+function func(elenum1,elenum2) {
+	var devneko;
+			switch(document.bukken_form.elements[elenum1].value) {
+				case "1":
+				devneko="";
+				document.bukken_form.elements[elenum2].length=0;
+								if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "1";
+					var str = document.createTextNode("大竹駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+				if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "2";
+					var str = document.createTextNode("岩国駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+				if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "3";
+					var str = document.createTextNode("南岩国駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+				if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "4";
+					var str = document.createTextNode("藤生駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+				if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "5";
+					var str = document.createTextNode("通津駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+				if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "6";
+					var str = document.createTextNode("由宇駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+				if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "7";
+					var str = document.createTextNode("神代駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+				if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "8";
+					var str = document.createTextNode("大畠駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+								if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "9";
+					var str = document.createTextNode("柳井港駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+								if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "10";
+					var str = document.createTextNode("柳井駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+								break;
+					case "2":
+				devneko="";
+				document.bukken_form.elements[elenum2].length=0;
+								if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "2";
+					var str = document.createTextNode("岩国駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+				if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "11";
+					var str = document.createTextNode("川西駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+								if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "12";
+					var str = document.createTextNode("御庄駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+								break;
+					case "3":
+				devneko="";
+				document.bukken_form.elements[elenum2].length=0;
+								if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "2";
+					var str = document.createTextNode("岩国駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+								if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "11";
+					var str = document.createTextNode("川西駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+								if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "13";
+					var str = document.createTextNode("西岩国駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+								if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "14";
+					var str = document.createTextNode("柱野駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+								if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "15";
+					var str = document.createTextNode("欽明路駅");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+								if (document.createElement) {
+					var ele = document.createElement("option");
+					ele.value = "16";
+					var str = document.createTextNode("玖珂駅 ");
+					ele.appendChild(str);
+			
+					document.bukken_form.elements[elenum2].appendChild(ele);
+				}
+								break;
+					default:
+				document.bukken_form.elements[elenum2].length=0;
+				var ele = document.createElement("option");
+				ele.value = "0";
+				var str = document.createTextNode("駅を選択してください");
+				ele.appendChild(str);
+				document.bukken_form.elements[elenum2].appendChild(ele);
+	}
+}
+
+function  gotolist() {
+	location.replace("index.php?PID=re_b1");
+}
+</script>
+<script language="javascript">
+<!--
+ns4 = (document.layers)? true:false
+ie4 = (document.all)? true:false
+function cf() {
+				for (i = 0; i < document.forms[0].elements.length; i++) {
+					if ((ns4) && (document.forms[0].elements[i].type != "hidden")
+					|| (ie4) && (document.forms[0].elements[i].type != "hidden" )) {
+						document.forms[0].elements[i].focus()
+						break
+					}
+				}
+}
+function keyDown(e) {
+	if (ns4) {PKey=e.which; el = e.target.type ; sk = e.modifiers}
+	if (ie4) {PKey=event.keyCode; el = event.srcElement.tagName; sk = event.shiftKey}
+	if (PKey == "13") {
+		if (el.toLowerCase() != "textarea") {
+			keyDowntest(e)
+			return false;
+		} else {
+			if ((ns4) && (sk == '4') || (ie4) && (sk)) {
+				keyDowntest(e)
+				return false;
+			}
+		}
+	}
+}
+function keyDowntest(e) {
+	for (var i = 0; i < document.forms[0].elements.length; i++) {
+		if ((ie4) && (document.forms[0].elements[i] == event.srcElement)
+		||  (ns4) && (document.forms[0].elements[i] == e.target)) {
+			if ((i + 1) == document.forms[0].elements.length)
+				document.forms[0].elements[0].focus()
+			else
+				for (; i < document.forms[0].elements.length; i++) {
+					if ((ns4) && (document.forms[0].elements[i+1].type != "hidden")
+					|| (ie4) && (document.forms[0].elements[i+1].type != "hidden" )) {
+						document.forms[0].elements[i+1].focus()
+						break
+					}
+					if ((ns4) && (document.forms[0].elements[i+1].type != "hidden")
+					|| (ie4) && (document.forms[0].elements[i+1].type != "hidden" )) {
+						document.forms[0].elements[i+1].focus()
+						break
+					}
+				}
+			break
+		}
+	}
+//			if (i == document.forms[0].elements.length)
+//				document.forms[0].elements[0].focus()
+}
+document.onkeydown = keyDown
+if (ns4) document.captureEvents(Event.KEYDOWN)
+//-->
+
+</script>
+
+<TABLE width="700"  border="0" align="left" cellpadding="0" cellspacing="0" class="realestate_bgcolor1">
+    <form action="" method="post" enctype="multipart/form-data" name="bukken_form">
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">
+                <table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border">
+                    <tr>
+                        <td width="15" bgcolor="#CCCCCC">&nbsp; </td>
+                        <td>
+                            <table width="100%"  border="0" cellspacing="0" cellpadding="5">
+                                <tr>
+                                    <td bgcolor="#FFFFFF" class="font10">
+                                        <p><font color="#000000">売買マンション・戸建て物件登録 </font></p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">&nbsp;</TD>
+        </TR>
+				<?php
+	if(str_replace("www.","",$_SERVER['HTTP_HOST'])!="nest-h.com"){
+		?>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">
+                <div class="helper">
+                    <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                        <tr>
+                            <th bgcolor="#CCCCCC">
+                                <div align="left">共通設定</div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#FFFFFF"> 売買マンション・戸建てに表示する項目を設定するには<a href="?PID=re_b1_set">こちらをクリック</a>してください。 <br>
+                                データの入力されていない項目をお客様用の物件詳細ページで表示しない場合は<a href="?PID=re_osetting">こちらをクリック</a>してください。<br>
+                                <font color="#FF0000">※この設定は全ての種別で共通になっております。</font></td>
+                        </tr>
+                    </table>
+                </div>
+            </TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">&nbsp;</TD>
+        </TR>
+      <?php
+	}
+	?>
+			  <TR class="realestate_bgcolor2">
+            <TD valign="top">
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+                    <tr>
+                        <th bgcolor="#ECECEC">
+                            <div align="left">物件基本情報</div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFFF">
+                            <table width="648" border="0" cellpadding="1" cellspacing="1">
+                                <?php 
+					if($bsetdata["bukken_id_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right"><?php echo $bsetdata["bukken_id_name"] ?></div>
+                                    </td>
+                                    <td width="491" valign="top" class="font12">
+                                        <input name="bukkenn_id" type="text" id="bukkenn_id" class="noime" value="<?php echo $_REQUEST["bukkenn_id"];?>">
+                                    </td>
+                                </tr>
+                                <?php
+					}
+					if($bsetdata["syumoku_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right"><?php echo $bsetdata["syumoku_name"] ?><font color="#FF0000">（※必須）</font></div>
+                                    </td>
+                                    <td valign="top" class="font12">
+                                        <select name="syumoku" id="syumoku">
+                                            <option<?php if($re1data["syumoku"]=="新築一戸建住宅"){echo " selected";}?>>新築一戸建住宅</option>
+                                            <option<?php if($re1data["syumoku"]=="中古一戸建住宅"){echo " selected";}?>>中古一戸建住宅</option>
+                                            <option<?php if($re1data["syumoku"]=="新築テラスハウス"){echo " selected";}?>>新築テラスハウス</option>
+                                            <option<?php if($re1data["syumoku"]=="中古テラスハウス"){echo " selected";}?>>中古テラスハウス</option>
+                                            <option<?php if($re1data["syumoku"]=="新築マンション"){echo " selected";}?>>新築マンション</option>
+                                            <option<?php if($re1data["syumoku"]=="中古マンション"){echo " selected";}?>>中古マンション</option>
+                                            <option<?php if($re1data["syumoku"]=="新築公団住宅"){echo " selected";}?>>新築公団住宅</option>
+                                            <option<?php if($re1data["syumoku"]=="中古公団住宅"){echo " selected";}?>>中古公団住宅</option>
+                                            <option<?php if($re1data["syumoku"]=="新築公社住宅"){echo " selected";}?>>新築公社住宅</option>
+                                            <option<?php if($re1data["syumoku"]=="中古公社住宅"){echo " selected";}?>>中古公社住宅</option>
+                                            <option<?php if($re1data["syumoku"]=="新築タウンハウス"){echo " selected";}?>>新築タウンハウス</option>
+                                            <option<?php if($re1data["syumoku"]=="中古タウンハウス"){echo " selected";}?>>中古タウンハウス</option>
+                                            <option<?php if($re1data["syumoku"]=="リゾートマンション"){echo " selected";}?>>リゾートマンション</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <?php 
+					}
+					if($bsetdata["bukken_mei_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right" class="font14"><?php echo $bsetdata["bukken_mei_name"] ?></div>
+                                    </td>
+                                    <td valign="top" class="font12">
+                                        <input name="bukken_mei" type="text" class="ime-active" id="bukken_mei" value="<?php echo $re1data["bukken_mei"];?>" size="50" />
+                                    </td>
+                                </tr>
+                                <?php 
+					}
+					if($bsetdata["bukken_hurigana_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right" class="font14"><?php echo $bsetdata["bukken_hurigana_name"] ?></div>
+                                    </td>
+                                    <td valign="top" class="font12">
+                                        <input name="bukken_hurigana" type="text" class="ime-active" id="bukken_hurigana" value="<?php echo $re1data["bukken_hurigana"];?>" size="50" />
+                                    </td>
+                                </tr>
+                                <?php
+					}?>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">&nbsp;</TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+                    <tr>
+                        <th bgcolor="#EBEBEB">
+                            <div align="left"><span class="font14"><?php echo $bsetdata["jyusyo_name"] ?></span></div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFFF">
+                            <table width="648" border="0" cellpadding="1" cellspacing="1">
+                                <?php
+					if($bsetdata["jyusyo_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right" class="font14">〒</div>
+                                    </td>
+                                    <td width="491" valign="top" bgcolor="#FFFFFF" class="font12">
+                                        <input name="yubinbangou" type="text" class="noime" id="yubinbangou" value="<?php echo $re1data["yubinbangou"];?>" size="15" />
+                                        <input type="button" name="Submit2" value="郵便番号から住所を入力" onclick="zipcode()" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right"><span class="font12">都道府県</span></div>
+                                    </td>
+                                    <td width="491" valign="top" bgcolor="#FFFFFF" class="font12">
+                                        <input name="todouhuken" type="text" class="ime-active" id="todouhuken" value="<?php echo $re1data["todouhuken"];?>" size="10" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right"><span class="font12">市区郡</span></div>
+                                    </td>
+                                    <td width="491" valign="top" bgcolor="#FFFFFF" class="font12">
+                                        <input name="jyusyo1" type="text" class="ime-active" id="jyusyo1" value="<?php echo $re1data["jyusyo1"];?>" size="8" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right"><span class="font12">町名</span></div>
+                                    </td>
+                                    <td width="491" valign="top" bgcolor="#FFFFFF" class="font12">
+                                        <input name="jyusyo2" type="text" class="ime-active" id="jyusyo2" value="<?php echo $re1data["jyusyo2"];?>" size="30" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="150" class="font14">
+                                        <div align="right">番地</div>
+                                    </td>
+                                    <td width="491" valign="top" bgcolor="#FFFFFF" class="font12">
+                                        <input name="jyusyo3" type="text" class="ime-active" id="jyusyo3" value="<?php echo $re1data["jyusyo3"];?>" size="30" />
+                                        <label>
+                                            <input name="banchichk" type="checkbox" id="banchichk" value="1" checked="checked" />
+                                            番地を公開</label>
+                                    </td>
+                                </tr>
+                                <?php 
+					}
+?>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">&nbsp;</TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+                    <tr>
+                        <th bgcolor="#ECECEC">
+                            <div align="left">交通</div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFFF">
+                            <table width="648" border="0" cellpadding="1" cellspacing="1">
+                                <?php
+					if($bsetdata["ensen_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right"><?php echo $bsetdata["ensen_name"] ?></div>
+                                    </td>
+                                    <td width="491" valign="top" class="font12">
+                                        <input type="text" name="ensen" id="ensen" value="<?php echo $re1data["ensen"];?>" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right">最寄駅</div>
+                                    </td>
+                                    <td valign="top" class="font12">
+                                        <input name="eki" type="text" id="eki" value="<?php echo $re1data["eki"];?>" />
+                                    駅                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="150" height="21" valign="top" class="font14">
+                                        <div align="right"><span class="font12">徒歩</span></div>
+                                    </td>
+                                    <td valign="top" class="font12">
+                                        <input name="ekiho" type="text" class="noime" id="ekiho" value="<?php echo $re1data["ekiho"];?>" size="6" />
+                                    分 </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" class="font14">
+                                        <div align="right">距離</div>
+                                    </td>
+                                    <td valign="top" class="font12">
+                                        <input name="kyori" type="text" class="noime" id="kyori" value="<?php echo $re1data["kyori"];?>" size="10" />
+                                    m </td>
+                                </tr>
+                                <?php 
+					}
+					if($bsetdata["basu_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right"><?php echo $bsetdata["basu_name"] ?></div>
+                                    </td>
+                                    <td valign="top" class="font12"> 最寄駅から乗車
+                                        <input name="basu" type="text" class="noime" id="basu" value="<?php echo $re1data["basu"];?>" size="6" />
+                                        分　 バス停
+                                        <input name="basutei" type="text" class="ime-active" id="basutei" value="<?php echo $re1data["basutei"];?>" />
+                                        から徒歩
+                                        <input name="basu_ho" type="text" class="noime" id="basu_ho" value="<?php echo $re1data["basu_ho"];?>" size="6" />
+                                    分 </td>
+                                </tr>
+                                <?php 
+					}
+					if($bsetdata["kuruma_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right"><?php echo $bsetdata["kuruma_name"] ?></div>
+                                    </td>
+                                    <td valign="top" class="font12"> 最寄駅から乗車
+                                        <input name="kuruma" type="text" class="noime" id="kuruma" value="<?php echo $re1data["kuruma"];?>" size="6" />
+                                    分</td>
+                                </tr>
+                                <?php 
+					}
+?>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">&nbsp;</TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+                    <tr>
+                        <th bgcolor="#ECECEC">
+                            <div align="left">学校区</div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFFF">
+                            <table width="648" border="0" cellpadding="1" cellspacing="1">
+                              <?php
+					if($bsetdata["syougakkouku_admin"]==1) {
+					?>
+                              <tr>
+                                <td width="150" valign="top" class="font14">
+                                  <div align="right"><?php echo $bsetdata["syougakkouku_name"] ?></div></td>
+                                <td valign="top" bgcolor="#FFFFFF" class="font12">
+                                  <select name="syougakkou" id="syougakkou" onchange="chsyougaku()">
+                                    <?php
+											for($i=0;$syougakulist[$i]["syougakkouku"]!=NULL;$i++) {
+											if(str_replace("小学校","",$syougakulist[$i]["syougakkouku"]) !=NULL) {
+											?>
+                                    <option value="<?php echo str_replace("小学校","",$syougakulist[$i]["syougakkouku"]) ?>"<?php if(str_replace("小学校","",$re1data["syougakkouku"])==str_replace("小学校","",$syougakulist[$i]["syougakkouku"])){echo " selected";}?>><?php echo str_replace("小学校","",$syougakulist[$i]["syougakkouku"]) ?></option>
+                                    <?php
+											}
+											}
+											?>
+                                    <option value=""<?php if(str_replace("小学校","",$re1data["syougakkouku"])==NULL){echo " selected";}?>>新規</option>
+                                  </select>
+      小学校 　 新規登録
+      <input name="syougakkouku" type="text" id="syougakkouku" size="12" /></td>
+                              </tr>
+                              <?php 
+					}
+					if($bsetdata["chuugakouku_admin"]==1) {
+					?>
+                              <tr>
+                                <td width="150" valign="top" class="font14">
+                                  <div align="right"><?php echo $bsetdata["chuugakouku_name"] ?></div></td>
+                                <td valign="top" bgcolor="#FFFFFF" class="font12">
+                                  <select name="chugakkou" id="chugakkou" onchange="chchugaku()">
+                                    <?php
+											for($i=0;$chuugakoulist[$i]["chuugakouku"]!=NULL;$i++) {
+												if(str_replace("中学校","",$chuugakoulist[$i]["chuugakouku"])!=NULL) {
+											?>
+                                    <option value="<?php echo str_replace("中学校","",$chuugakoulist[$i]["chuugakouku"]); ?>"<?php if(str_replace("中学校","",$re1data["chuugakouku"])==str_replace("中学校","",$chuugakoulist[$i]["chuugakouku"])) { echo " selected";}?>><?php echo str_replace("中学校","",$chuugakoulist[$i]["chuugakouku"]) ?></option>
+                                    <?php
+											}
+											}
+											?>
+                                    <option value=""<?php if(str_replace("中学校","",$chuugakoulist[$i]["chuugakouku"])==NULL){echo " selected";}?>>新規</option>
+                                  </select>
+      中学校　　新規登録
+      <input name="chuugakouku" type="text" id="chuugakouku" size="12" /></td>
+                              </tr>
+                              <?php 
+					}
+?>
+                            </table></td>
+                    </tr>
+                </table>
+            </TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">&nbsp;</TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+                    <tr>
+                        <th bgcolor="#ECECEC">
+                            <div align="left">
+                                <p>建物・部屋情報</p>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFFF">
+                            <table width="648" border="0" cellpadding="1" cellspacing="1">
+                                <?php
+					if($bsetdata["kouzou_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right" class="font14"><?php echo $bsetdata["kouzou_name"] ?></div>
+                                    </td>
+                                    <td width="491" valign="top" class="font12">
+                                        <select name="kouzou" id="kouzou">
+                                            <option<?php if($re1data["kouzou"]=="ＲＣ"){echo " selected";}?>>ＲＣ</option>
+                                            <option<?php if($re1data["kouzou"]=="ＳＲＣ"){echo " selected";}?>>ＳＲＣ</option>
+                                            <option<?php if($re1data["kouzou"]=="ブロック造"){echo " selected";}?>>ブロック造</option>
+                                            <option<?php if($re1data["kouzou"]=="鉄骨造"){echo " selected";}?>>鉄骨造</option>
+                                            <option<?php if($re1data["kouzou"]=="木造"){echo " selected";}?>>木造</option>
+                                            <option<?php if($re1data["kouzou"]==""){echo " selected";}?>></option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <?php 
+					}
+					if($bsetdata["kaisou_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right"><?php echo $bsetdata["kaisou_name"] ?></div>
+                                    </td>
+                                    <td valign="top" class="font12">地上
+                                        <input name="chijoukaisou" type="text" class="noime" id="chijoukaisou" value="<?php echo $re1data["chijoukaisou"];?>" size="6" />
+階<br />
+地下
+<input name="chikakaisou" type="text" class="noime" id="chikakaisou" value="<?php echo $re1data["chikakaisou"];?>" size="6" />
+階<br />
+所在
+<input name="kaisou" type="text" class="noime" id="kaisou" value="<?php echo $re1data["kaisou"];?>" size="6" />
+階<br>
+戸数
+<input name="kosu" type="text" class="ime-active" id="kosu" value="<?php echo $re1data["kosu"];?>" size="6" />
+戸 </td>
+                                </tr>
+                                <?php 
+					}
+					if($bsetdata["chiku_nen_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right" class="font14">
+                                            <div align="right"><?php echo $bsetdata["chiku_nen_name"] ?></div>
+                                        </div>
+                                    </td>
+                                    <td valign="top" class="font12"> <span> 西暦
+                                        <input name="chiku_nen" type="text" class="noime" id="chiku_nen" value="<?php echo $re1data["chiku_nen"];?>" size="8" />
+                                        年
+                                        <input name="chiku_tsuki" type="text" class="noime" id="chiku_tsuki" value="<?php echo $re1data["chiku_tsuki"];?>" size="8" />
+                                        月 </span>
+                                            <?php 
+																	if($bsetdata["shinchiku_admin"]==1) {
+																echo $bsetdata["shinchiku_name"] ?>
+                                            <input name="shinchiku" type="checkbox" id="shinchiku" value="1" />
+                                            <?php 
+					}
+				
+					?>
+                                    </td>
+                                </tr>
+                                <?php 
+					}
+?>
+                                <?php
+					if($bsetdata["tochi_kenri_admin"]==1) {
+					?>												
+<tr>
+												<td valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["tochi_kenri_name"] ?><!--土地権利 --></div>
+												</td>
+												<td valign="top" class="font12">
+														<input name="tochi_kenri" type="text" class="ime-active" id="tochi_kenri" value="<?php echo $re1data["tochi_kenri"];?>" />
+												</td>
+										</tr>
+<?php 
+					}
+					if($bsetdata["menseki_admin"]==1) {
+					?><tr>
+										
+												<td valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["menseki_name"] ?></div>
+												</td>
+												<td valign="top" class="font12">
+														<input name="menseki" type="text" class="noime" id="menseki" value="<?php echo $re1data["menseki"];?>" size="6" />
+														m<sup>2</sup> </td>
+										</tr>
+<?php 
+					}
+					if($bsetdata["senyumenseki_admin"]==1) {
+					?><tr>
+												<td width="150" valign="top" class="font14">
+										  <div align="right" class="font14"><?php echo $bsetdata["senyumenseki_name"] ?></div>										  </td>
+												<td valign="top" class="font12"> 
+														<input name="senyumenseki" type="text" class="noime" id="senyumenseki" value="<?php echo $re1data["senyumenseki"];?>" size="6" />
+												m<sup>2</sup> </td>
+										</tr>	
+										<tr>
+										    <td valign="top" class="font14">
+										        <div align="right">専有面積</div>
+										    </td>
+										    <td class="font12">
+										        <input name="senyumenseki2" type="text" class="noime" id="senyumenseki2" value="<?php echo $re1data["senyumenseki2"];?>" size="6" />
+m<sup>2</sup></td>
+										    </tr>
+										<?php 
+					}
+					if($bsetdata["shidoumenseki_admin"]==1) {
+					
+?>										<tr>
+												<td valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["shidoumenseki_name"] ?><!--私道面積 --></div>
+												</td>
+												<td valign="top" class="font12">
+														<input name="shidoumenseki" type="text" class="noime" id="shidoumenseki" value="<?php echo $re1data["shidoumenseki"];?>" size="6" />
+m<sup>2</sup></td>
+										</tr>
+<?php 
+					}
+					if($bsetdata["kenpei_ritsu_admin"]==1) {
+					
+?>										<tr>
+												<td valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["kenpei_ritsu_name"] ?><!--建蔽率 --></div>
+												</td>
+												<td valign="top" class="font12">
+														<input name="kenpei_ritsu" type="text" id="kenpei_ritsu" value="<?php echo $re1data["kenpei_ritsu"];?>" size="8" class="noime" />
+												％</td>
+										</tr>
+<?php 
+					}
+					if($bsetdata["youseki_ritsu_admin"]==1) {
+					
+?>										<tr>
+												<td valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["youseki_ritsu_name"] ?><!--容積率 --></div>
+												</td>
+												<td valign="top" class="font12">
+														<input name="youseki_ritsu" type="text" class="noime" id="youseki_ritsu" value="<?php echo $re1data["youseki_ritsu"];?>" size="8" />
+												％</td>
+										</tr>
+<?php 
+					}
+					if($bsetdata["toshikeikaku_admin"]==1) {
+					
+?>										<tr>
+												<td valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["toshikeikaku_name"] ?><!--都市計画 --></div>
+												</td>
+												<td valign="top" class="font12">
+														<input name="toshikeikaku" type="text" id="toshikeikaku" value="<?php echo $re1data["toshikeikaku"];?>" />
+												</td>
+										</tr>
+<?php 
+					}
+					if($bsetdata["youtochiiki_admin"]==1) {
+					
+?>										<tr>
+												<td valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["youtochiiki_name"] ?><!--用途地域 --></div>
+												</td>
+												<td valign="top" class="font12">
+														<input name="youtochiiki" type="text" id="youtochiiki" value="<?php echo $re1data["youtochiiki"];?>" />
+												</td>
+										</tr>
+<?php 
+					}
+					if($bsetdata["chimoku_admin"]==1) {
+					
+?>	
+<tr>
+												<td valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["chimoku_name"] ?><!--地目 --></div>
+												</td>
+												<td valign="top" class="font12">
+														<input name="chimoku" type="text" id="chimoku" value="<?php echo $re1data["chimoku"];?>" />
+												</td>
+										</tr>
+<?php 
+					}
+					if($bsetdata["chisei_admin"]==1) {
+					
+?>	
+										<tr>
+												<td valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["chisei_name"] ?><!--地勢 --></div>
+												</td>
+												<td valign="top" class="font12">
+														<input name="chisei" type="text" id="chisei" value="<?php echo $re1data["chisei"];?>" />
+												</td>
+										</tr><?php
+										}
+					if($bsetdata["madori_admin"]==1) {
+					?>          <tr> 
+            <td width="150" valign="top" class="font14"> 
+       		<div align="right" class="font14"><?php echo $bsetdata["madori_name"] ?></div>            </td> 
+            <td valign="top" class="font12"> 
+            		<input name="madori" type="text" class="noime" id="madori" value="<?php echo $re1data["madori"];?>" size="6" /> 
+              	<select name="madori_tani" id="madori_tani"> 
+                                            <option<?php if($re1data["madori_tani"]=="K"){echo " selected";}?>>K</option>
+                                            <option<?php if($re1data["madori_tani"]=="DK"){echo " selected";}?>>DK</option>
+                                            <option<?php if($re1data["madori_tani"]=="LK"){echo " selected";}?>>LK</option>
+                                            <option<?php if($re1data["madori_tani"]=="LDK"){echo " selected";}?>>LDK</option>
+                                            <option<?php if($re1data["madori_tani"]=="ROOM"){echo " selected";}?>>ROOM</option>
+                                            <option<?php if($re1data["madori_tani"]=="SK"){echo " selected";}?>>SK</option>
+                                            <option<?php if($re1data["madori_tani"]=="SDK"){echo " selected";}?>>SDK</option>
+                                            <option<?php if($re1data["madori_tani"]=="SLDK"){echo " selected";}?>>SLDK</option>
+   			  </select>
+			</td> 
+          </tr> 
+<?php 
+					}
+					if($bsetdata["madori_syousai_admin"]==1) {
+					?>           <tr> 
+            <td width="150" valign="top" class="font14"> 
+       		<div align="right" class="font14"><?php echo $bsetdata["madori_syousai_name"] ?></div>            </td> 
+            <td valign="top" class="font12"> 
+            		<input name="madori_syousai" type="text" class="ime-active" id="madori_syousai" value="<?php echo $re1data["madori_syousai"];?>" size="40" /> 
+       		</td> 
+          </tr> 
+<?php 
+					}
+					if($bsetdata["syakuchikikan_chidai_admin"]==1) {
+					?>									
+<tr>
+										  <td valign="top" class="font14">
+										      <div align="right"><?php echo $bsetdata["syakuchikikan_chidai_name"] ?><!--借地期間・地代 --></div></td>
+										  <td valign="top" class="font12">
+										  		<input name="syakuchikikan_chidai" type="text" class="ime-active" id="syakuchikikan_chidai" value="<?php echo $re1data["syakuchikikan_chidai"];?>" size="40" />
+										  </td>
+								  </tr>
+<?php 
+					}
+					if($bsetdata["zappi_admin"]==1) {
+					?>									
+										<?php 
+										}
+					if($bsetdata["setsudou_admin"]==1) {
+					?>				<tr>
+												<td valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["setsudou_name"] ?><!--接道状況 --></div>
+												</td>
+												<td valign="top" class="font12">
+														<table border="0" cellspacing="0" cellpadding="3">
+																<tr>
+																		<td>状況</td>
+																		<td>
+																				<input name="setsudou_joukyou" type="text" id="setsudou_joukyou" value="<?php echo $re1data["setsudou_joukyou"];?>" />
+																		</td>
+																</tr>
+																<tr>
+																		<td>接道1</td>
+																		<td>
+																				<input name="setsudou1" type="text" id="setsudou1" value="<?php echo $re1data["setsudou1"];?>" size="50" />
+																		</td>
+																</tr>
+																<tr>
+																		<td>接道2</td>
+																		<td>
+																				<input name="setsudou2" type="text" id="setsudou2" value="<?php echo $re1data["setsudou2"];?>" size="50" />
+																		</td>
+																</tr>
+																<tr>
+																		<td>接道3</td>
+																		<td>
+																				<input name="setsudou3" type="text" id="setsudou3" value="<?php echo $re1data["setsudou3"];?>" size="50" />
+																		</td>
+																</tr>
+														</table>
+												</td>
+										</tr>
+						<?php 
+					}
+					if($bsetdata["genkyou_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" bgcolor="#FFFFFF" class="font14">
+                                        <div align="right" class="font14"><?php echo $bsetdata["genkyou_name"] ?></div>
+                                    </td>
+                                    <td valign="top" bgcolor="#FFFFFF" class="font12">
+                                        <select name="genkyou" id="genkyou">
+                                            <option<?php if($re1data["genkyou"]=="空家"){echo " selected";}?>>空家</option>
+                                            <option<?php if($re1data["genkyou"]=="更地"){echo " selected";}?>>更地</option>
+                                            <option<?php if($re1data["genkyou"]=="所有者居住中"){echo " selected";}?>>所有者居住中</option>
+                                            <option<?php if($re1data["genkyou"]=="上物有"){echo " selected";}?>>上物有</option>
+                                            <option<?php if($re1data["genkyou"]=="賃貸中"){echo " selected";}?>>賃貸中</option>
+																																												<option<?php if($re1data["genkyou"]=="商談中") {echo  " selected";}?>>商談中</option>
+						<option <?php if($re1data["genkyou"]=="成約済") {echo  " selected";}?>>成約済</option>
+             			<option<?php if($re1data["genkyou"]==" "||$re1data["genkyou"]==NULL){echo " selected";}?>> </option> </select>
+                                    </td>
+                                </tr>
+                                <?php 
+					}
+					if($bsetdata["hikiwatashi_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" bgcolor="#FFFFFF" class="font14">
+                                        <div align="right"><?php echo $bsetdata["hikiwatashi_name"] ?></div>
+                                    </td>
+                                    <td valign="top" bgcolor="#FFFFFF" class="font12">
+                                        <select name="hikiwatashi" id="hikiwatashi">
+                                            <option<?php if($re1data["hikiwatashi"]=="即時"){echo " selected";}?>>即時</option>
+                                            <option<?php if($re1data["hikiwatashi"]=="相談"){echo " selected";}?>>相談</option>
+                                            <option<?php if($re1data["hikiwatashi"]=="期日指定"){echo " selected";}?>>期日指定</option>
+                                            <option<?php if($re1data["hikiwatashi"]==" "||$re1data["hikiwatashi"]==""){echo " selected";}?>> </option>
+                                        </select>
+                                        西暦
+                                        <input name="hikiwatashi_nen" type="text" class="noime" id="hikiwatashi_nen" value="<?php echo $re1data["hikiwatashi_nen"];?>" size="8" />
+                                        年
+                                        <input name="hikiwatashi_tsuki" type="text" class="noime" id="hikiwatashi_tsuki" value="<?php echo $re1data["hikiwatashi_tsuki"];?>" size="4" />
+                                        月
+                                        <select name="hikiwatashi_syun" id="hikiwatashi_syun">
+                                            <option<?php if($re1data["hikiwatashi_syun"]=="即時"){echo " selected";}?>>上旬</option>
+                                            <option<?php if($re1data["hikiwatashi_syun"]=="中旬"){echo " selected";}?>>中旬</option>
+                                            <option<?php if($re1data["hikiwatashi_syun"]=="下旬"){echo " selected";}?>>下旬</option>
+                                            <option<?php if($re1data["hikiwatashi_syun"]==" "||$re1data["hikiwatashi_syun"]==""){echo " selected";}?>> </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <?php 
+					}
+					if($bsetdata["setsubi_naka_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right"><?php echo $bsetdata["setsubi_naka_name"] ?></div>
+                                    </td>
+                                    <td valign="top" class="font12">
+                                        <input name="setsubi_naka1" type="checkbox" id="setsubi_naka1" value="1"<?php if($re1data["setsubi_naka1"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka1">給湯</label>
+                                        <input name="setsubi_naka2" type="checkbox" id="setsubi_naka2" value="1"<?php if($re1data["setsubi_naka2"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka2">冷蔵庫</label>
+                                        <input name="setsubi_naka3" type="checkbox" id="setsubi_naka3" value="1"<?php if($re1data["setsubi_naka3"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka3">オール電化</label>
+                                        <input name="setsubi_naka4" type="checkbox" id="setsubi_naka4" value="1"<?php if($re1data["setsubi_naka4"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka4">照明</label>
+                                        <br />
+                                        <input name="setsubi_naka5" type="checkbox" id="setsubi_naka5" value="1"<?php if($re1data["setsubi_naka5"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka5">有線放送</label>
+                                        <input name="setsubi_naka6" type="checkbox" id="setsubi_naka6" value="1"<?php if($re1data["setsubi_naka6"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka6">ケーブルテレビ対応</label>
+                                        <input name="setsubi_naka7" type="checkbox" id="setsubi_naka7" value="1"<?php if($re1data["setsubi_naka7"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka7">インターネット対応</label>
+                                        <input name="setsubi_naka8" type="checkbox" id="setsubi_naka8" value="1"<?php if($re1data["setsubi_naka8"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka8">TV</label>
+                                        <br />
+                                        <input name="setsubi_naka9" type="checkbox" id="setsubi_naka9" value="1"<?php if($re1data["setsubi_naka9"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka9">居間フローリング</label>
+                                        <input name="setsubi_naka10" type="checkbox" id="setsubi_naka10" value="1"<?php if($re1data["setsubi_naka10"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka10">システムキッチン</label>
+                                        <input name="setsubi_naka11" type="checkbox" id="setsubi_naka11" value="1"<?php if($re1data["setsubi_naka11"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka11">室内洗濯機置き場</label>
+                                        <input name="setsubi_naka12" type="checkbox" id="setsubi_naka12" value="1"<?php if($re1data["setsubi_naka12"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka12">ウォッシュレット</label>
+                                        <br />
+                                        <input name="setsubi_naka13" type="checkbox" id="setsubi_naka13" value="1"<?php if($re1data["setsubi_naka13"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka13">バス・トイレ別</label>
+                                        <input name="setsubi_naka14" type="checkbox" id="setsubi_naka14" value="1"<?php if($re1data["setsubi_naka14"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka14">シャワー</label>
+                                        <input name="setsubi_naka15" type="checkbox" id="setsubi_naka15" value="1"<?php if($re1data["setsubi_naka15"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka15">シャンプードレッサー</label> 
+																																								<input name="setsubi_naka16" type="checkbox" id="setsubi_naka16" value="1"<?php if($re1data["setsubi_naka16"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_naka16">エアコン付</label>
+                                    </td>
+                                </tr>
+                                <?php 
+					}
+					if($bsetdata["setsumi_soto_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right"><?php echo $bsetdata["setsumi_soto_name"] ?></div>
+                                    </td>
+                                    <td valign="top" class="font12">
+                                        <input name="setsubi_soto1" type="checkbox" id="setsubi_soto1" value="1"<?php if($re1data["setsubi_soto1"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_soto1">駐輪場</label>
+                                        <input name="setsubi_soto2" type="checkbox" id="setsubi_soto2" value="1"<?php if($re1data["setsubi_soto2"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_soto2">駐車場2台以上可</label>
+                                        <br />
+                                        <input name="setsubi_soto3" type="checkbox" id="setsubi_soto3" value="1"<?php if($re1data["setsubi_soto3"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_soto3">オートロック</label>
+                                        <input name="setsubi_soto4" type="checkbox" id="setsubi_soto4" value="1"<?php if($re1data["setsubi_soto4"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_soto4">エレベータ</label>
+                                        <input name="setsubi_soto5" type="checkbox" id="setsubi_soto5" value="1"<?php if($re1data["setsubi_soto5"]==1) {echo " checked"; }?> />
+                                        <label for="setsubi_soto5">宅配ボックス</label>
+                                    </td>
+                                </tr>
+                                <?php 
+					}
+					if($bsetdata["jouken_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right"><?php echo $bsetdata["jouken_name"] ?></div>
+                                    </td>
+                                    <td valign="top" class="font12">
+                                        <input name="jouken1" type="checkbox" id="jouken1" value="1"<?php if($re1data["jouken1"]==1) {echo " checked"; }?> />
+                                        <label for="jouken1">法人希望・限定</label>
+                                        <input name="jouken2" type="checkbox" id="jouken2" value="1"<?php if($re1data["jouken2"]==1) {echo " checked"; }?> />
+                                        <label for="jouken2">女性専用</label>
+                                        <input name="jouken3" type="checkbox" id="jouken3" value="1"<?php if($re1data["jouken3"]==1) {echo " checked"; }?> />
+                                        <label for="jouken3">ペット相談可</label>
+                                        <input name="jouken4" type="checkbox" id="jouken4" value="1"<?php if($re1data["jouken4"]==1) {echo " checked"; }?> />
+                                        <label for="jouken4">ピアノ相談可</label>
+                                    </td>
+                                </tr>
+                                <?php 
+					}
+					?>
+          <tr>
+              <td valign="top" class="font14">
+                  <div align="right">給排水・ガス</div>
+              </td>
+              <td class="font12">
+                  <label><input type="checkbox" name="setsubi_other1" value="1">
+                  上水道</label>
+                 <label> <input type="checkbox" name="setsubi_other2" value="1">
+                  井戸</label>
+                  <label><input type="checkbox" name="setsubi_other3" value="1">
+                  下水道</label>
+                  <label><input type="checkbox" name="setsubi_other4" value="1">
+                  浄化槽</label>
+                  <label><input type="checkbox" name="setsubi_other5" value="1">
+                  汲取</label><br>
+                  <label><input type="checkbox" name="setsubi_other6" value="1">
+                  都市ガス</label>
+                  <label><input type="checkbox" name="setsubi_other7" value="1">
+                  プロパンガス</label>
+                  <label><input type="checkbox" name="setsubi_other8" value="1">
+                  集中プロパンガス</label></td>
+          </tr>
+<?php
+					if($bukkensetdata["chintai_oneclick"]==1) {
+					?>
+                                <tr>
+                                    <td valign="top" class="font14">
+                                        <div align="right">ワンクリック検索</div>
+                                    </td>
+                                    <td valign="top" class="font12">
+                                        <input name="oneclick1" type="checkbox" id="oneclick1" value="1">
+                                        <label for="oneclick1"> 新築</label>
+                                        <input name="oneclick2" type="checkbox" id="oneclick2" value="1">
+                                        <label for="oneclick2">築浅</label>
+                                        <input name="oneclick3" type="checkbox" id="oneclick3" value="1">
+                                        <label for="oneclick3">シングル向け</label>
+                                        <input name="oneclick4" type="checkbox" id="oneclick4" value="1">
+                                        <label for="oneclick4">ファミリー向け</label>
+                                        <input name="oneclick5" type="checkbox" id="oneclick5" value="1">
+                                        <label for="oneclick5">ペット相談可</label>
+                                        <input name="oneclick6" type="checkbox" id="oneclick6" value="1">
+                                        <label for="oneclick6">楽器相談可</label>
+                                    </td>
+                                </tr>
+                                <?php
+					}
+					?>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">&nbsp;</TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+                    <tr>
+                        <th bgcolor="#ECECEC">
+                            <div align="left">金額情報</div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFFF">
+                            <table width="648" border="0" cellpadding="1" cellspacing="1">
+                                <?php					if($bsetdata["kakaku_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right" class="font14"><?php echo $bsetdata["kakaku_name"] ?></div>
+                                    </td>
+                                    <td width="491" valign="top" class="font12">
+                                        <input name="kakaku" type="text" class="noime" id="kakaku" value="<?php echo $re1data["kakaku"];?>" size="15" onChange="pricechange()" />
+                                    万円 </td>
+                                </tr>
+                                <?php 
+					}
+					if($bsetdata["hosyoukin_admin"]==1) {
+					?>										<tr>
+												<td align="right" valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["hosyoukin_name"] ?></div>
+												</td>
+												<td valign="top" class="font12"><span class="realestate_bgcolor3"> 
+														<input name="hosyoukin_kikan" type="text" class="noime" id="hosyoukin_kikan" value="<?php echo $re1data["hosyoukin_kikan"];?>" size="6" />
+ヶ月
+<input name="hosyoukin_kakaku" type="text" class="noime" id="hosyoukin_kakaku" value="<?php echo $re1data["hosyoukin_kakaku"];?>" size="6" />万円 </span></td>
+										</tr>
+<?php 
+					}
+					if($bsetdata["kenrikin_admin"]==1) {
+					?>										
+											
+<?php 
+					}
+					if($bsetdata["shikikin_admin"]==1) {
+					?>					<tr>
+												<td width="150" valign="top" class="font14">
+										  <div align="right" class="font14">
+										  		<div align="right"><?php echo $bsetdata["shikikin_name"] ?></div>
+										  </div>										  
+												</td>
+												<td valign="top" class="font12">  <span class="realestate_bgcolor3">
+														<input name="shikikin" type="text" class="noime" id="shikikin" value="<?php echo $re1data["shikikin"];?>" size="6" />
+														ヶ月 </span> <span class="realestate_bgcolor3">
+																<input name="sikikintani" type="text" class="noime" id="sikikintani" value="<?php echo $re1data["sikikintani"];?>" size="6" />
+																万円</span></td>
+										</tr>
+					<?php 
+					}
+					if($bsetdata["kanrihi_admin"]==1) {
+					?>											
+										<tr>
+												<td align="right" valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["kanrihi_name"] ?></div>
+												</td>
+												<td valign="top" class="font12"><span class="realestate_bgcolor3">
+														<input name="kanrihi" type="text" class="noime" id="kanrihi" value="<?php echo $re1data["kanrihi"];?>" size="20" />
+円 </span></td>
+										</tr>
+<?php 
+					}
+					if($bsetdata["syuzenhi_tsumitate_admin"]==1) {
+					?>										<tr>
+												<td align="right" valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["syuzenhi_tsumitate_name"] ?></div>
+												</td>
+												<td valign="top" class="font12">
+														<input name="syuzenhi_tsumitate" type="text" class="noime" id="syuzenhi_tsumitate" value="<?php echo $re1data["syuzenhi_tsumitate"];?>">
+												<span class="realestate_bgcolor3">円</span>												</td>
+										</tr>
+<?php 
+					}
+					
+					if($bsetdata["kenrikin_admin"]==1) {
+					?>											
+										<tr>
+												<td align="right" valign="top" class="font14">
+														<div align="right"><?php echo $bsetdata["kenrikin_name"] ?></div>
+												</td>
+												<td valign="top" class="font12"><span class="realestate_bgcolor3">
+														<input name="kenrikin" type="text" class="noime" id="kenrikin" value="<?php echo $re1data["kenrikin"];?>" size="20" />
+円 </span></td>
+										</tr>
+<?php 
+					}
+					if($bsetdata["chusyajou_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" valign="top" class="font14">
+                                        <div align="right" class="font14"><?php echo $bsetdata["chusyajou_name"] ?></div>
+                                    </td>
+                                    <td valign="top" class="font12">
+                                        <input name="chusyajou" type="text" id="chusyajou" value="<?php echo $re1data["chusyajou"];?>" />
+                                        <input name="chusya_ryoukin" type="text" class="noime" id="chusya_ryoukin" value="<?php echo $re1data["chusya_ryoukin"];?>" size="10" />
+                                    円</td>
+                                </tr>
+                                <?php 
+					}
+					if($bsetdata["zappi_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" align="right" valign="top" class="font14">
+                                        <div align="right"><?php echo $bsetdata["zappi_name"] ?></div>
+                                    </td>
+                                    <td valign="top" bgcolor="#FFFFFF" class="font12">
+                                       <input name="zappi2" type="text" id="zappi2" value="<?php echo $re1data["zappi2"];?>" class="ime-active"> <input name="zappi" type="text" id="zappi" class="noime" value="<?php echo $re1data["zappi"];?>">
+                                    <span class="realestate_bgcolor3">円</span></td>
+                                </tr>
+                            <?php 
+					}
+?>                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">&nbsp;</TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+                    <tr>
+                        <th bgcolor="#ECECEC">
+                            <div align="left"><?php echo $bsetdata["photo_name"] ?></div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFFF">
+                            <table width="648" border="0" cellpadding="1" cellspacing="1">
+                                <?php
+					if($bsetdata["photo_admin"]==1) {
+					?>
+                                <tr>
+                                    <td width="150" rowspan="2" valign="top" class="font14">
+                                        <div align="right" class="font14"><?php echo $bsetdata["photo_name"] ?>１ </div>
+                                    </td>
+                                    <td width="491" valign="top" bgcolor="#FFFFFF" class="font12">
+                                        <?php if($re1data["photo1"]!=NULL) {?>
+                                        <img src="<?php echo "/tmp/bukken_data/".$re1data["id"]."/".$re1data["photo1"];?>" /><br />
+                                        <input name="delimage1" type="checkbox" id="delimage1" value="1" />
+                                        写真を削除する
+                                        <?php 
+												}
+												?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#FFFFFF" class="font12">
+                                        <input name="photo1" type="file" id="photo1" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="150" rowspan="2" valign="top" class="font14">
+                                        <div align="right" class="font14"><?php echo $bsetdata["photo_name"] ?>２ </div>
+                                    </td>
+                                    <td valign="top" bgcolor="#FFFFFF" class="font12">
+                                        <?php if($re1data["photo2"]!=NULL) {?>
+                                        <img src="<?php echo "/tmp/bukken_data/".$re1data["id"]."/".$re1data["photo2"];?>" /><br />
+                                        <input name="delimage2" type="checkbox" id="delimage2" value="1" />
+                                        写真を削除する
+                                        <?php 
+														}
+																		?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#FFFFFF" class="font12">
+                                        <input name="photo2" type="file" id="photo2" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="150" rowspan="2" valign="top" class="font14">
+                                        <div align="right" class="font14"><?php echo $bsetdata["photo_name"] ?>３ </div>
+                                    </td>
+                                    <td valign="top" bgcolor="#FFFFFF" class="font12">
+                                        <?php if($re1data["photo3"]!=NULL) {?>
+                                        <img src="<?php echo "/tmp/bukken_data/".$re1data["id"]."/".$re1data["photo3"];?>" /> <br />
+                                        <input name="delimage3" type="checkbox" id="delimage3" value="1" />
+                                        写真を削除する
+                                        <?php }
+																		?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#FFFFFF" class="font12"> <span class="realestate_bgcolor3">
+                                        <input name="photo3" type="file" id="photo3" />
+                                    </span> </td>
+                                </tr>
+                                <tr>
+                                    <td width="150" rowspan="2" valign="top" class="font14">
+                                        <div align="right" class="font14"><?php echo $bsetdata["photo_name"] ?>４</div>
+                                    </td>
+                                    <td valign="top" bgcolor="#FFFFFF" class="font12">
+                                        <?php if($re1data["photo4"]!=NULL) {?>
+                                        <img src="<?php echo "/tmp/bukken_data/".$re1data["id"]."/".$re1data["photo4"];?>" /><br />
+                                        <input name="delimage4" type="checkbox" id="delimage4" value="1" />
+                                        写真を削除する
+                                        <?php }
+																		?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#FFFFFF" class="font12">
+                                        <input name="photo4" type="file" id="photo4" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="150" rowspan="2" valign="top" class="font14">
+                                        <div align="right" class="font14"><?php echo $bsetdata["photo_name"] ?>５ </div>
+                                    </td>
+                                    <td valign="top" bgcolor="#FFFFFF" class="font12">
+                                        <?php if($re1data["photo5"]!=NULL) {?>
+                                        <img src="<?php echo "/tmp/bukken_data/".$re1data["id"]."/".$re1data["photo5"];?>" /> <br />
+                                        <input name="delimage5" type="checkbox" id="delimage5" value="1" />
+                                        写真を削除する
+                                        <?php }
+																		?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#FFFFFF" class="font12"> <span class="realestate_bgcolor3">
+                                        <input name="photo5" type="file" id="photo5" />
+                                    </span> </td>
+                                </tr>
+                                <?php 
+					}
+?>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">&nbsp;</TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top"><table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+            		<tr>
+            				<th bgcolor="#ECECEC"> <div align="left">
+            						<?php 
+
+if(str_replace("www.","",$_SERVER['HTTP_HOST'])=="hayashi-housing.co.jp"){ echo "右の画像"; }else {echo $bsetdata["madorizu_name"];} ?>
+            						</div>
+            						</th>
+            				</tr>
+            		<?php
+				  ?>
+            		<tr>
+            				<td bgcolor="#FFFFFF"><table width="648" border="0" cellpadding="1" cellspacing="1">
+            						<?php
+					?>
+            						<tr>
+            								<td width="150" rowspan="2" valign="top" class="font14"><div align="right" class="font14"><?php echo $bsetdata["madorizu_name"] ?>1 </div></td>
+            								<td width="491" bgcolor="#FFFFFF" class="font12"><?php if($re1data["madorizu1"]!=NULL) {?>
+            										<img src="<?php echo "/tmp/bukken_data/".$re1data["id"]."/".$re1data["madorizu1"];?>" /> <br />
+            										<input name="delimage6" type="checkbox" id="delimage6" value="1" />
+            										写真を削除する
+            										<?php 
+						}
+																		?></td>
+            								</tr>
+            						<tr>
+            								<td bgcolor="#FFFFFF" class="font12"><input name="madorizu1" type="file" id="madorizu1" /></td>
+            								</tr>
+            						<tr>
+            								<td rowspan="2" valign="top" class="font14"><div align="right" class="font14"><?php echo $bsetdata["madorizu_name"] ?>2</div></td>
+            								<td bgcolor="#FFFFFF" class="font12"><?php if($re1data["madorizu2"]!=NULL) {?>
+            										<img src="<?php echo "/tmp/bukken_data/".$re1data["id"]."/".$re1data["madorizu2"];?>" /><br />
+            										<input name="delimage7" type="checkbox" id="delimage7" value="1" />
+            										写真を削除する
+            										<?php }
+																		?></td>
+            								</tr>
+            						<tr>
+            								<td bgcolor="#FFFFFF" class="font12"><input name="madorizu2" type="file" id="madorizu2" /></td>
+            								</tr>
+            						<?php
+				  if(str_replace("www.","",$_SERVER['HTTP_HOST'])=="hayashi-housing.co.jp"){
+
+				?>
+            						<tr>
+            								<td rowspan="2" valign="top" class="font14"><div align="right" class="font14"><?php echo $bsetdata["madorizu_name"] ?>3</div></td>
+            								<td bgcolor="#FFFFFF" class="font12"><?php if($re1data["madorizu3"]!=NULL) {?>
+            										<img src="<?php echo "/tmp/bukken_data/".$re1data["id"]."/".$re1data["madorizu3"];?>" /><br />
+            										<input name="delimage8" type="checkbox" id="delimage8" value="1" />
+            										写真を削除する
+            										<?php }
+																		?></td>
+            								</tr>
+            						<tr>
+            								<td bgcolor="#FFFFFF" class="font12"><input name="madorizu3" type="file" id="madorizu3" /></td>
+            								</tr>
+            						<tr>
+            								<td rowspan="2" valign="top" class="font14"><div align="right" class="font14"><?php echo $bsetdata["madorizu_name"] ?>4</div></td>
+            								<td bgcolor="#FFFFFF" class="font12"><?php if($re1data["madorizu4"]!=NULL) {?>
+            										<img src="<?php echo "/tmp/bukken_data/".$re1data["id"]."/".$re1data["madorizu4"];?>" /><br />
+            										<input name="delimage9" type="checkbox" id="delimage9" value="1" />
+            										写真を削除する
+            										<?php }
+																		?></td>
+            								</tr>
+            						<tr>
+            								<td bgcolor="#FFFFFF" class="font12"><input name="madorizu4" type="file" id="madorizu4" /></td>
+            								</tr>
+            						<tr>
+            								<td rowspan="2" valign="top" class="font14"><div align="right" class="font14"><?php echo $bsetdata["madorizu_name"] ?>5</div></td>
+            								<td bgcolor="#FFFFFF" class="font12"><?php if($re1data["madorizu5"]!=NULL) {?>
+            										<img src="<?php echo "/tmp/bukken_data/".$re1data["id"]."/".$re1data["madorizu5"];?>" /><br />
+            										<input name="delimage10" type="checkbox" id="delimage10" value="1" />
+            										写真を削除する
+            										<?php }
+																		?></td>
+            								</tr>
+            						<tr>
+            								<td bgcolor="#FFFFFF" class="font12"><input name="madorizu5" type="file" id="madorizu5" /></td>
+            								</tr>
+            						<?php 
+					}
+?>
+            						</table></td>
+            				</tr>
+            		</table></TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top">&nbsp;</TD>
+        </TR>
+        <TR class="realestate_bgcolor2">
+            <TD valign="top"> <span class="font12"> </span>
+                    <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+                        <tr>
+                            <th bgcolor="#ECECEC">
+                                <div align="left">その他情報</div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#FFFFFF">
+                                <table width="648" border="0" cellpadding="1" cellspacing="1">
+                                    <tr>
+                                        <td width="150" valign="top" bgcolor="#FFFFFF" class="font14">
+                                            <div align="right">おすすめ</div>
+                                        </td>
+                                        <td valign="top" bgcolor="#FFFFFF" class="font12">
+                                            <input name="osusume" type="checkbox" id="osusume" value="1"<?php if($re1data["osusume"]==1) {echo " checked"; }?> />
+                                        </td>
+                                    </tr><?php
+										if(str_replace("www.","",$_SERVER['SERVER_NAME'])=="f-ourhouse.com"||str_replace("www.","",$_SERVER['SERVER_NAME'])=="e-altus.com"){
+										?>
+          <tr>
+          				<td valign="top" bgcolor="#FFFFFF" class="font14">
+          								<div align="right">一言コメント</div>
+          				</td>
+          				<td bgcolor="#FFFFFF" class="font12"><span class="realestate_bgcolor3">
+          								<textarea name="tokki5" cols="60" rows="4" class="ime-active" id="tokki5"><?php echo $re1data["tokki5"];?></textarea>
+          				</span></td>
+          				</tr>
+														<?php
+														}
+														?>
+                                    <tr>
+                                        <td width="150" valign="top" bgcolor="#FFFFFF" class="font14">
+                                            <div align="right">公開備考</div>
+                                        </td>
+                                        <td valign="top" bgcolor="#FFFFFF" class="font12"> <span class="realestate_bgcolor3">
+                                            <textarea name="bikou" cols="60" rows="6" class="ime-active" id="bikou"><?php echo $re1data["bikou"];?></textarea>
+                                        </span> </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="150" valign="top" bgcolor="#FFFFFF" class="font14">
+                                            <div align="right">非公開備考</div>
+                                        </td>
+                                        <td valign="top" bgcolor="#FFFFFF" class="font12"><span class="realestate_bgcolor3">
+                                            <textarea name="admin_bikou" cols="60" rows="6" class="ime-active" id="admin_bikou"><?php echo $re1data["admin_bikou"];?></textarea>
+                                        </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" bgcolor="#FFFFFF" class="font14">
+                                            <div align="right">POP用テキスト
+                                                    <?php 
+																				$pop_txt=explode(",",$re1data["pop_txt"]);
+																				?>
+                                                    <br>
+                                                ※全角30文字以内</div>
+                                        </td>
+                                        <td bgcolor="#FFFFFF" class="font12">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <input name="pop_txt[0]" type="text" id="pop_txt[0]" value="<?php echo $pop_txt[0];?>" size="60" maxlength="30" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <?php 
+					if($bsetdata["torihikitaiyou_admin"]==1) {
+					?>
+                                    <tr>
+                                        <td width="150" valign="top" bgcolor="#FFFFFF" class="font14">
+                                            <div align="right" class="font14"><?php echo $bsetdata["torihikitaiyou_name"] ?></div>
+                                        </td>
+                                        <td bgcolor="#FFFFFF" class="font12">
+                                            <select name="torihikitaiyou">
+                                                <option<?php if($re1data["torihikitaiyou"]=="専任媒介"){echo " selected";}?>>専任媒介</option>
+                                                <option<?php if($re1data["torihikitaiyou"]=="専属専任媒介"){echo " selected";}?>>専属専任媒介</option>
+                                                <option<?php if($re1data["torihikitaiyou"]=="一般媒介"){echo " selected";}?>>一般媒介</option>
+                                                <option<?php if($re1data["torihikitaiyou"]=="売主"){echo " selected";}?>>売主</option>
+                                                <option<?php if($re1data["torihikitaiyou"]=="代理"){echo " selected";}?>>代理</option>
+                                                <option<?php if($re1data["torihikitaiyou"]=="媒介"){echo " selected";}?>>媒介</option>
+                                                <option<?php if($re1data["torihikitaiyou"]==" "||$re1data["torihikitaiyou"]==""){echo " selected";}?>> </option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <?php 
+					}
+					?>
+                                    <tr>
+                                        <td valign="top" bgcolor="#FFFFFF" class="font14">
+                                            <div align="right">公開・非公開</div>
+                                        </td>
+                                        <td bgcolor="#FFFFFF" class="font12">
+                                          <select name="del_chk" id="del_chk">
+                                              <option value="0"<?php if($re1data["del_chk"]==0||$re1data["del_chk"]==NULL) {echo " selected";}?>>公開</option>
+                                              <option value="1"<?php if($re1data["del_chk"]==1) {echo  " selected";}?>>非公開</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                <table width="100%" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td valign="top" class="font14">&nbsp;</td>
+                            <td bgcolor="#FFFFFF" class="font12">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="150" valign="top" class="font14">&nbsp; </td>
+                            <td bgcolor="#FFFFFF" class="font12">
+                                <input name="update_re" type="submit" id="update_re" value="更新する" />
+                                <span class="realestate_bgcolor3"> 　
+                                    <input name="btm" type="button" id="btm" onclick="gotolist()" value="一覧へ戻る" />
+                                </span>
+                                <input name="bid" type="hidden" id="bid" value="<?php echo $maxid;?>" />
+                            </td>
+                        </tr>
+                    </table>
+            </TD>
+        </TR>
+    </form>
+</TABLE>

@@ -1,0 +1,276 @@
+@charset("euc-jp");
+
+body{
+	text-align:center;
+	font:14px "";
+	color:#333333;
+	font-size:11px;
+	
+}
+td {
+	text-align:left;
+}
+.nowpnum{
+	font-size:15px;
+	color:#FF6600;
+	font-weight:bold;
+}
+a:link,a:visited{
+	color:#003366;
+	text-decoration: none;	
+}
+a:hover,a:active{
+	color:#FF6600;
+	text-decoration: none;
+}
+
+#tb_c .center{
+	background-image:url(/admin/img/c_bg2.gif);
+	background-repeat: repeat-y;
+	background-position: center center;
+}
+
+#tb_c .footer{
+	background-image:url(/admin/img/c_bg3.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+#tb_b .center{
+	background-image:url(/admin/img/b_bg2.gif);
+	background-repeat: repeat-y;
+	background-position: center center;
+}
+#tb_b .footer{
+	background-image:url(/admin/img/b_bg3.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
+.title {
+	font-size: 16px;
+	font-weight: bold;
+	color: #666666;	
+}
+.line {
+	background-image: url(/members/img/line.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 5px;
+	font-size: 14px;
+	color: #FF6600;
+}
+#bukken {
+	font-size:14px;
+}
+
+#bukken .menu a{
+	font-size:14px;
+	text-decoration: none;
+}
+
+#container {
+	width:840px;
+	background-color:#ffffff;
+}
+
+#container .subtitle{
+	font-size:14px;
+	color:#666666;
+	font-weight: bold;
+}
+
+
+#headmenu a{
+color:#ffffff;
+font-size:14px;
+}
+
+#tree .top{
+	font-size:24px;
+	color:#CC9900;
+}
+
+#tree .gt{
+	font-size:24px;
+}
+
+#tree .sub {
+	font-size:16px;
+	
+}
+
+#bbs {
+	font-size:14px;
+}
+#bbs .comment{
+	font-size:14px;
+	line-height:22px;
+}
+#bbs .nickname{
+	font-weight: bold;
+}
+
+#bbs .sledtitle{
+	font-size:16px;
+	color:#0066FF;
+	line-height: 20px;
+	font-weight: bold;
+}
+#bbs .nowpagenum {
+	font-size:14px;
+	color:#FF6600;
+}
+
+
+#calender a{
+	font-size:12px;
+}
+
+#calender .tb_outline{
+	background-color: #CCCCCC;
+}
+
+#calender .holiday {
+	background-color:#FFddFF;
+	color:#FF3399;
+	font-weight: bold;	
+}
+
+#calender .satday{
+	color:#3333FF;
+	background-color: #ddddff;		
+	font-weight: bold;	
+	
+}
+
+#calender .nday {
+	background-color:#FFffdd;
+}
+
+#calender .box {
+	background-color:#ffffff;
+}
+#calender td{
+	font-size:14px;
+}
+#calender a {
+	font-size:14px;
+	
+}
+#calender a:link,#calender a:visited{
+	color:#003366;
+	font-size:14px;
+}
+#calender a:hover,#calender a:active{
+	font-size:14px;
+	color:#FF6600;
+}
+
+#calender .day{
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #CCCCCC;
+	border-bottom-color: #CCCCCC;
+	height: 20px;
+	width: 20px;
+	text-align: center;
+	padding: 2px;
+}
+
+
+#schedule .title2{
+	font-size: 16px;
+	font-weight: bold;
+	color: #FF6600;
+}
+
+#files th{
+	font-size:14px;
+}
+
+#files .menu a{
+	font-size:14px;
+	text-decoration: none;
+}
+
+#files .commenttitle{
+	font-size:14px;
+	color: #FF6600;	
+}
+
+#messsage th,td{
+font-size:14px;
+}
+#messsage .menu a{
+	font-size:14px;
+	text-decoration: none;
+}
+#messsage a{
+	font-size:14px;
+	text-decoration: none;
+	
+}
+#messsage .title{
+	color:#FF6600;
+	font-size:14px;
+	
+}
+
+#bukken .result{
+	font-size: 16px;
+	font-weight: bold;
+	color: #FF6600;
+	text-indent: 20px;
+}
+#large_link a{
+	font-size:16px;
+	font-weight:bold;	
+}
+.helper{
+	line-height:25px;
+	margin:1px;
+	padding:4px;
+	background-color:#EcEcEc;
+	border:solid;
+	border:#DCDCDC;
+	border:1px;"
+}
+.helper a:link,.helper a:visited{
+	color:#0000ff;
+	text-decoration: none;	
+}
+.helper a:hover,.helper a:active{
+	color:#FF6600;
+	text-decoration: none;
+}
+
+.helper h3{
+	margin:3px;
+	padding:0px;
+	font-size:14px; 
+	display:block;
+	width:100%;
+	height:25px;
+	font-weight:bold;
+	background-color:#CCCCCC;
+}
+.helper p{
+	margin:3px;
+	padding:1px;
+	font-size:13px; 
+	display:block;
+	width:100%;
+	height:25px;
+	background-color:#ffffff;
+}
+
+#address a:link,#address a:visited{
+	color:#003366;
+	font-size:14px;
+}
+#address a:hover,#address a:active{
+	font-size:14px;
+	color:#FF6600;
+}

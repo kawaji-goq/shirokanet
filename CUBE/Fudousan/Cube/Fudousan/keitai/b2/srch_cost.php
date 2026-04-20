@@ -1,0 +1,74 @@
+<?php
+
+//include "Cube/Fudousan/config.php";
+include "ITC/modules.php";
+//include $_SERVER["DOCUMENT_ROOT"]."/config.php";
+include $_SERVER["DOCUMENT_ROOT"]."/config/config.php";
+include  "ITC/keitai.php";
+
+
+$agenttype=($_SERVER['HTTP_USER_AGENT']);
+
+mb_internal_encoding("SJIS");
+
+	if($usedb==NULL||$usedb=="") {
+		$usedb="postgresql";
+	}
+	
+	$dbobj=Cube_DB :: UseDB($usedb);	
+	
+	if($dbname!=NULL&&$dbname!="") {
+			$dbobj->name=$dbname;
+	}
+	else {
+		$dbobj->name=str_replace("www.","",$_SERVER["HTTP_HOST"]);
+	}
+	
+	if($usedb=="mysql") {
+			$dbobj->user="admin";
+			$dbobj->pass="itc7310";
+	}
+$dbobj->Connect();
+
+$re1obj=new Keitai_RealEstate($dbobj);
+$re1data=$re1obj->GetReData($_GET["bid"]);
+
+?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<title>物件検索</title>
+<style type="text/css">
+<!--
+.style1 {color: #FF0000}
+-->
+</style>
+</head>
+
+<body>
+<?php
+include "../template/header.php";
+?><div align="center"><?php echo $Emoji["SEARCH"];?><span class="style1">価格帯から探す</span></div>
+<hr>
+<a href="/keitai/b2/list.php?madori=<?php echo $madori;?>&madoritype=<?php echo $madoritype;?>&lowcost=0&hicost=3000&chiiki=<?php echo $chiiki;?>" > 3000万円未満</a><br>
+<a href="/keitai/b2/list.php?madori=<?php echo $madori;?>&madoritype=<?php echo $madoritype;?>&lowcost=3000&hicost=4000&chiiki=<?php echo $chiiki;?>" > 3000万円～4000万円未満</a><br>
+<a href="/keitai/b2/list.php?madori=<?php echo $madori;?>&madoritype=<?php echo $madoritype;?>&lowcost=4000&hicost=5000&chiiki=<?php echo $chiiki;?>" >4000万円～5000万円未満</a><br>
+<a href="/keitai/b2/list.php?madori=<?php echo $madori;?>&madoritype=<?php echo $madoritype;?>&lowcost=5000&hicost=6000&chiiki=<?php echo $chiiki;?>" >5000万円～6000万円未満</a><br>
+<a href="/keitai/b2/list.php?madori=<?php echo $madori;?>&madoritype=<?php echo $madoritype;?>&lowcost=6000&hicost=7000&chiiki=<?php echo $chiiki;?>" >6000万円～7000万円未満</a><br>
+<a href="/keitai/b2/list.php?madori=<?php echo $madori;?>&madoritype=<?php echo $madoritype;?>&lowcost=7000&hicost=8000&chiiki=<?php echo $chiiki;?>" >7000万円～8000万円未満</a><br>
+<a href="/keitai/b2/list.php?madori=<?php echo $madori;?>&madoritype=<?php echo $madoritype;?>&lowcost=8000&hicost=9000&chiiki=<?php echo $chiiki;?>" >8000万円～9000万円未満</a><br>
+<a href="/keitai/b2/list.php?madori=<?php echo $madori;?>&madoritype=<?php echo $madoritype;?>&lowcost=9000&hicost=10000&chiiki=<?php echo $chiiki;?>" >9000万円～10000万円未満</a><br>
+<a href="/keitai/b2/list.php?madori=<?php echo $madori;?>&madoritype=<?php echo $madoritype;?>&lowcost=10000&hicost=&chiiki=<?php echo $chiiki;?>" >10000万円以上</a><br>
+<a href="/keitai/b2/list.php?madori=<?php echo $madori;?>&madoritype=<?php echo $madoritype;?>&lowcost=&hicost=&chiiki=<?php echo $chiiki;?>">指定無し
+</a><br>
+<br>
+・<a href="/keitai/b2/srch_cost.php?madori=<?php echo $madori;?>&madoritype=<?php echo $madoritype;?>&lowcost=<?php echo $lowcost;?>&hicost=<?php echo $hicost;?>&chiiki=<?php echo $chiiki;?>" >価格で絞る</a><br>
+・<a href="/keitai/b2/srch_chiki.php?madori=<?php echo $madori;?>&madoritype=<?php echo $madoritype;?>&lowcost=<?php echo $lowcost;?>&hicost=<?php echo $hicost;?>&chiiki=<?php echo $chiiki;?>">地域で絞る</a>
+<br>
+<a href="/keitai/b2/list.php">戻る</a><br>
+<a href="/keitai/index.php">TOPへ戻る</a><br>
+<?php
+include "../template/footer.php";
+?>
+</body>
+</html>

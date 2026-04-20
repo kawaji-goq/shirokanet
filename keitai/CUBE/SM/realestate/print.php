@@ -1,0 +1,274 @@
+<?php
+define('FPDF_FONTPATH','font/');
+
+require($_SERVER['DOCUMENT_ROOT'].'/fpdf/mbfpdf.php');
+
+$GLOBALS['EUC2SJIS'] = true;
+
+$dbhandle=pg_connect("dbname=".$_GET["did"]);
+$sql="select * from bukken where id =".$_GET["bid"];
+
+$res=pg_query($dbhandle,$sql);
+$resnum=pg_num_rows($res);
+
+if($resnum!=NULL){
+$data=pg_fetch_array($res,0);
+$pdf = new MBFPDF();
+
+//set font
+$pdf->AddMBFont(GOTHIC ,'SJIS');
+$pdf->AddMBFont(PGOTHIC,'SJIS');
+$pdf->AddMBFont(MINCHO ,'SJIS');
+$pdf->AddMBFont(PMINCHO,'SJIS');
+$pdf->AddMBFont(KOZMIN ,'SJIS');
+//margine 
+$pdf->SetMargins(0.5,0.5,0.5);
+//create pdf 
+$pdf->Open();
+// 
+$pdf->AddPage("L");
+//set line 
+$pdf->SetDrawColor(0xff, 0x00, 0x00); 
+$pdf->SetLineWidth(2.0);
+$pdf->line(151,24,295,24);
+$pdf->SetLineWidth(5.0);
+$pdf->line(152.5,74,293.5,74);
+$pdf->SetDrawColor(0x00, 0x00, 0x00); 
+$pdf->SetLineWidth(0.5);
+
+$pdf->line(150.5,98,295.5,98);
+$pdf->line(150.5,106,295.5,106);
+$pdf->line(150.5,114,295.5,114);
+$pdf->line(150.5,122,295.5,122);
+$pdf->line(150.5,130,295.5,130);
+$pdf->line(150.5,138,295.5,138);
+
+//set chars
+$pdf->SetFont(PGOTHIC,'',40);
+$jusyostr=str_replace("　","",str_replace(" ","",$data["jyusyo1"].$data["jyusyo2"]));
+
+if($data["banchichk"]==1) {
+	$jusyostr.=str_replace("　","",str_replace(" ","",$data["jyusyo3"]));
+}
+
+for($i=0;$pdf->GetStringWidth($jusyostr)>140;$i++) {
+	$pdf->SetFont(PGOTHIC,'',40-$i);
+	if($i>40) {
+		exit("住所が長いためPDFの作成に失敗しました。");
+	}
+}
+
+$pdf->SetTextColor(0x00, 0x66, 0x33); //前景色
+$pdf->SetXY(151,10);
+$pdf->Write(10,str_replace("　","",str_replace(" ","",$jusyostr)));
+
+$pdf->SetTextColor(0x00, 0x00, 0x00); //前景色
+/*
+if($data["madori_tani"]!="SLDK"){
+	$pdf->SetFont(PGOTHIC,'',50);
+	$pdf->SetXY(151,58);
+	$pdf->Write(10,$data["madori"].str_replace("ROOM","R",$data["madori_tani"]));
+}
+else {
+	$pdf->SetFont(PGOTHIC,'',40);
+	$pdf->SetXY(151,59);
+	$pdf->Write(10,$data["madori"].str_replace("ROOM","R",$data["madori_tani"]));
+	
+}
+*/
+$pdf->SetTextColor(0xff, 0x00, 0x00); //前景色
+
+if($data["kakaku"]<10&&is_integer($data["kakaku"]*10)) {
+	$pdf->SetFont(PGOTHIC,'',150);
+	$pdf->SetXY(195,48);
+	$pdf->Write(10,number_format($data["kakaku"],1));
+}
+else if(!is_integer($data["kakaku"]*10)) {
+	$pdf->SetFont(PGOTHIC,'',100);
+	$pdf->SetXY(200,52);
+	$pdf->Write(10,$data["kakaku"],2);
+}
+else if($data["kakaku"]>99&&is_integer($data["kakaku"])) {
+	$pdf->SetFont(PGOTHIC,'',100);
+	$pdf->SetXY(200,52);
+	$pdf->Write(10,$data["kakaku"],2);
+}
+else if($data["kakaku"]>99&&is_integer($data["kakaku"]*10)) {
+	$pdf->SetFont(PGOTHIC,'',100);
+	$pdf->SetXY(200,52);
+	$pdf->Write(10,$data["kakaku"],2);
+}
+else if($data["kakaku"]>99) {
+	$pdf->SetFont(PGOTHIC,'',100);
+	$pdf->SetXY(180,52);
+	$pdf->Write(10,$data["kakaku"],2);	
+}
+else if(!is_integer($data["kakaku"]*10)) {
+	$pdf->SetFont(PGOTHIC,'',100);
+	$pdf->SetXY(200,52);
+	$pdf->Write(10,$data["kakaku"],2);
+}
+else{
+	$pdf->SetFont(PGOTHIC,'',150);
+	$pdf->SetXY(195,48);
+	$pdf->Write(10,$data["kakaku"]);
+}
+
+$pdf->SetTextColor(0x66, 0x66, 0x66); //前景色
+$pdf->SetFont(PGOTHIC,'',45);
+$pdf->SetXY(260,58);
+$pdf->Write(10,"万円");
+
+$pdf->SetTextColor(0x00, 0x00, 0x00); //前景色
+$pdf->SetFont(PGOTHIC,'',40);
+$pdf->SetXY(151,90);
+for($i=0;$pdf->GetStringWidth($data["bukken_mei"])>140;$i++) {
+	$pdf->SetFont(PGOTHIC,'',40-$i);
+	$pdf->SetXY(151,90+($i/5));
+	if($i>40) {
+		exit();
+	}
+}
+
+$pdf->SetFont(PGOTHIC,'',18);
+$pdf->SetXY(151,102.5);
+$pdf->Write(0,"交通");
+$eki="";
+
+if($data["eki"]!=NULL) { 
+	$eki.=$data["eki"]."駅";
+}
+
+if($data["ensen"]!=NULL) {
+	$eki.="[".$data["ensen"]."]";
+}
+
+if($data["ekiho"]!=NULL) {
+	$eki.=" 徒歩 ".$data["ekiho"]." 分";
+}
+
+$pdf->SetXY(175,102.5);
+$pdf->Write(0,$eki);
+
+$pdf->SetFont(PGOTHIC,'',18);
+$pdf->SetXY(151,110.5);
+$pdf->Write(0,"面積");
+
+$pdf->SetXY(175,110.5);
+
+$pdf->Write(0,$data["senyumenseki"]."��");
+
+$pdf->SetFont(PGOTHIC,'',18);
+$pdf->SetXY(151,118.5);
+$pdf->Write(0,"敷金");
+$shikikin="";
+
+if($data["shikikin"]!=NULL) { 
+	$shikikin.=$data["shikikin"]."ヶ月　";
+}
+
+if($data["sikikintani"]!=NULL){
+	$shikikin.=$data["sikikintani"]."万円";
+}
+
+$pdf->SetXY(175,118.5);
+$pdf->Write(0,$shikikin);
+
+$reikin="";
+$pdf->SetFont(PGOTHIC,'',18);
+$pdf->SetXY(151,126.5);
+$pdf->Write(0,"礼金");
+
+if($data["reikin"]!=NULL) { 
+	$reikin.=$data["reikin"]."ヶ月　";
+}
+
+if($data["reikin_tani"]!=NULL){ 
+	$reikin.=$data["reikin_tani"]."万円";
+}
+
+$pdf->SetXY(175,126.5);
+$pdf->Write(0,$reikin);
+
+$pdf->SetFont(PGOTHIC,'',18);
+$pdf->SetXY(151,134.5);
+$pdf->Write(0,"築年月");
+$pdf->SetXY(175,134.5);
+$chikunengetsu="";
+
+if($data["chiku_nen"]) {
+	$chikunengetsu.=$data["chiku_nen"]."年";
+}
+
+if($data["chiku_tsuki"]) {
+	$chikunengetsu.=$data["chiku_tsuki"]."月";
+}
+
+$pdf->Write(0,$chikunengetsu);
+
+$hikiwatashi="入居/";
+
+if($data["hikiwatashi"]=="期日指定") {
+	if($data["hikiwatashi_nen"]!=NULL) {
+		$hikiwatashi.=$data["hikiwatashi_nen"]."年";
+	} 
+	if($data["hikiwatashi_tsuki"]!=NULL) {
+		$hikiwatashi.=$data["hikiwatashi_tsuki"]."月";
+	}
+	$hikiwatashi.=$data["hikiwatashi_syun"];
+}
+else {
+$hikiwatashi.=$data["hikiwatashi"];
+}
+$pdf->SetXY(210,134.5);
+$pdf->Write(0,$hikiwatashi);
+
+$pdf->SetFont(PGOTHIC,'',15);
+$pdf->SetTextColor(0x00, 0x66, 0x33); 
+
+$bikouy[0]=142.5;
+$bikouy[1]=150.5;
+$bikouy[2]=158.5;
+$bikouy[3]=166.5;
+$bikouy[4]=174.5;
+$bikouy[5]=182.5;
+$pop_txt=explode(",",$data["pop_txt"]);
+
+for($i=0;$i<6;$i++) {
+	$pdf->SetXY(151,$bikouy[$i]);
+	$pdf->Write(6,$pop_txt[$i]);
+}
+
+/*
+$pdf->SetXY(151,142.5);
+$pdf->Write(6,"日当たり良好！入居時壁紙・フローリング新装！");
+$pdf->SetXY(151,150.5);
+$pdf->Write(6,"駐車場￥1.000/月2台までok！コンビニ2分。");
+$pdf->SetXY(151,158.5);
+$pdf->Write(6,"交通の便よし。おすすめ物件、早いもの勝ちです！");
+$pdf->SetXY(151,166.5);
+$pdf->Write(6,"ご相談はお早めに！");
+$pdf->SetXY(151,174.5);
+$pdf->Write(6,"交通の便よし。おすすめ物件、早いもの勝ちです！");
+$pdf->SetXY(151,182.5);
+$pdf->Write(6,"交通の便よし。おすすめ物件、早いもの勝ちです！");
+*/
+
+//set images
+if($data["madorizu1"]!=NULL) {
+	$pdf->Image("http://".$_REQUEST["domain"]."/tmp/bukken_data/".$data["id"]."/".$data["madorizu1"],10,25);
+}
+
+if($data["photo1"]!=NULL) {
+	$pdf->Image("http://".$_REQUEST["domain"]."/tmp/bukken_data/".$data["id"]."/".$data["photo1"],10,110);
+}
+
+$pdf->Image("http://fudousan.itcube.ne.jp/asp/img_f/pop.jpg",0,0);
+$pdf->Output();
+/*
+?>
+    <meta http-equiv="content-type" content="text/html; charset=euc-jp"/>
+<?php
+*/
+}
+?>
