@@ -27,3 +27,4 @@ CUBE/SM/hpdata/masaki-shojicojp/img/main/title_bg.png
 *.txt
 *.xml
 /iphone/CUBE2/JSLIBS
+.vscode/settings.json

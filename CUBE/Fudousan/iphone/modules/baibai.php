@@ -1,80 +1,55 @@
 <?php
 session_start();
-$_SESSION["toiawase"]="";
-$path = '/tmp/CUBE/';
-set_include_path(get_include_path() . PATH_SEPARATOR . $path);
+include '../initial.php';
+$re1obj=new RealEstate($dbobj);
 
-include "Cube/Fudousan/config.php";
-include "ITC/modules.php";
-include $_SERVER["DOCUMENT_ROOT"]."/config/config.php";
+$tenpodata=$dbobj->GetData("select * from tenpo_data");
 
-	if($usedb==NULL||$usedb=="") {
-		$usedb="postgresql";
-	}
-	
-	$dbobj=Cube_DB :: UseDB($usedb);	
-	
-	if($dbname!=NULL&&$dbname!="") {
-			$dbobj->name=$dbname;
-	}
-	else {
-		$dbobj->name=str_replace("www.","",$_SERVER["HTTP_HOST"]);
-	}
-	
-//	if($usedb=="mysql") {
-			$dbobj->user="goq";
-			$dbobj->pass="itc2011";
-//	}
-	
-	$dbobj->Connect();
-	
-	$tenpodata=$dbobj->GetData("select * from tenpo_data");
-	
-	$re1obj=new RealEstate($dbobj);
-	
-	if($_REQUEST["seach_bukken_x"]!=NULL) {
-		
-		$_SESSION["madori"]=$_REQUEST["madori"];
-		$_SESSION["lowcost"]=$_REQUEST["lowcost"];
-		$_SESSION["hicost"]=$_REQUEST["hicost"];
-		$_SESSION["keyword"]=$_REQUEST["keyword"];
-		$_SESSION["chiiki"]=$_REQUEST["chiiki"];
-		$_SESSION["page"]=1;
-		
-	}
-	
-	if($_GET["sort"]!=NULL) {
-		
-		$_GET["sort"]=str_replace("update","",str_replace("delete","",str_replace("select","",str_replace("drop","",$_GET["sort"]))));
-		$_SESSION["sort"]=$_GET["sort"];
-		
-	}
-	else if($_SESSION["sort"]==NULL) {
-		
-		$_SESSION["sort"]="kakaku";
-		
-	}
-	
-	if($_GET["cid"]!=NULL) {
-		
-		if($_SESSION["cid"]!=$_GET["cid"]) {
-			
-			$_SESSION["madori"]="";
-			$_SESSION["lowcost"]="";
-			$_SESSION["hicost"]="";
-			$_SESSION["keyword"]="";
-			$_SESSION["chiiki"]="";
-			$_SESSION["page"]=1;
-			
-		}
-		
-		$_SESSION["cid"]=$_GET["cid"];
-		
-	}
+$re1obj=new RealEstate($dbobj);
 
-	$re1obj->type=$_SESSION["cid"];
-	$re1data=$re1obj->GetReList(2,$_SESSION["sort"]);
-	$maxpage=ceil(($re1obj->numrows)/$_SESSION["lim"]);
+if($_REQUEST["seach_bukken_x"]!=NULL) {
+
+    $_SESSION["madori"]=$_REQUEST["madori"];
+    $_SESSION["lowcost"]=$_REQUEST["lowcost"];
+    $_SESSION["hicost"]=$_REQUEST["hicost"];
+    $_SESSION["keyword"]=$_REQUEST["keyword"];
+    $_SESSION["chiiki"]=$_REQUEST["chiiki"];
+    $_SESSION["page"]=1;
+
+}
+
+if($_GET["sort"]!=NULL) {
+
+    $_GET["sort"]=str_replace("update","",str_replace("delete","",str_replace("select","",str_replace("drop","",$_GET["sort"]))));
+    $_SESSION["sort"]=$_GET["sort"];
+
+}
+else if($_SESSION["sort"]==NULL) {
+
+    $_SESSION["sort"]="kakaku";
+
+}
+
+if($_GET["cid"]!=NULL) {
+
+    if($_SESSION["cid"]!=$_GET["cid"]) {
+
+        $_SESSION["madori"]="";
+        $_SESSION["lowcost"]="";
+        $_SESSION["hicost"]="";
+        $_SESSION["keyword"]="";
+        $_SESSION["chiiki"]="";
+        $_SESSION["page"]=1;
+
+    }
+
+    $_SESSION["cid"]=$_GET["cid"];
+
+}
+
+$re1obj->type=$_SESSION["cid"];
+$re1data=$re1obj->GetReList(2,$_SESSION["sort"]);
+$maxpage=ceil(($re1obj->numrows)/$_SESSION["lim"]);
 
 ?>
 <!DOCTYPE html>

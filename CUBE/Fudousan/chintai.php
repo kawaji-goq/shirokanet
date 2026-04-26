@@ -7,18 +7,18 @@ include $_SERVER["DOCUMENT_ROOT"]."/CUBE/Fudousan/config.php";
 include $_SERVER["DOCUMENT_ROOT"]."/CUBE/ITC/modules.php";
 include $_SERVER["DOCUMENT_ROOT"]."/config/config.php";
 
-	if($usedb==NULL||$usedb=="") {
-		$usedb="postgresql";
-	}
-	
-	$dbobj=Cube_DB :: UseDB('mysql');
-	
-	if($dbname!=NULL&&$dbname!="") {
-			$dbobj->name=$dbname;
-	}
-	else {
-		$dbobj->name=str_replace("www.","",$_SERVER["HTTP_HOST"]);
-	}
+if($usedb==NULL||$usedb=="") {
+    $usedb="postgresql";
+}
+
+$dbobj=Cube_DB :: UseDB('mysql');
+
+if($dbname!=NULL&&$dbname!="") {
+        $dbobj->name=$dbname;
+}
+else {
+    $dbobj->name=str_replace("www.","",$_SERVER["HTTP_HOST"]);
+}
 
 $dbobj->Connect();
 
@@ -55,7 +55,7 @@ if($_REQUEST["seach_bukken_x"]!=NULL) {
 	$_SESSION["page"]=1;
 }
 
-if($_REQUEST["btm_hikaku"]=="ÁªÂò¤·¤¿Êª·ï¤òÈæ³Ó¤¹¤ë") {
+if($_REQUEST["btm_hikaku"]=="ï¿½ï¿½ï¿½ò¤·¤ï¿½Êªï¿½ï¿½ï¿½ï¿½ï¿½Ó¤ï¿½ï¿½ï¿½") {
 
 	for($a=0;$_REQUEST["comparison"][$a]!=NULL;$a++) {
 		$chksql="select * from hikaku where sessionid = '".session_id()."' and bid=".$_REQUEST["comparison"][$a]."";
@@ -87,7 +87,7 @@ if(str_replace("www.","",$_SERVER['HTTP_HOST'])=="cubes.jp"){
 <meta name="robots" content="noindex,nofollow">
 <meta name="robots" content="noarchive">
 <?php
-}?><title><?php echo $tenpodata["pagetitle"];?> / Êª·ï¤ò¼Ú¤ê¤ë</title>
+}?><title><?php echo $tenpodata["pagetitle"];?> / Êªï¿½ï¿½ï¿½Ú¤ï¿½ï¿½</title>
 <?php include $_SERVER['DOCUMENT_ROOT']. '/CUBE/Fudousan/template/meta.php'; ?>
 <style type="text/css">
 <!--
@@ -127,10 +127,10 @@ switch($_REQUEST["cid"]) {
             <tr>
                 <td width="91" bgcolor="#FAFBFC"><img src="img/bukken/BukkenSearchCategoryRent.jpg" width="91" height="25" border="0" /></td>
                 <td width="286" bgcolor="#FAFBFC">
-                    <p><a href="chintai.php?cid=1">¡¦¥¢¥Ñ¡¼¥È¡¦¥Þ¥ó¥·¥ç¥ó</a>¡¡<a href="chintai.php?cid=2">¡¦¸Í·ú¤Æ</a>¡¡<a href="chintai.php?cid=3">¡¦»ö¶ÈÍÑ</a></p>
+                    <p><a href="chintai.php?cid=1">ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½È¡ï¿½ï¿½Þ¥ó¥·¥ï¿½ï¿½</a>ï¿½ï¿½<a href="chintai.php?cid=2">ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½</a>ï¿½ï¿½<a href="chintai.php?cid=3">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></p>
                 </td>
                 <td width="86" bgcolor="#FAFBFC"><img src="img/bukken/BukkenSearchCategoryBuy.jpg" width="86" height="25" /></td>
-                <td width="294" bgcolor="#FAFBFC"><a href="baibai.php?cid=4">¡¦¸Í·ú¤Æ¡¦¥Þ¥ó¥·¥ç¥ó</a>¡¡<a href="baibai.php?cid=6">¡¦»ö¶ÈÍÑÊª·ï</a>¡¡<a href="baibai.php?cid=5">¡¦ÅÚÃÏ</a></td>
+                <td width="294" bgcolor="#FAFBFC"><a href="baibai.php?cid=4">ï¿½ï¿½ï¿½Í·ï¿½ï¿½Æ¡ï¿½ï¿½Þ¥ó¥·¥ï¿½ï¿½</a>ï¿½ï¿½<a href="baibai.php?cid=6">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êªï¿½ï¿½</a>ï¿½ï¿½<a href="baibai.php?cid=5">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></td>
                 <td width="11" align="right"><img src="img/bukken/BukkenSearchCategoryRight.jpg" width="11" height="25" /></td>
             </tr>
             <tr>
@@ -154,11 +154,11 @@ switch($_REQUEST["cid"]) {
                                                   <td><img src="img/bukken/BukkenSearchMadori.jpg" width="67" height="23" /></td>
                                                   <td>
                                                       <select id="madori" name="madori">
-                                                          <option value="1"<?php if($_SESSION["madori"]==1){echo " selected";}?>>1£Ò,£Ë,£Ä£Ë,£Ì£Ä£Ë</option>
-                                                          <option value="2"<?php if($_SESSION["madori"]==2){echo " selected";}?>>2£Ë,£Ä£Ë,£Ì£Ä£Ë</option>
-                                                          <option value="3"<?php if($_SESSION["madori"]==3){echo " selected";}?>>3£Ä£Ë,£Ì£Ä£Ë</option>
-                                                          <option value="4"<?php if($_SESSION["madori"]==4){echo " selected";}?>>4£Ä£Ë°Ê¾å</option>
-                                                          <option value="0"<?php if($_SESSION["madori"]==0){echo " selected";}?>>»ØÄêÌµ¤·</option>
+                                                          <option value="1"<?php if($_SESSION["madori"]==1){echo " selected";}?>>1ï¿½ï¿½,ï¿½ï¿½,ï¿½Ä£ï¿½,ï¿½Ì£Ä£ï¿½</option>
+                                                          <option value="2"<?php if($_SESSION["madori"]==2){echo " selected";}?>>2ï¿½ï¿½,ï¿½Ä£ï¿½,ï¿½Ì£Ä£ï¿½</option>
+                                                          <option value="3"<?php if($_SESSION["madori"]==3){echo " selected";}?>>3ï¿½Ä£ï¿½,ï¿½Ì£Ä£ï¿½</option>
+                                                          <option value="4"<?php if($_SESSION["madori"]==4){echo " selected";}?>>4ï¿½Ä£Ë°Ê¾ï¿½</option>
+                                                          <option value="0"<?php if($_SESSION["madori"]==0){echo " selected";}?>>ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½</option>
                                                       </select>
                                                   </td>
                                                   <td><img src="img/bukken/BukkenSearchChiiki.jpg" width="39" height="23" /></td>
@@ -172,7 +172,7 @@ switch($_REQUEST["cid"]) {
                                                           <?php
 												}
 												?>
-                                                          <option value=""<?php if($_SESSION["chiiki"]==""){echo " selected";}?>>»ØÄêÌµ¤·</option>
+                                                          <option value=""<?php if($_SESSION["chiiki"]==""){echo " selected";}?>>ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½</option>
                                                       </select>
                                                   </td>
                                                   <td><img src="img/bukken/BukkenSearchChinryou.jpg" width="49" height="23" /></td>
@@ -220,7 +220,7 @@ switch($_REQUEST["cid"]) {
             <table width="768"  border="0" align="center" cellpadding="0" cellspacing="0" class="font12">
               
                 <tr>
-                    <td width="184" height="30" bgcolor="#FFFFFF"><font color="#FF6600">¡ü¥¢¥Ñ¡¼¥È¡¦¥Þ¥ó¥·¥ç¥óÊª·ï°ìÍ÷ </font></td>
+                    <td width="184" height="30" bgcolor="#FFFFFF"><font color="#FF6600">ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½È¡ï¿½ï¿½Þ¥ó¥·¥ï¿½ï¿½Êªï¿½ï¿½ï¿½ï¿½ï¿½ </font></td>
                     <td width="400" bgcolor="#FFFFFF">
                         <div align="center"></div>
                     </td>
@@ -233,7 +233,7 @@ switch($_REQUEST["cid"]) {
                                 <td width="100" nowrap="nowrap">
                                     <div align="right">
                                         <?php if($_SESSION["page"]!=NULL&&$_SESSION["page"]!=1){  ?>
-                                        <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]-1;?>">&lt;&lt;¡¡Á°¤Î10·ï </a>
+                                        <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]-1;?>">&lt;&lt;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½ </a>
                                         <?php }?>
                                     </div>
                                 </td>
@@ -243,10 +243,10 @@ switch($_REQUEST["cid"]) {
 if($maxpage>1&&$maxpage!=NULL&&$maxpage!=0){
 for($prows=1;$prows<=$maxpage;$prows++) { 
 		  	if($prows==$_SESSION["page"]) {
-		  		echo '¡¡<span class="nowpagenum">'.$prows.'</span>¡¡';
+		  		echo 'ï¿½ï¿½<span class="nowpagenum">'.$prows.'</span>ï¿½ï¿½';
 			}
 			else {
-		  		echo "¡¡<a href=\"?cid=".$_SESSION["cid"]."&page=".$prows."\">".$prows."</a>¡¡";
+		  		echo "ï¿½ï¿½<a href=\"?cid=".$_SESSION["cid"]."&page=".$prows."\">".$prows."</a>ï¿½ï¿½";
 			}
 		  
 		  }
@@ -256,7 +256,7 @@ for($prows=1;$prows<=$maxpage;$prows++) {
                                 <td width="100" nowrap="nowrap">
                                     <div align="left">
                                         <?php if($maxpage!=$_SESSION["page"]&&$maxpage>1) {?>
-                                        <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]+1;?>"> ¼¡¤Î10·ï¡¡&gt;&gt;</a>
+                                        <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]+1;?>"> ï¿½ï¿½ï¿½ï¿½10ï¿½ï¡¡&gt;&gt;</a>
                                         <?php } ?>
                                     </div>
                                 </td>
@@ -278,7 +278,7 @@ for($prows=1;$prows<=$maxpage;$prows++) {
                         <div align="center"><?php echo $bsetdata["ensen_name"] ?></div>
                     </th>
                     <th width="11%" rowspan="2" bgcolor="#EBEBEB">
-                        <div align="center">¾ÜºÙ</div>
+                        <div align="center">ï¿½Üºï¿½</div>
                     </th>
                 </tr>
                 <tr>
@@ -324,18 +324,18 @@ else {
 																														echo $re1data[$re1rows]["madori"].$re1data[$re1rows]["madori_tani"]; }else{ echo "-";}?>
                         <br />
                         </span>
-                        <?php if($re1data[$re1rows]["senyumenseki"]!=NULL) {echo $re1data[$re1rows]["senyumenseki"]."m<sup>2</sup><br />¡ÊÌó".number_format($re1data[$re1rows]["senyumenseki"]*0.3025,2)."ÄÚ¡Ë";}else{ echo "-";}?>
+                        <?php if($re1data[$re1rows]["senyumenseki"]!=NULL) {echo $re1data[$re1rows]["senyumenseki"]."m<sup>2</sup><br />ï¿½ï¿½ï¿½ï¿½".number_format($re1data[$re1rows]["senyumenseki"]*0.3025,2)."ï¿½Ú¡ï¿½";}else{ echo "-";}?>
                     </td>
                     <td width="23%" align="left" bgcolor="#FFFFFF" class="font12"><?php echo $re1data[$re1rows]["jyusyo1"].$re1data[$re1rows]["jyusyo2"];if($re1data[$re1rows]["banchichk"]==1) {echo $re1data[$re1rows]["jyusyo3"];} ?></td>
                     <td colspan="3" bgcolor="#FFFFFF" class="font12">
-                        <div align="center"><?php if($re1data[$re1rows]["eki"]!=NULL) {echo $re1data[$re1rows]["eki"]."±Ø";} ?>
+                        <div align="center"><?php if($re1data[$re1rows]["eki"]!=NULL) {echo $re1data[$re1rows]["eki"]."ï¿½ï¿½";} ?>
                             <?php if($re1data[$re1rows]["ensen"]!=NULL) {echo "(".$re1data[$re1rows]["ensen"].")";} ?>
-                            <?php if($re1data[$re1rows]["ekiho"]!=NULL) {echo "¡¦ÅÌÊâ".$re1data[$re1rows]["ekiho"]."Ê¬";} ?>
+                            <?php if($re1data[$re1rows]["ekiho"]!=NULL) {echo "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".$re1data[$re1rows]["ekiho"]."Ê¬";} ?>
                         </div>
                     </td>
                     <td rowspan="2" align="center" bgcolor="#FFFFFF">
                         <div align="center">
-                            <div align="center"><a href="chintai_d.php?bid=<?php echo $re1data[$re1rows]["id"]; ?>" >¾ÜºÙ</a></div>
+                            <div align="center"><a href="chintai_d.php?bid=<?php echo $re1data[$re1rows]["id"]; ?>" >ï¿½Üºï¿½</a></div>
                         <a href="chintai_d.php?bid=<?php echo $re1data[$re1rows]["id"]; ?>" ></a></div>
                     <a href="baibai_d.php?bid=<?php echo $re1data[$re1rows]["id"]; ?>"></a></td>
                 </tr>
@@ -346,11 +346,11 @@ else {
                                 <tr>
                                     <td>
                                         <div align="right">
-                                            <?php if($re1data[$re1rows]["kakaku"]!=NULL) {echo "<span class=\"list_price\">".numberformat($re1data[$re1rows]["kakaku"])."</span><span class=\"list_price_tani\">Ëü±ß</span>"; }else {echo "-";}?><br />
+                                            <?php if($re1data[$re1rows]["kakaku"]!=NULL) {echo "<span class=\"list_price\">".numberformat($re1data[$re1rows]["kakaku"])."</span><span class=\"list_price_tani\">ï¿½ï¿½ï¿½ï¿½</span>"; }else {echo "-";}?><br />
                                             <?php 
 																				if($re1data[$re1rows]["kanrihi"]!=NULL) {
 																				?>
-                                            <?php echo numberformat($re1data[$re1rows]["kanrihi"]); ?>±ß
+                                            <?php echo numberformat($re1data[$re1rows]["kanrihi"]); ?>ï¿½ï¿½
                                             <?php 
 																								}
 																								else {
@@ -364,21 +364,21 @@ else {
                         </div>
                     </td>
                     <td align="center" bgcolor="#FFFFFF" class="font12">
-                        <?php if($re1data[$re1rows]["reikin"]!=NULL){echo $re1data[$re1rows]["reikin"]."¥ö·î ";} ?>
+                        <?php if($re1data[$re1rows]["reikin"]!=NULL){echo $re1data[$re1rows]["reikin"]."ï¿½ï¿½ï¿½ï¿½ ";} ?>
                         <?php 
 																																		if($re1data[$re1rows]["reikin_tani"]!=NULL){
-																																		echo $re1data[$re1rows]["reikin_tani"]."Ëü±ß";
+																																		echo $re1data[$re1rows]["reikin_tani"]."ï¿½ï¿½ï¿½ï¿½";
 																																		}
 																																		?>
                         <br />
                         <?php 
 																																		if($re1data[$re1rows]["shikikin"]!=NULL){
-																																			echo $re1data[$re1rows]["shikikin"]."¥ö·î ";
+																																			echo $re1data[$re1rows]["shikikin"]."ï¿½ï¿½ï¿½ï¿½ ";
 																																			}
 																																			 ?>
                         <?php 
 																																		if($re1data[$re1rows]["sikikintani"]!=NULL){
-																																			echo $re1data[$re1rows]["sikikintani"]."Ëü±ß";
+																																			echo $re1data[$re1rows]["sikikintani"]."ï¿½ï¿½ï¿½ï¿½";
 																																		}?>
                     </td>
                     <td align="center" bgcolor="#FFFFFF" class="font12">
@@ -391,7 +391,7 @@ else {
 																																									echo $re1data[$re1rows]["chiku_nen"]."Ç¯";
 																																								}
 																																									if($re1data[$re1rows]["chiku_tsuki"]!=NULL){ 
-																																									echo $re1data[$re1rows]["chiku_tsuki"]."·î";
+																																									echo $re1data[$re1rows]["chiku_tsuki"]."ï¿½ï¿½";
 																																								} ?> 
                     </td>
                 </tr>
@@ -421,10 +421,10 @@ $bsetdata=$dbobj->GetData("select * from bukken_setting2 where cate_id =2");
                 <tr>
                     <td width="91" bgcolor="#FAFBFC"><img src="img/bukken/BukkenSearchCategoryRent.jpg" width="91" height="25" border="0" /></td>
                     <td width="286" bgcolor="#FAFBFC">
-                        <p><a href="chintai.php?cid=1">¡¦¥¢¥Ñ¡¼¥È¡¦¥Þ¥ó¥·¥ç¥ó</a>¡¡<a href="chintai.php?cid=2">¡¦¸Í·ú¤Æ</a>¡¡<a href="chintai.php?cid=3">¡¦»ö¶ÈÍÑ</a></p>
+                        <p><a href="chintai.php?cid=1">ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½È¡ï¿½ï¿½Þ¥ó¥·¥ï¿½ï¿½</a>ï¿½ï¿½<a href="chintai.php?cid=2">ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½</a>ï¿½ï¿½<a href="chintai.php?cid=3">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></p>
                     </td>
                     <td width="86" bgcolor="#FAFBFC"><img src="img/bukken/BukkenSearchCategoryBuy.jpg" width="86" height="25" /></td>
-                    <td width="294" bgcolor="#FAFBFC"><a href="baibai.php?cid=4">¡¦¸Í·ú¤Æ¡¦¥Þ¥ó¥·¥ç¥ó</a>¡¡<a href="baibai.php?cid=6">¡¦»ö¶ÈÍÑÊª·ï</a>¡¡<a href="baibai.php?cid=5">¡¦ÅÚÃÏ</a></td>
+                    <td width="294" bgcolor="#FAFBFC"><a href="baibai.php?cid=4">ï¿½ï¿½ï¿½Í·ï¿½ï¿½Æ¡ï¿½ï¿½Þ¥ó¥·¥ï¿½ï¿½</a>ï¿½ï¿½<a href="baibai.php?cid=6">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êªï¿½ï¿½</a>ï¿½ï¿½<a href="baibai.php?cid=5">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></td>
                     <td width="11" align="right"><img src="img/bukken/BukkenSearchCategoryRight.jpg" width="11" height="25" /></td>
                 </tr>
                 <tr>
@@ -448,13 +448,13 @@ $bsetdata=$dbobj->GetData("select * from bukken_setting2 where cate_id =2");
                                                 <td><img src="img/bukken/BukkenSearchMadori.jpg" width="67" height="23" /></td>
                                                 <td>
                                                     <select id="madori" name="madori">
-                                                        <option value="1"<?php if($_SESSION["madori"]==1){echo " selected";}?>>1£Ò,£Ë,£Ä£Ë,£Ì£Ä£Ë</option>
-                                                        <option value="2"<?php if($_SESSION["madori"]==2){echo " selected";}?>>2£Ë,£Ä£Ë,£Ì£Ä£Ë</option>
-                                                        <option value="3"<?php if($_SESSION["madori"]==3){echo " selected";}?>>3£Ä£Ë,£Ì£Ä£Ë</option>
+                                                        <option value="1"<?php if($_SESSION["madori"]==1){echo " selected";}?>>1ï¿½ï¿½,ï¿½ï¿½,ï¿½Ä£ï¿½,ï¿½Ì£Ä£ï¿½</option>
+                                                        <option value="2"<?php if($_SESSION["madori"]==2){echo " selected";}?>>2ï¿½ï¿½,ï¿½Ä£ï¿½,ï¿½Ì£Ä£ï¿½</option>
+                                                        <option value="3"<?php if($_SESSION["madori"]==3){echo " selected";}?>>3ï¿½Ä£ï¿½,ï¿½Ì£Ä£ï¿½</option>
                                                         <option value="4"
                                                             <?php if($_SESSION["madori"]==4){echo " selected";}?>>
-                                                            4£Ä£Ë°Ê¾å</option>
-                                                        <option value="0"<?php if($_SESSION["madori"]==0){echo " selected";}?>>»ØÄêÌµ¤·</option>
+                                                            4ï¿½Ä£Ë°Ê¾ï¿½</option>
+                                                        <option value="0"<?php if($_SESSION["madori"]==0){echo " selected";}?>>ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½</option>
                                                     </select>
                                                 </td>
                                                 <td><img src="img/bukken/BukkenSearchChiiki.jpg" width="39" height="23" /></td>
@@ -468,7 +468,7 @@ $bsetdata=$dbobj->GetData("select * from bukken_setting2 where cate_id =2");
                                                         <?php
 												}
 												?>
-                                                        <option value=""<?php if($_SESSION["chiiki"]==""){echo " selected";}?>>»ØÄêÌµ¤·</option>
+                                                        <option value=""<?php if($_SESSION["chiiki"]==""){echo " selected";}?>>ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½</option>
                                                     </select>
                                                 </td>
                                                 <td><img src="img/bukken/BukkenSearchChinryou.jpg" width="49" height="23" /></td>
@@ -514,7 +514,7 @@ $bsetdata=$dbobj->GetData("select * from bukken_setting2 where cate_id =2");
             </table>
             <table width="768"  border="0" align="center" cellpadding="0" cellspacing="0" class="font12">
                 <tr>
-                    <td width="184" height="30" bgcolor="#FFFFFF"><font color="#FF6600">¡ü¸Í·ú¤ÆÊª·ï°ìÍ÷ </font></td>
+                    <td width="184" height="30" bgcolor="#FFFFFF"><font color="#FF6600">ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½Êªï¿½ï¿½ï¿½ï¿½ï¿½ </font></td>
                     <td width="400" bgcolor="#FFFFFF">
                         <div align="center"></div>
                     </td>
@@ -527,7 +527,7 @@ $bsetdata=$dbobj->GetData("select * from bukken_setting2 where cate_id =2");
                                 <td width="100" nowrap="nowrap">
                                     <div align="right">
                                         <?php if($_SESSION["page"]!=NULL&&$_SESSION["page"]!=1){  ?>
-                                        <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]-1;?>">&lt;&lt;¡¡Á°¤Î10·ï </a>
+                                        <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]-1;?>">&lt;&lt;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½ </a>
                                         <?php }?>
                                     </div>
                                 </td>
@@ -537,10 +537,10 @@ $bsetdata=$dbobj->GetData("select * from bukken_setting2 where cate_id =2");
 if($maxpage>1&&$maxpage!=NULL){
 for($prows=1;$prows<=$maxpage;$prows++) { 
 		  	if($prows==$_SESSION["page"]) {
-		  		echo '¡¡<span class="nowpagenum">'.$prows.'</span>¡¡';
+		  		echo 'ï¿½ï¿½<span class="nowpagenum">'.$prows.'</span>ï¿½ï¿½';
 			}
 			else {
-		  		echo "¡¡<a href=\"?cid=".$_SESSION["cid"]."&page=".$prows."\">".$prows."</a>¡¡";
+		  		echo "ï¿½ï¿½<a href=\"?cid=".$_SESSION["cid"]."&page=".$prows."\">".$prows."</a>ï¿½ï¿½";
 			}
 		  
 		  }
@@ -550,7 +550,7 @@ for($prows=1;$prows<=$maxpage;$prows++) {
                                 <td width="100" nowrap="nowrap">
                                     <div align="left">
                                         <?php if($maxpage!=$_SESSION["page"]&&$maxpage>1) {?>
-                                        <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]+1;?>"> ¼¡¤Î10·ï¡¡&gt;&gt;</a>
+                                        <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]+1;?>"> ï¿½ï¿½ï¿½ï¿½10ï¿½ï¡¡&gt;&gt;</a>
                                         <?php } ?>
                                     </div>
                                 </td>
@@ -571,7 +571,7 @@ for($prows=1;$prows<=$maxpage;$prows++) {
                         <div align="center"><?php echo $bsetdata["ensen_name"] ?></div>
                     </th>
                     <th width="11%" rowspan="2" bgcolor="#EBEBEB">
-                        <div align="center">¾ÜºÙ</div>
+                        <div align="center">ï¿½Üºï¿½</div>
                     </th>
                 </tr>
                 <tr>
@@ -617,18 +617,18 @@ else {
 																														echo $re1data[$re1rows]["madori"].$re1data[$re1rows]["madori_tani"]; }else{ echo "-";}?>
                         <br />
                         </span>
-                            <?php if($re1data[$re1rows]["senyumenseki"]!=NULL) {echo $re1data[$re1rows]["senyumenseki"]."m<sup>2</sup><br />¡ÊÌó".number_format($re1data[$re1rows]["senyumenseki"]*0.3025,2)."ÄÚ¡Ë";}else{ echo "-";}?>
+                            <?php if($re1data[$re1rows]["senyumenseki"]!=NULL) {echo $re1data[$re1rows]["senyumenseki"]."m<sup>2</sup><br />ï¿½ï¿½ï¿½ï¿½".number_format($re1data[$re1rows]["senyumenseki"]*0.3025,2)."ï¿½Ú¡ï¿½";}else{ echo "-";}?>
                     </td>
                     <td width="23%" align="left" bgcolor="#FFFFFF" class="font12"><?php echo $re1data[$re1rows]["jyusyo1"].$re1data[$re1rows]["jyusyo2"];if($re1data[$re1rows]["banchichk"]==1) {echo $re1data[$re1rows]["jyusyo3"];} ?></td>
                     <td colspan="3" bgcolor="#FFFFFF" class="font12">
-                        <div align="center"><?php if($re1data[$re1rows]["eki"]!=NULL) {echo $re1data[$re1rows]["eki"]."±Ø";} ?>
+                        <div align="center"><?php if($re1data[$re1rows]["eki"]!=NULL) {echo $re1data[$re1rows]["eki"]."ï¿½ï¿½";} ?>
                                 <?php if($re1data[$re1rows]["ensen"]!=NULL) {echo "(".$re1data[$re1rows]["ensen"].")";} ?>
-                                <?php if($re1data[$re1rows]["ekiho"]!=NULL) {echo "¡¦ÅÌÊâ".$re1data[$re1rows]["ekiho"]."Ê¬";} ?>
+                                <?php if($re1data[$re1rows]["ekiho"]!=NULL) {echo "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".$re1data[$re1rows]["ekiho"]."Ê¬";} ?>
                         </div>
                     </td>
                     <td rowspan="2" align="center" bgcolor="#FFFFFF">
                         <div align="center">
-                            <div align="center"><a href="chintai_d2.php?bid=<?php echo $re1data[$re1rows]["id"]; ?>" >¾ÜºÙ</a></div>
+                            <div align="center"><a href="chintai_d2.php?bid=<?php echo $re1data[$re1rows]["id"]; ?>" >ï¿½Üºï¿½</a></div>
                             <a href="chintai_d.php?bid=<?php echo $re1data[$re1rows]["id"]; ?>" ></a></div>
                         <a href="baibai_d.php?bid=<?php echo $re1data[$re1rows]["id"]; ?>"></a></td>
                 </tr>
@@ -639,12 +639,12 @@ else {
                                 <tr>
                                     <td>
                                         <div align="right">
-                                            <?php if($re1data[$re1rows]["kakaku"]!=NULL) {echo "<span class=\"list_price\">".$re1data[$re1rows]["kakaku"]."</span><span class=\"list_price_tani\">Ëü±ß</span>"; }else {echo "-";}?>
+                                            <?php if($re1data[$re1rows]["kakaku"]!=NULL) {echo "<span class=\"list_price\">".$re1data[$re1rows]["kakaku"]."</span><span class=\"list_price_tani\">ï¿½ï¿½ï¿½ï¿½</span>"; }else {echo "-";}?>
                                             <br />
                                             <?php 
 																				if($re1data[$re1rows]["kanrihi"]!=NULL) {
 																				?>
-                                            <?php echo number_format($re1data[$re1rows]["kanrihi"]); ?>±ß
+                                            <?php echo number_format($re1data[$re1rows]["kanrihi"]); ?>ï¿½ï¿½
                                             <?php 
 																								}
 																								else {
@@ -658,21 +658,21 @@ else {
                         </div>
                     </td>
                     <td align="center" bgcolor="#FFFFFF" class="font12">
-                        <?php if($re1data[$re1rows]["reikin"]!=NULL){echo $re1data[$re1rows]["reikin"]."¥ö·î ";} ?>
+                        <?php if($re1data[$re1rows]["reikin"]!=NULL){echo $re1data[$re1rows]["reikin"]."ï¿½ï¿½ï¿½ï¿½ ";} ?>
                         <?php 
 																																		if($re1data[$re1rows]["reikin_tani"]!=NULL){
-																																		echo $re1data[$re1rows]["reikin_tani"]."Ëü±ß";
+																																		echo $re1data[$re1rows]["reikin_tani"]."ï¿½ï¿½ï¿½ï¿½";
 																																		}
 																																		?>
                         <br />
                         <?php 
 																																		if($re1data[$re1rows]["shikikin"]!=NULL){
-																																			echo $re1data[$re1rows]["shikikin"]."¥ö·î ";
+																																			echo $re1data[$re1rows]["shikikin"]."ï¿½ï¿½ï¿½ï¿½ ";
 																																			}
 																																			 ?>
                         <?php 
 																																		if($re1data[$re1rows]["sikikintani"]!=NULL){
-																																			echo $re1data[$re1rows]["sikikintani"]."Ëü±ß";
+																																			echo $re1data[$re1rows]["sikikintani"]."ï¿½ï¿½ï¿½ï¿½";
 																																		}?>
                     </td>
                     <td align="center" bgcolor="#FFFFFF" class="font12">
@@ -685,7 +685,7 @@ else {
 																																									echo $re1data[$re1rows]["chiku_nen"]."Ç¯";
 																																								}
 																																									if($re1data[$re1rows]["chiku_tsuki"]!=NULL){ 
-																																									echo $re1data[$re1rows]["chiku_tsuki"]."·î";
+																																									echo $re1data[$re1rows]["chiku_tsuki"]."ï¿½ï¿½";
 																																								} ?> 
                     </td>
                 </tr>
@@ -716,10 +716,10 @@ $bsetdata=$dbobj->GetData("select * from bukken_setting2 where cate_id =3");
                 <tr>
                     <td width="91" bgcolor="#FAFBFC"><img src="img/bukken/BukkenSearchCategoryRent.jpg" width="91" height="25" border="0" /></td>
                     <td width="286" bgcolor="#FAFBFC">
-                        <p><a href="chintai.php?cid=1">¡¦¥¢¥Ñ¡¼¥È¡¦¥Þ¥ó¥·¥ç¥ó</a>¡¡<a href="chintai.php?cid=2">¡¦¸Í·ú¤Æ</a>¡¡<a href="chintai.php?cid=3">¡¦»ö¶ÈÍÑ</a></p>
+                        <p><a href="chintai.php?cid=1">ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½È¡ï¿½ï¿½Þ¥ó¥·¥ï¿½ï¿½</a>ï¿½ï¿½<a href="chintai.php?cid=2">ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½</a>ï¿½ï¿½<a href="chintai.php?cid=3">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></p>
                     </td>
                     <td width="86" bgcolor="#FAFBFC"><img src="img/bukken/BukkenSearchCategoryBuy.jpg" width="86" height="25" /></td>
-                    <td width="294" bgcolor="#FAFBFC"><a href="baibai.php?cid=4">¡¦¸Í·ú¤Æ¡¦¥Þ¥ó¥·¥ç¥ó</a>¡¡<a href="baibai.php?cid=6">¡¦»ö¶ÈÍÑÊª·ï</a>¡¡<a href="baibai.php?cid=5">¡¦ÅÚÃÏ</a></td>
+                    <td width="294" bgcolor="#FAFBFC"><a href="baibai.php?cid=4">ï¿½ï¿½ï¿½Í·ï¿½ï¿½Æ¡ï¿½ï¿½Þ¥ó¥·¥ï¿½ï¿½</a>ï¿½ï¿½<a href="baibai.php?cid=6">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êªï¿½ï¿½</a>ï¿½ï¿½<a href="baibai.php?cid=5">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></td>
                     <td width="11" align="right"><img src="img/bukken/BukkenSearchCategoryRight.jpg" width="11" height="25" /></td>
                 </tr>
                 <tr>
@@ -751,7 +751,7 @@ $bsetdata=$dbobj->GetData("select * from bukken_setting2 where cate_id =3");
                                                         <?php
 												}
 												?>
-                                                        <option value=""<?php if($_SESSION["chiiki"]==""){echo " selected";}?>>»ØÄêÌµ¤·</option>
+                                                        <option value=""<?php if($_SESSION["chiiki"]==""){echo " selected";}?>>ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½</option>
                                                     </select>
                                                 </td>
                                                 <td><img src="img/bukken/BukkenSearchChinryou.jpg" width="49" height="23" /></td>
@@ -799,7 +799,7 @@ $bsetdata=$dbobj->GetData("select * from bukken_setting2 where cate_id =3");
         
             <table width="768"  border="0" align="center" cellpadding="0" cellspacing="0" class="font12">
                 <tr>
-                    <td width="184" height="30" bgcolor="#FFFFFF"><font color="#FF6600">¡ü»ö¶ÈÍÑÊª·ï°ìÍ÷ </font></td>
+                    <td width="184" height="30" bgcolor="#FFFFFF"><font color="#FF6600">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êªï¿½ï¿½ï¿½ï¿½ï¿½ </font></td>
                     <td width="400" bgcolor="#FFFFFF">
                         <div align="center"></div>
                     </td>
@@ -812,7 +812,7 @@ $bsetdata=$dbobj->GetData("select * from bukken_setting2 where cate_id =3");
                                 <td width="100" nowrap="nowrap">
                                     <div align="right">
                                         <?php if($_SESSION["page"]!=NULL&&$_SESSION["page"]!=1){  ?>
-                                        <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]-1;?>">&lt;&lt;¡¡Á°¤Î10·ï </a>
+                                        <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]-1;?>">&lt;&lt;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½ </a>
                                         <?php }?>
                                     </div>
                                 </td>
@@ -822,10 +822,10 @@ $bsetdata=$dbobj->GetData("select * from bukken_setting2 where cate_id =3");
 if($maxpage>1&&$maxpage!=NULL){
 for($prows=1;$prows<=$maxpage;$prows++) { 
 		  	if($prows==$_SESSION["page"]) {
-		  		echo '¡¡<span class="nowpagenum">'.$prows.'</span>¡¡';
+		  		echo 'ï¿½ï¿½<span class="nowpagenum">'.$prows.'</span>ï¿½ï¿½';
 			}
 			else {
-		  		echo "¡¡<a href=\"?cid=".$_SESSION["cid"]."&page=".$prows."\">".$prows."</a>¡¡";
+		  		echo "ï¿½ï¿½<a href=\"?cid=".$_SESSION["cid"]."&page=".$prows."\">".$prows."</a>ï¿½ï¿½";
 			}
 		  
 		  }
@@ -835,7 +835,7 @@ for($prows=1;$prows<=$maxpage;$prows++) {
                                 <td width="100" nowrap="nowrap">
                                     <div align="left">
                                         <?php if($maxpage!=$_SESSION["page"]&&$maxpage>1) {?>
-                                        <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]+1;?>"> ¼¡¤Î10·ï¡¡&gt;&gt;</a>
+                                        <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]+1;?>"> ï¿½ï¿½ï¿½ï¿½10ï¿½ï¡¡&gt;&gt;</a>
                                         <?php } ?>
                                     </div>
                                 </td>
@@ -856,7 +856,7 @@ for($prows=1;$prows<=$maxpage;$prows++) {
                         <div align="center"><?php echo $bsetdata["ensen_name"] ?></div>
                     </th>
                     <th width="11%" rowspan="2" bgcolor="#EBEBEB">
-                        <div align="center">¾ÜºÙ</div>
+                        <div align="center">ï¿½Üºï¿½</div>
                     </th>
                 </tr>
                 <tr>
@@ -897,18 +897,18 @@ else {
 ?>
                     </a></td>
                     <td rowspan="2" align="center" valign="middle" bgcolor="#FFFFFF" class="st"><span class="st">
-                        <?php if($re1data[$re1rows]["senyumenseki"]!=NULL) {echo $re1data[$re1rows]["senyumenseki"]."m<sup>2</sup><br />¡ÊÌó".number_format($re1data[$re1rows]["senyumenseki"]*0.3025,2)."ÄÚ¡Ë";}else{ echo "-";}?></span>
+                        <?php if($re1data[$re1rows]["senyumenseki"]!=NULL) {echo $re1data[$re1rows]["senyumenseki"]."m<sup>2</sup><br />ï¿½ï¿½ï¿½ï¿½".number_format($re1data[$re1rows]["senyumenseki"]*0.3025,2)."ï¿½Ú¡ï¿½";}else{ echo "-";}?></span>
                     </td>
                     <td width="23%" align="left" bgcolor="#FFFFFF" class="font12"><?php echo $re1data[$re1rows]["jyusyo1"].$re1data[$re1rows]["jyusyo2"];if($re1data[$re1rows]["banchichk"]==1) {echo $re1data[$re1rows]["jyusyo3"];} ?></td>
                     <td colspan="3" bgcolor="#FFFFFF" class="font12">
-                        <div align="center"><?php if($re1data[$re1rows]["eki"]!=NULL) {echo $re1data[$re1rows]["eki"]."±Ø";} ?>
+                        <div align="center"><?php if($re1data[$re1rows]["eki"]!=NULL) {echo $re1data[$re1rows]["eki"]."ï¿½ï¿½";} ?>
                                 <?php if($re1data[$re1rows]["ensen"]!=NULL) {echo "(".$re1data[$re1rows]["ensen"].")";} ?>
-                                <?php if($re1data[$re1rows]["ekiho"]!=NULL) {echo "¡¦ÅÌÊâ".$re1data[$re1rows]["ekiho"]."Ê¬";} ?>
+                                <?php if($re1data[$re1rows]["ekiho"]!=NULL) {echo "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".$re1data[$re1rows]["ekiho"]."Ê¬";} ?>
                         </div>
                     </td>
                     <td rowspan="2" align="center" bgcolor="#FFFFFF">
                         <div align="center">
-                            <div align="center"><a href="chintai_d3.php?bid=<?php echo $re1data[$re1rows]["id"]; ?>">¾ÜºÙ</a></div>
+                            <div align="center"><a href="chintai_d3.php?bid=<?php echo $re1data[$re1rows]["id"]; ?>">ï¿½Üºï¿½</a></div>
                             <a href="chintai_d.php?bid=<?php echo $re1data[$re1rows]["id"]; ?>" ></a></div>
                         <a href="baibai_d.php?bid=<?php echo $re1data[$re1rows]["id"]; ?>"></a></td>
                 </tr>
@@ -919,12 +919,12 @@ else {
                                 <tr>
                                     <td>
                                         <div align="right">
-                                            <?php if($re1data[$re1rows]["kakaku"]!=NULL) {echo "<span class=\"list_price\">".$re1data[$re1rows]["kakaku"]."</span><span class=\"list_price_tani\">Ëü±ß</span>"; }else {echo "-";}?>
+                                            <?php if($re1data[$re1rows]["kakaku"]!=NULL) {echo "<span class=\"list_price\">".$re1data[$re1rows]["kakaku"]."</span><span class=\"list_price_tani\">ï¿½ï¿½ï¿½ï¿½</span>"; }else {echo "-";}?>
                                             <br />
                                             <?php 
 																				if($re1data[$re1rows]["kanrihi"]!=NULL) {
 																				?>
-                                            <?php echo number_format($re1data[$re1rows]["kanrihi"]); ?>±ß
+                                            <?php echo number_format($re1data[$re1rows]["kanrihi"]); ?>ï¿½ï¿½
                                             <?php 
 																								}
 																								else {
@@ -938,21 +938,21 @@ else {
                         </div>
                     </td>
                     <td align="center" bgcolor="#FFFFFF" class="font12">
-                        <?php if($re1data[$re1rows]["reikin"]!=NULL){echo $re1data[$re1rows]["reikin"]."¥ö·î ";} ?>
+                        <?php if($re1data[$re1rows]["reikin"]!=NULL){echo $re1data[$re1rows]["reikin"]."ï¿½ï¿½ï¿½ï¿½ ";} ?>
                         <?php 
 																																		if($re1data[$re1rows]["reikin_tani"]!=NULL){
-																																		echo $re1data[$re1rows]["reikin_tani"]."Ëü±ß";
+																																		echo $re1data[$re1rows]["reikin_tani"]."ï¿½ï¿½ï¿½ï¿½";
 																																		}
 																																		?>
                         <br />
                         <?php 
 																																		if($re1data[$re1rows]["shikikin"]!=NULL){
-																																			echo $re1data[$re1rows]["shikikin"]."¥ö·î ";
+																																			echo $re1data[$re1rows]["shikikin"]."ï¿½ï¿½ï¿½ï¿½ ";
 																																			}
 																																			 ?>
                         <?php 
 																																		if($re1data[$re1rows]["sikikintani"]!=NULL){
-																																			echo $re1data[$re1rows]["sikikintani"]."Ëü±ß";
+																																			echo $re1data[$re1rows]["sikikintani"]."ï¿½ï¿½ï¿½ï¿½";
 																																		}?>
                     </td>
                     <td align="center" bgcolor="#FFFFFF" class="font12">
@@ -965,7 +965,7 @@ else {
 																																									echo $re1data[$re1rows]["chiku_nen"]."Ç¯";
 																																								}
 																																									if($re1data[$re1rows]["chiku_tsuki"]!=NULL){ 
-																																									echo $re1data[$re1rows]["chiku_tsuki"]."·î";
+																																									echo $re1data[$re1rows]["chiku_tsuki"]."ï¿½ï¿½";
 																																								} ?> 
                     </td>
                 </tr>
@@ -997,7 +997,7 @@ break;
                         <td width="100" nowrap="nowrap">
                             <div align="right">
                                 <?php if($_SESSION["page"]!=NULL&&$_SESSION["page"]!=1){  ?>
-                                <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]-1;?>">&lt;&lt;¡¡Á°¤Î10·ï </a>
+                                <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]-1;?>">&lt;&lt;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½ </a>
                                 <?php }?>
                             </div>
                         </td>
@@ -1007,10 +1007,10 @@ break;
 if($maxpage>1&&$maxpage!=NULL){
 for($prows=1;$prows<=$maxpage;$prows++) { 
 		  	if($prows==$_SESSION["page"]) {
-		  		echo '¡¡<span class="nowpagenum">'.$prows.'</span>¡¡';
+		  		echo 'ï¿½ï¿½<span class="nowpagenum">'.$prows.'</span>ï¿½ï¿½';
 			}
 			else {
-		  		echo "¡¡<a href=\"?cid=".$_SESSION["cid"]."&page=".$prows."\">".$prows."</a>¡¡";
+		  		echo "ï¿½ï¿½<a href=\"?cid=".$_SESSION["cid"]."&page=".$prows."\">".$prows."</a>ï¿½ï¿½";
 			}
 		  
 		  }
@@ -1020,7 +1020,7 @@ for($prows=1;$prows<=$maxpage;$prows++) {
                         <td width="100" nowrap="nowrap">
                             <div align="left">
                                 <?php if($maxpage!=$_SESSION["page"]&&$maxpage>1) {?>
-                                <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]+1;?>"> ¼¡¤Î10·ï¡¡&gt;&gt;</a>
+                                <a href="?cid=<?php echo $_SESSION["cid"];?>&amp;page=<?php echo $_SESSION["page"]+1;?>"> ï¿½ï¿½ï¿½ï¿½10ï¿½ï¡¡&gt;&gt;</a>
                                 <?php } ?>
                             </div>
                         </td>

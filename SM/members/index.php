@@ -122,6 +122,7 @@ if($resultnumrows!=0) {
 	$rows=0;
 	while($rows<$resultnumrows) {
 		$data[$rows]=$dbobj->FetchArray($result,$rows);
+		mb_convert_variables('euc-jp','auto',$data[$rows]);
 		$rows++;
 	}
 }

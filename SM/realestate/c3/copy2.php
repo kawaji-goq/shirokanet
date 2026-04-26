@@ -1672,6 +1672,7 @@ if (ns4) document.captureEvents(Event.KEYDOWN)
                                             <option<?php if($re1data["syumoku"]=="寮"){echo " selected";}?>>寮</option>
                                             <option<?php if($re1data["syumoku"]=="別荘"){echo " selected";}?>>別荘</option>
                                             <option<?php if($re1data["syumoku"]=="土地"){echo " selected";}?>>土地</option>
+                                            <option<?php if($re1data["syumoku"]=="駐車場"){echo " selected";}?>>駐車場</option>
                                             <option<?php if($re1data["syumoku"]=="ビル"){echo " selected";}?>>ビル</option>
                                             <option<?php if($re1data["syumoku"]=="住宅付店舗（一戸建）"){echo " selected";}?>>住宅付店舗（一戸建）</option>
                                             <option<?php if($re1data["syumoku"]=="住宅付店舗（建物一部）"){echo " selected";}?>>住宅付店舗（建物一部）</option>

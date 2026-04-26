@@ -119,7 +119,7 @@ for($i=0;$cdata[$i]["area_id"];$i++) {
 				return $rdata;
 				break;
 			case 3:
-				$sql="select * from bukken where bunrui =  ".$bunrui." and (syumoku like '%»öÌ³½ê%' or syumoku like '%Å¹ÊŞ%' or syumoku like '%¹©¾ì%' or syumoku like '%ÁÒ¸Ë%' or syumoku like '%Î¹´Û%' or syumoku like '%ÎÀ%' or syumoku like '%ÊÌÁñ%' or syumoku like '%ÅÚÃÏ%' or syumoku like '%¥Ó¥ë%' or syumoku like '%¤½¤ÎÂ¾%') ".$wheretxt." and del_chk <>1 order by ".$sort;
+				$sql="select * from bukken where bunrui =  ".$bunrui." and (syumoku like '%»öÌ³½ê%' or syumoku like '%Å¹ÊŞ%' or syumoku like '%¹©¾ì%' or syumoku like '%ÁÒ¸Ë%' or syumoku like '%Î¹´Û%' or syumoku like '%ÎÀ%' or syumoku like '%ÊÌÁñ%' or syumoku like '%ÅÚÃÏ%' or syumoku like '%Ãó¼Ö¾ì%' or syumoku like '%¥Ó¥ë%' or syumoku like '%¤½¤ÎÂ¾%') ".$wheretxt." and del_chk <>1 order by ".$sort;
 				$res=$db->Query($sql);
 				$this->numrows=$db->NumRows($res);
 				$sql.=$db->CreateLimitSql("",$_SESSION["lim"],$_SESSION["lim"]*($_SESSION["page"]-1));
@@ -277,7 +277,7 @@ for($i=0;$cdata[$i]["area_id"];$i++) {
 					break;
 					
 				case 3:
-					$sql="select * from bukken where bunrui =  ".$bunrui." and (syumoku like '%»öÌ³½ê%' or syumoku like '%Å¹ÊŞ%' or syumoku like '%¹©¾ì%' or syumoku like '%ÁÒ¸Ë%' or syumoku like '%Î¹´Û%' or syumoku like '%ÎÀ%' or syumoku like '%ÊÌÁñ%' or syumoku like '%ÅÚÃÏ%' or syumoku like '%¥Ó¥ë%' or syumoku like '%¤½¤ÎÂ¾%') ".$wheretxt." order by ".$sort;
+					$sql="select * from bukken where bunrui =  ".$bunrui." and (syumoku like '%»öÌ³½ê%' or syumoku like '%Å¹ÊŞ%' or syumoku like '%¹©¾ì%' or syumoku like '%ÁÒ¸Ë%' or syumoku like '%Î¹´Û%' or syumoku like '%ÎÀ%' or syumoku like '%ÊÌÁñ%' or syumoku like '%ÅÚÃÏ%' or syumoku like '%Ãó¼Ö¾ì%' or syumoku like '%¥Ó¥ë%' or syumoku like '%¤½¤ÎÂ¾%') ".$wheretxt." order by ".$sort;
 					$res=$db->Query($sql);
 					$this->numrows=$db->NumRows($res);
 					$sql.=$db->CreateLimitSql("",$_SESSION["lim"],$_SESSION["lim"]*($_SESSION["page"]-1));
@@ -455,7 +455,7 @@ $whereary[]="(".implode(" or ",$cwhereary).")";
 				return $rdata;
 				break;
 			case 3:
-				$sql="select * from bukken where bunrui =  ".$bunrui." and (syumoku like '%»öÌ³½ê%' or syumoku like '%Å¹ÊŞ%' or syumoku like '%¹©¾ì%' or syumoku like '%ÁÒ¸Ë%' or syumoku like '%Î¹´Û%' or syumoku like '%ÎÀ%' or syumoku like '%ÊÌÁñ%' or syumoku like '%ÅÚÃÏ%' or syumoku like '%¥Ó¥ë%' or syumoku like '%¤½¤ÎÂ¾%') ".$wheretxt." and del_chk <>1 order by ".$sort;
+				$sql="select * from bukken where bunrui =  ".$bunrui." and (syumoku like '%»öÌ³½ê%' or syumoku like '%Å¹ÊŞ%' or syumoku like '%¹©¾ì%' or syumoku like '%ÁÒ¸Ë%' or syumoku like '%Î¹´Û%' or syumoku like '%ÎÀ%' or syumoku like '%ÊÌÁñ%' or syumoku like '%ÅÚÃÏ%' or syumoku like '%Ãó¼Ö¾ì%' or syumoku like '%¥Ó¥ë%' or syumoku like '%¤½¤ÎÂ¾%') ".$wheretxt." and del_chk <>1 order by ".$sort;
 				$res=$db->Query($sql);
 				$this->numrows=$db->NumRows($res);
 				$sql.=$db->CreateLimitSql("",5,5*($_REQUEST["page"]-1));

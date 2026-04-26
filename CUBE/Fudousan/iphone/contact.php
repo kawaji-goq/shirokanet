@@ -1,83 +1,18 @@
 <?php
 session_start();
-include "Cube/Fudousan/config.php";
-include "ITC/modules.php";
-include $_SERVER["DOCUMENT_ROOT"]."/config/config.php";
-// クラスライブラリ読込
-$path = '/usr/share/pear';
-set_include_path(get_include_path() . PATH_SEPARATOR . $path);
-require_once("Mail.php");
-require_once("Mail/mime.php");
-function sendMail ($subject, $to, $body, $encode, $replyto = null, $replyto_name = null, $cc = null, $cc_name = null)
-{	
-	$params = array(
-		"host" => "mail.sougou-net.jp",
-		"port" => 587,
-		"auth" => true,
-		"username" => "info@sougou-net.jp",
-		"password" => "itc7310",
-		"timeout" => "30"
-	);
-//	$params = array(
-//		"host" => "mail4.itcube.jp",
-//		"port" => 587,
-//		"auth" => true,
-//		"username" => "hiromoto@itcube.jp",
-//		"password" => "ltq7Q46^",
-//		"timeout" => "30"
-//	);
-	$headers = array(
-		"To" => $to,
-		"From" => mb_encode_mimeheader(mb_convert_encoding("総合不動産","iso-2022-jp","auto"))." <{$params["username"]}>",
-		"Subject" => mb_encode_mimeheader(mb_convert_encoding($subject,"iso-2022-jp","auto"))
-	);
-	if ($cc)
-	{
-		if ($cc_name)
-		{
-			$headers["Cc"] = mb_encode_mimeheader($cc_name)." <{$cc}>";
-		} else {
-			$headers["Cc"] = $cc;
-		}
-	}
-	if ($replyto)
-	{
-		if ($replyto_name)
-		{
-			$headers["Reply-To"] = mb_encode_mimeheader($replyto_name)." <{$replyto}>";
-		} else {
-			$headers["Reply-To"] = $replyto;
-		}
-	}
-//	print_r($params);
-//	print_r($headers);
-//	echo $body;
-	echo  mb_convert_encoding(mb_convert_kana($body,"KV"), "utf-8", $encode);
-	
-	$mailObject = Mail::factory("smtp", $params);
-	$mailObject -> send($to, $headers, mb_convert_encoding(mb_convert_kana($body,"KV"), "utf-8", mb_detect_encoding($body)));
-	print_r($mailObject);
-	
-	
+include '../initial.php';
+$re1obj=new RealEstate($dbobj);
+
+$tenpodata=$dbobj->GetData("select * from tenpo_data");
+
+$re1obj=new RealEstate($dbobj);
+
+function sendMail($subject, $to, $body, $encode) {
+    $from = "info@shirokanet.com";
+    mb_language("ja");
+    mb_internal_encoding("EUC-JP");
+    mb_send_mail($to, $subject, $body, "From: " . $from . "\r\nReply-To: " . $from);
 }
-	if($usedb==NULL||$usedb=="") {
-		$usedb="postgresql";
-	}
-	
-	$dbobj=Cube_DB :: UseDB($usedb);	
-	
-	if($dbname!=NULL&&$dbname!="") {
-			$dbobj->name=$dbname;
-	}
-	else {
-		$dbobj->name=str_replace("www.","",$_SERVER["HTTP_HOST"]);
-	}
-	
-	if($usedb=="mysql") {
-			$dbobj->user="admin";
-			$dbobj->pass="itc7310";
-	}
-$dbobj->Connect();
 $re1obj=new RealEstate($dbobj);
 $re1obj->type=$_REQUEST["cid"];
 $re1data=$re1obj->GetReData($_GET["bid"]);

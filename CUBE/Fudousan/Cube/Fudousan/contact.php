@@ -2,25 +2,7 @@
 include "/tmp/CUBE/Fudousan/config.php";
 include "ITC/modules.php";
 	include $_SERVER["DOCUMENT_ROOT"]."/config/config.php";
-
-	if($usedb==NULL||$usedb=="") {
-		$usedb="postgresql";
-	}
-	
-	$dbobj=Cube_DB :: UseDB($usedb);	
-	
-	if($dbname!=NULL&&$dbname!="") {
-			$dbobj->name=$dbname;
-	}
-	else {
-		$dbobj->name=str_replace("www.","",$_SERVER["HTTP_HOST"]);
-	}
-	
-	if($usedb=="mysql") {
-			$dbobj->user="goq";
-			$dbobj->pass="itc2011";
-	}
-$dbobj->Connect();
+;
 $tenpodata=$dbobj->GetData("select * from tenpo_data");
 $re1obj=new RealEstate($dbobj);
 $re1obj->type=$_REQUEST["cid"];
@@ -28,112 +10,112 @@ $re1data=$re1obj->GetReData($_GET["bid"]);
 $tenpodata=$dbobj->GetData("select * from tenpo_data");
 
 switch($re1data["syumoku"]) {
-	case "ÇäÃÏ":
+	case "ï¿½ï¿½ï¿½ï¿½":
 		$btype=3;
 		break;
-	case "¼ÚÃÏ¸¢¾ùÅÏ":
+	case "ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½":
 		$btype=3;
 		break;
-	case "¿·ÃÛ°ì¸Í·ú½»Âð":
+	case "ï¿½ï¿½ï¿½Û°ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½":
 		$btype=2;
 		break;
-	case "Ãæ¸Å°ì¸Í·ú½»Âð":
+	case "ï¿½ï¿½Å°ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½":
 		$btype=2;
 		break;
-	case "¿·ÃÛ¥Æ¥é¥¹¥Ï¥¦¥¹":
+	case "ï¿½ï¿½ï¿½Û¥Æ¥é¥¹ï¿½Ï¥ï¿½ï¿½ï¿½":
 		$btype=2;
 		break;
-	case "Ãæ¸Å¥Æ¥é¥¹¥Ï¥¦¥¹":
+	case "ï¿½ï¿½Å¥Æ¥é¥¹ï¿½Ï¥ï¿½ï¿½ï¿½":
 		$btype=2;
 		break;
-	case "¿·ÃÛ¥Þ¥ó¥·¥ç¥ó":
+	case "ï¿½ï¿½ï¿½Û¥Þ¥ó¥·¥ï¿½ï¿½":
 		$btype=1;
 		break;
-	case "Ãæ¸Å¥Þ¥ó¥·¥ç¥ó":
+	case "ï¿½ï¿½Å¥Þ¥ó¥·¥ï¿½ï¿½":
 		$btype=1;
 		break;
-	case "¿·ÃÛ°ì¸Í·ú¤Æ":
+	case "ï¿½ï¿½ï¿½Û°ï¿½Í·ï¿½ï¿½ï¿½":
 		$btype=1;
 		break;
-	case "¿·ÃÛ¸øÃÄ½»Âð":
+	case "ï¿½ï¿½ï¿½Û¸ï¿½ï¿½Ä½ï¿½ï¿½ï¿½":
 		$btype=1;
 		break;
-	case "Ãæ¸Å¸øÃÄ½»Âð":
+	case "ï¿½ï¿½Å¸ï¿½ï¿½Ä½ï¿½ï¿½ï¿½":
 		$btype=1;
 		break;
-	case "¿·ÃÛ¸ø¼Ò½»Âð":
+	case "ï¿½ï¿½ï¿½Û¸ï¿½ï¿½Ò½ï¿½ï¿½ï¿½":
 		$btype=1;
 		break;
-	case "Ãæ¸Å¸ø¼Ò½»Âð":
+	case "ï¿½ï¿½Å¸ï¿½ï¿½Ò½ï¿½ï¿½ï¿½":
 		$btype=1;
 		break;
-	case "¿·ÃÛ¥¿¥¦¥ó¥Ï¥¦¥¹":
+	case "ï¿½ï¿½ï¿½Û¥ï¿½ï¿½ï¿½ï¿½ï¿½Ï¥ï¿½ï¿½ï¿½":
 		$btype=1;
 		break;
-	case "Ãæ¸Å¥¿¥¦¥ó¥Ï¥¦¥¹":
+	case "ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½Ï¥ï¿½ï¿½ï¿½":
 		$btype=1;
 		break;
-	case "¥ê¥¾¡¼¥È¥Þ¥ó¥·¥ç¥ó":
+	case "ï¿½ê¥¾ï¿½ï¿½ï¿½È¥Þ¥ó¥·¥ï¿½ï¿½":
 		$btype=1;
 		break;
-	case "Å¹ÊÞ":
+	case "Å¹ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "Å¹ÊÞÉÕ½»Âð":
+	case "Å¹ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "½»ÂðÉÕÅ¹ÊÞ":
+	case "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "»öÌ³½ê":
+	case "ï¿½ï¿½Ì³ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "Å¹ÊÞ»öÌ³½ê":
+	case "Å¹ï¿½Þ»ï¿½Ì³ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "¥Ó¥ë":
+	case "ï¿½Ó¥ï¿½":
 		$btype=4;
 		break;
-	case "¹©¾ì":
+	case "ï¿½ï¿½ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "¥Þ¥ó¥·¥ç¥ó":
+	case "ï¿½Þ¥ó¥·¥ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "ÁÒ¸Ë":
+	case "ï¿½Ò¸ï¿½":
 		$btype=4;
 		break;
-	case "¥¢¥Ñ¡¼¥È":
+	case "ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "ÎÀ":
+	case "ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "Î¹´Û":
+	case "Î¹ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "¥Û¥Æ¥ë":
+	case "ï¿½Û¥Æ¥ï¿½":
 		$btype=4;
 		break;
-	case "ÊÌÁñ":
+	case "ï¿½ï¿½ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "¥ê¥¾¡¼¥È¥Þ¥ó¥·¥ç¥ó":
+	case "ï¿½ê¥¾ï¿½ï¿½ï¿½È¥Þ¥ó¥·¥ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "¤½¤ÎÂ¾":
+	case "ï¿½ï¿½ï¿½ï¿½Â¾":
 		$btype=4;
 		break;
-	case "Å¹ÊÞ":
+	case "Å¹ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "»öÌ³½ê":
+	case "ï¿½ï¿½Ì³ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "Å¹ÊÞ¡¦»öÌ³½ê":
+	case "Å¹ï¿½Þ¡ï¿½ï¿½ï¿½Ì³ï¿½ï¿½":
 		$btype=4;
 		break;
-	case "¤½¤ÎÂ¾":
+	case "ï¿½ï¿½ï¿½ï¿½Â¾":
 		$btype=4;
 		break;
 }
@@ -141,37 +123,37 @@ switch($re1data["syumoku"]) {
 function Normal($pdata,$tenpodata) {
 	
 	if($pdata["subject"]==NULL) {
-		$msbj="¥Û¡¼¥à¥Ú¡¼¥¸¤«¤é¤ªÌä¹ç¤»¤¬¤¢¤ê¤Þ¤·¤¿¡£";
+		$msbj="ï¿½Û¡ï¿½ï¿½ï¿½Ú¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é¤ªï¿½ï¿½ç¤»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½";
 	}
 	else {
 		$msbj=$pdata["subject"];
 	}
 	
-	$csbj=$tenpodata["name"]."¤ËÁ÷¿®¤·¤Þ¤·¤¿¡£";
+	$csbj=$tenpodata["name"]."ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½";
 	$mtxt="";
 	$ctxt="";
 	
-	$text= 	"²ñ¼ÒÌ¾¡¦¤ªÌ¾Á°¡¡¡¡¡¡¡¡¡¡¡§".$_POST["corpname"]."\n".
-				"¤´Ã´Åö¼Ô¡¡¡¡¡¡¡¡¡§".$_POST["tantouname"]."\n".
-				"¥á¡¼¥ë¥¢¥É¥ì¥¹¡¡¡§".$_POST["email"]."\n".
-				"¤ªÅÅÏÃÈÖ¹æ¡¡¡¡¡¡¡§".$_POST["telnumber"]."\n".
-				"FAXÈÖ¹æ¡¡¡¡¡¡¡¡ ¡§".$_POST["faxnumber"]."\n".
-				"¢©¡¡ ¡§".$_POST["zipcode"]."\n".
-				"½êºßÃÏ¡¡ ¡§".$_POST["address"]."\n".
+	$text= 	"ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".$_POST["corpname"]."\n".
+				"ï¿½ï¿½Ã´ï¿½ï¿½ï¿½Ô¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".$_POST["tantouname"]."\n".
+				"ï¿½á¡¼ï¿½ë¥¢ï¿½É¥ì¥¹ï¿½ï¿½ï¿½ï¿½".$_POST["email"]."\n".
+				"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹æ¡¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".$_POST["telnumber"]."\n".
+				"FAXï¿½Ö¹æ¡¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½".$_POST["faxnumber"]."\n".
+				"ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½".$_POST["zipcode"]."\n".
+				"ï¿½ï¿½ï¿½ï¿½Ï¡ï¿½ ï¿½ï¿½".$_POST["address"]."\n".
 				"-------------------------------------------------------\n".
-				"¤´°Õ¸«¡¦¤ªÌä¤¤¹ç¤ï¤»Åù\n".
+				"ï¿½ï¿½ï¿½Õ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä¤¤ï¿½ï¿½ï¤»ï¿½ï¿½\n".
 				"-------------------------------------------------------\n".
 				$_POST["comment"].$_POST["psbukken"]."\n";
-				$mtxt= "¤ªµÒÍÍ¤«¤é°Ê²¼¤ÎÆâÍÆ¤Ç¤ªÌä¤¤¹ç¤ï¤»¤¬Í­¤ê¤Þ¤·¤¿¡£\n".
+				$mtxt= "ï¿½ï¿½ï¿½ï¿½ï¿½Í¤ï¿½ï¿½ï¿½Ê²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤Ç¤ï¿½ï¿½ä¤¤ï¿½ï¿½ï¤»ï¿½ï¿½Í­ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½\n".
 				"-------------------------------------------------------\n".
 				$text;
-				$ctxt= "°Ê²¼¤ÎÆâÍÆ¤Ç¤ªÌä¤¤¹ç¤ï¤»¤òÁ÷¿®¤·¤Þ¤·¤¿¡£\n".
+				$ctxt= "ï¿½Ê²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤Ç¤ï¿½ï¿½ä¤¤ï¿½ï¿½ï¤»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½\n".
 				"-------------------------------------------------------\n".
 				$text.
 				"-------------------------------------------------------\n".
 				$tenpodata["name"]." \n".
 				$tenpodata["jyusyo"]."\n".
-				" TEL ".$tenpodata["denwa"]."¡¡FAX ".$tenpodata["fax"]."\n".
+				" TEL ".$tenpodata["denwa"]."ï¿½ï¿½FAX ".$tenpodata["fax"]."\n".
 				" E-mail ".$tenpodata["email"]."\n".
 				" H.P ".$tenpodata["url"]."\n".
 				"-------------------------------------------------------";
@@ -193,10 +175,10 @@ function Normal($pdata,$tenpodata) {
 <?php
 if(str_replace("www.","",$_SERVER['HTTP_HOST'])=="cubes.jp"){
 ?>
-<meta name="robots" content="noindex,nofollow">¡£
+<meta name="robots" content="noindex,nofollow">ï¿½ï¿½
 <meta name="robots" content="noarchive">
 <?php
-}?><title><?php echo $tenpodata["pagetitle"];?> /  ¤ªÌä¤¤¹ç¤ï¤»</title>
+}?><title><?php echo $tenpodata["pagetitle"];?> /  ï¿½ï¿½ï¿½ä¤¤ï¿½ï¿½ï¤»</title>
 <style type="text/css">
 <!--
 body {
@@ -215,7 +197,7 @@ body {
 function zipsearch(frm) {
 zip=frm.zipcode.value;
 if(zip==null||zip=="") {
-alert("¢©¤¬ÆþÎÏ¤µ¤ì¤Æ¤¤¤Þ¤»¤ó¡£");
+alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¤ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½");
 }
 else {
 window.open("./tool/zipsearch.php?zipcode="+zip,"zipsearch","width=400,height=200");
@@ -226,27 +208,27 @@ alertchk=0;
 alerttxt="";
 if(frm.corpname.value=="") {
 alertchk=1;
-alerttxt=alerttxt+"²ñ¼ÒÌ¾¡¦¤ªÌ¾Á°¤¬ÆþÎÏ¤µ¤ì¤Æ¤¤¤Þ¤»¤ó¡£\n";
+alerttxt=alerttxt+"ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¤ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½\n";
 }
 if(frm.email.value=="") {
 alertchk=1;
-alerttxt=alerttxt+"¥á¡¼¥ë¥¢¥É¥ì¥¹¤¬ÆþÎÏ¤µ¤ì¤Æ¤¤¤Þ¤»¤ó¡£\n";
+alerttxt=alerttxt+"ï¿½á¡¼ï¿½ë¥¢ï¿½É¥ì¥¹ï¿½ï¿½ï¿½ï¿½ï¿½Ï¤ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½\n";
 }
 else if(frm.email2.value=="") {
 alertchk=1;
-alerttxt=alerttxt+"¥á¡¼¥ë¥¢¥É¥ì¥¹³ÎÇ§¤¬ÆþÎÏ¤µ¤ì¤Æ¤¤¤Þ¤»¤ó¡£\n";
+alerttxt=alerttxt+"ï¿½á¡¼ï¿½ë¥¢ï¿½É¥ì¥¹ï¿½ï¿½Ç§ï¿½ï¿½ï¿½ï¿½ï¿½Ï¤ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½\n";
 
 }
 else if(frm.email.value!=frm.email2.value) {
 alertchk=1;
-alerttxt=alerttxt+"¥á¡¼¥ë¥¢¥É¥ì¥¹¤È¥á¡¼¥ë¥¢¥É¥ì¥¹³ÎÇ§¤¬°Û¤Ê¤ê¤Þ¤¹¡£\n";
+alerttxt=alerttxt+"ï¿½á¡¼ï¿½ë¥¢ï¿½É¥ì¥¹ï¿½È¥á¡¼ï¿½ë¥¢ï¿½É¥ì¥¹ï¿½ï¿½Ç§ï¿½ï¿½ï¿½Û¤Ê¤ï¿½Þ¤ï¿½ï¿½ï¿½\n";
 }
 if(frm.comment.value=="") {
 alertchk=1;
-alerttxt=alerttxt+"¤ªÌä¤¤¹ç¤ï¤»ÆâÍÆ¤¬ÆþÎÏ¤µ¤ì¤Æ¤¤¤Þ¤»¤ó¡£\n";
+alerttxt=alerttxt+"ï¿½ï¿½ï¿½ä¤¤ï¿½ï¿½ï¤»ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½Ï¤ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½\n";
 }
 if(alertchk==0) {
-res=confirm("¤³¤ÎÆâÍÆ¤Ç¤ªÌä¹ç¤»¤òÁ÷¿®¤·¤Æ¤â¤è¤í¤·¤¤¤Ç¤¹¤«¡©");
+res=confirm("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤Ç¤ï¿½ï¿½ï¿½ç¤»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¤ï¿½ï¿½ï¿½ï¿½ï¿½");
 if(res) {
 frm.mode.value="send";
 frm.submit();
@@ -281,57 +263,57 @@ $_SESSION["toiawase"]="on";
                         <table width="100%" border="0" align="center" cellpadding="5" cellspacing="5">
                             <tr>
                                 <td width="100%" align="left" class="text">
-                                    <p>°Ê²¼¤ÎÆâÍÆ¤Ç¤ªÌä¹ç¤»¥á¡¼¥ë¤òÁ÷¿®¤·¤Þ¤·¤¿¡£<br />
+                                    <p>ï¿½Ê²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤Ç¤ï¿½ï¿½ï¿½ç¤»ï¿½á¡¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½<br />
                                             <?php
 $_REQUEST["email"];
 ?>
-                                        °¸¤Æ¤Ë³ÎÇ§¥á¡¼¥ë¤ò¤ªÁ÷¤ê¤·¤Þ¤·¤¿¤Î¤Ç¤´³ÎÇ§²¼¤µ¤¤¡£ <br />
-                                        ¤â¤·¤³¤Î¥á¡¼¥ë¤òÁ÷¤Ã¤Æ2,3Æü°ÊÆâ¤ËÊÖ¿®¥á¡¼¥ë¤¬ÆÏ¤«¤Ê¤¤¾ì¹ç¤Ï¤ª¼ê¿ô¤Ç¤¹¤¬¥á¡¼¥ëËô¤Ï¤ªÅÅÏÃ¤Ë¤Æ¤´Ï¢Íí²¼¤µ¤¤¡£</p>
-                                    <p>¤ªÌä¹ç¤»Àè¡§<span class="title"><?php echo $tenpodata["name"]; ?></span>¡¡<br />
+                                        ï¿½ï¿½ï¿½Æ¤Ë³ï¿½Ç§ï¿½á¡¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê¤·ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½Î¤Ç¤ï¿½ï¿½ï¿½Ç§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <br />
+                                        ï¿½â¤·ï¿½ï¿½ï¿½Î¥á¡¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¤ï¿½2,3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¿ï¿½ï¿½á¡¼ï¿½ë¤¬ï¿½Ï¤ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½Ï¤ï¿½ï¿½ï¿½ï¿½ï¿½Ç¤ï¿½ï¿½ï¿½ï¿½á¡¼ï¿½ï¿½ï¿½ï¿½ï¿½Ï¤ï¿½ï¿½ï¿½ï¿½Ã¤Ë¤Æ¤ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+                                    <p>ï¿½ï¿½ï¿½ï¿½ç¤»ï¿½è¡§<span class="title"><?php echo $tenpodata["name"]; ?></span>ï¿½ï¿½<br />
                                             <span class="fudousan">TEL : <?php echo $tenpodata["denwa"]; ?> FAX : <?php echo $tenpodata["fax"]; ?></span><br />
-                                        E-mail¡§<a href="mailto:<?php echo $tenpodata["email"]; ?>"><?php echo $tenpodata["email"]; ?></a></p>
+                                        E-mailï¿½ï¿½<a href="mailto:<?php echo $tenpodata["email"]; ?>"><?php echo $tenpodata["email"]; ?></a></p>
                                 </td>
                             </tr>
 							<tr>
 								<td>
-<font color="#FF0000">Åö¥µ¥¤¥È¤Ë·ÇºÜ¤µ¤ì¤Æ¤¤¤ëÊª·ï¤Ï¥µ¥ó¥×¥ë¤Ç¤¹¡£<br>Êª·ï¤ËÂÐ¤¹¤ë¤ªÌä¤¤¹ç¤ï¤»¤Ë¤Ï¤ªÅú¤¨¤Ç¤­¤Þ¤»¤ó¤Î¤Ç¤´Î»¾µ¤¯¤À¤µ¤¤¡£</font>
+<font color="#FF0000">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¤Ë·ÇºÜ¤ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½Êªï¿½ï¿½Ï¥ï¿½ï¿½ï¿½×¥ï¿½Ç¤ï¿½ï¿½ï¿½<br>Êªï¿½ï¿½ï¿½ï¿½Ð¤ï¿½ï¿½ë¤ªï¿½ä¤¤ï¿½ï¿½ï¤»ï¿½Ë¤Ï¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½Î¤Ç¤ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</font>
 								</td>
 							</tr>
                             <tr>
                                 <td align="left" class="text">
                                     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td width="150" height="20" align="left"><font size="2">²ñ¼ÒÌ¾¡¦¤ªÌ¾Á°<font color="#FF0000">¢¨</font></font></td>
+                                            <td width="150" height="20" align="left"><font size="2">ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½<font color="#FF0000">ï¿½ï¿½</font></font></td>
                                             <td align="left"> <font size="2"><?php echo $_POST["corpname"];?> </font></td>
                                         </tr>
                                         <tr>
-                                            <td width="150" height="20" align="left"><font size="2">¥á¡¼¥ë¥¢¥É¥ì¥¹<font color="#FF0000">¢¨</font></font></td>
+                                            <td width="150" height="20" align="left"><font size="2">ï¿½á¡¼ï¿½ë¥¢ï¿½É¥ì¥¹<font color="#FF0000">ï¿½ï¿½</font></font></td>
                                             <td align="left"> <font size="2"><?php echo $_POST["email"];?> </font></td>
                                         </tr>
                                         <tr>
-                                            <td width="150" height="20" align="left"><font size="2">¤ªÅÅÏÃÈÖ¹æ</font></td>
+                                            <td width="150" height="20" align="left"><font size="2">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½</font></td>
                                             <td align="left"> <font size="2"><?php echo $_POST["telnumber"];?> </font></td>
                                         </tr>
                                         <tr>
-                                            <td width="150" height="20" align="left"><font size="2">FAXÈÖ¹æ</font></td>
+                                            <td width="150" height="20" align="left"><font size="2">FAXï¿½Ö¹ï¿½</font></td>
                                             <td align="left"> <font size="2"><?php echo $_POST["faxnumber"];?> </font></td>
                                         </tr>
                                         <tr>
-                                            <td width="150" height="20" align="left"><font size="2">¢©</font></td>
+                                            <td width="150" height="20" align="left"><font size="2">ï¿½ï¿½</font></td>
                                             <td align="left"> <font size="2"><?php echo $_POST["zipcode"];?> </font></td>
                                         </tr>
                                         <tr>
-                                            <td width="150" height="20" align="left" valign="top"><font size="2">½êºßÃÏ
+                                            <td width="150" height="20" align="left" valign="top"><font size="2">ï¿½ï¿½ï¿½ï¿½ï¿½
                                                 <input name="mode" type="hidden" id="mode3" />
                                             </font></td>
                                             <td align="left"> <font size="2"><?php echo $_POST["address"];?> </font></td>
                                         </tr>
                                         <tr>
-                                            <td height="20" align="left" valign="top">¤ªÌä¤¤¹ç¤ï¤»·ïÌ¾</td>
+                                            <td height="20" align="left" valign="top">ï¿½ï¿½ï¿½ä¤¤ï¿½ï¿½ï¤»ï¿½ï¿½Ì¾</td>
                                             <td align="left"><font size="2"><?php echo $_POST["subject"];?></font></td>
                                         </tr>
                                         <tr>
-                                            <td width="150" height="20" align="left" valign="top"><font size="2">¤ªÌä¤¤¹ç¤ï¤»ÆâÍÆ<font color="#FF0000">¢¨</font></font></td>
+                                            <td width="150" height="20" align="left" valign="top"><font size="2">ï¿½ï¿½ï¿½ä¤¤ï¿½ï¿½ï¤»ï¿½ï¿½ï¿½ï¿½<font color="#FF0000">ï¿½ï¿½</font></font></td>
                                             <td align="left"> <font size="2"><?php echo nl2br($_POST["comment"].$_POST["psbukken"]);?> </font></td>
                                         </tr>
                                         <tr>
@@ -352,7 +334,7 @@ else if($_POST["mode"]=="send"&&$_SESSION["toiawase"]=="on") {
 $_SESSION["toiawase"]="";
 ?>
                         <script language="JavaScript" type="text/javascript">
-alert("¤³¤Î¥Ú¡¼¥¸¤Ï¥ê¥í¡¼¥É¤Ç¤­¤Þ¤»¤ó¡£");
+alert("ï¿½ï¿½ï¿½Î¥Ú¡ï¿½ï¿½ï¿½ï¿½Ï¥ï¿½ï¿½ï¿½É¤Ç¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½");
 window.location.replace("/");
                         </script>
                         <?php
@@ -365,16 +347,16 @@ else {
                                     <table width="100%" border="0" cellpadding="5" cellspacing="5">
                                         <tr>
                                             <td>
-                                                <div align="left"><font size="2"><strong>¤ªÌä¤¤¹ç¤ï¤»¤Ë¤Ä¤¤¤Æ</strong><br />
+                                                <div align="left"><font size="2"><strong>ï¿½ï¿½ï¿½ä¤¤ï¿½ï¿½ï¤»ï¿½Ë¤Ä¤ï¿½ï¿½ï¿½</strong><br />
                                                             <br />
-                                                    </font><span class="noda2">¤ªÌä¤¤¹ç¤ï¤»¤Ë¤Ï½ÐÍè¤ë¤À¤±Áá¤¤²óÅú¤ò¿´¤¬¤±¤Æ¤ª¤ê¤Þ¤¹¤¬¡¢ÆâÍÆ¤Ë¤è¤Ã¤Æ¤Ï²óÅú¤Ë»þ´Ö¤¬¤«¤«¤ë¾ì¹ç¤â¤´¤¶¤¤¤Þ¤¹¡£<br />
-                                                        ¤Þ¤¿¡¢¤ªÌä¤¤¹ç¤ï¤»ÆâÍÆ¤Ë¤è¤Ã¤Æ¤Ï¡¢Åö¼ÒÃ´Åö¼Ô¤«¤éÄ¾ÀÜÏ¢Íí¤µ¤»¤Æ¤¤¤¿¤À¤¯¾ì¹ç¤¬¤´¤¶¤¤¤Þ¤¹¡£</span><span class="text"><br />
-                                                            </span><span class="noda2">Í½¤áÎ»¾µ²¼¤µ¤¤¡£</span><span class="text"><br />
+                                                    </font><span class="noda2">ï¿½ï¿½ï¿½ä¤¤ï¿½ï¿½ï¤»ï¿½Ë¤Ï½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¤¤ï¿½ï¿½ï¿½ï¿½ï¿½ò¿´¤ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤Ë¤ï¿½Ã¤Æ¤Ï²ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â¤´ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½<br />
+                                                        ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä¤¤ï¿½ï¿½ï¤»ï¿½ï¿½ï¿½Æ¤Ë¤ï¿½Ã¤Æ¤Ï¡ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç¤¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½</span><span class="text"><br />
+                                                            </span><span class="noda2">Í½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</span><span class="text"><br />
                                                                 <br />
-                                                                </span><span class="noda2">¤ªÌä¹ç¤»Àè<br />
+                                                                </span><span class="noda2">ï¿½ï¿½ï¿½ï¿½ç¤»ï¿½ï¿½<br />
                                                                     <?php echo $tenpodata["name"]; ?><br />
                                                                     </span>TEL :<span class="noda1"> <?php echo $tenpodata["denwa"]; ?> </span>FAX :<span class="noda1"> <?php echo $tenpodata["fax"]; ?></span><span class="noda2"><br />
-                                                                    </span>E-mail¡§<a href="mailto:<?php echo $tenpodata["email"]; ?>"></a><span class="noda1"><a href="mailto:<?php echo $tenpodata["email"]; ?>"><?php echo $tenpodata["email"]; ?></a></span></div>
+                                                                    </span>E-mailï¿½ï¿½<a href="mailto:<?php echo $tenpodata["email"]; ?>"></a><span class="noda1"><a href="mailto:<?php echo $tenpodata["email"]; ?>"><?php echo $tenpodata["email"]; ?></a></span></div>
                                             </td>
                                         </tr>
                                     </table>
@@ -388,85 +370,85 @@ else {
                                                 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                     <form action="" method="post" name="contact_form" id="contact_form">
                                                         <tr>
-                                                            <td height="20" colspan="2" align="left" nowrap="nowrap" class="noda1">¡ü¥Õ¥©¡¼¥àÆþÎÏ¤Ë¤Æ¤ªÌä¹ç¤»¤ÎÊý¤Ï²¼µ­¤òÆþÎÏ¡¦Á÷¿®²¼¤µ¤¤¡£</td>
+                                                            <td height="20" colspan="2" align="left" nowrap="nowrap" class="noda1">ï¿½ï¿½ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¤Ë¤Æ¤ï¿½ï¿½ï¿½ç¤»ï¿½ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</td>
                                                         </tr>
                                                         <tr>
-                                                            <td height="20" colspan="2" align="left" nowrap="nowrap"><span class="noda3"><font color="#FF0000">¢¨É¬¿Ü¹àÌÜ</font></span></td>
+                                                            <td height="20" colspan="2" align="left" nowrap="nowrap"><span class="noda3"><font color="#FF0000">ï¿½ï¿½É¬ï¿½Ü¹ï¿½ï¿½ï¿½</font></span></td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">²ñ¼ÒÌ¾¡¦¤ªÌ¾Á°<font color="#FF0000">¢¨</font></font></td>
+                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½<font color="#FF0000">ï¿½ï¿½</font></font></td>
                                                             <td align="left">
                                                                 <input name="corpname" type="text" id="corpname" size="40" />
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">¤´Ã´Åö¼Ô</font></td>
+                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½</font></td>
                                                             <td align="left">
                                                                 <input name="tantouname" type="text" id="tantouname" size="40" />
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">¥á¡¼¥ë¥¢¥É¥ì¥¹<font color="#FF0000">¢¨</font></font></td>
+                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">ï¿½á¡¼ï¿½ë¥¢ï¿½É¥ì¥¹<font color="#FF0000">ï¿½ï¿½</font></font></td>
                                                             <td align="left">
                                                                 <input name="email" type="text" id="email" style="ime-mode:disabled;" size="40" />
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">¥á¡¼¥ë¥¢¥É¥ì¥¹³ÎÇ§<font color="#FF0000">¢¨</font></font></td>
+                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">ï¿½á¡¼ï¿½ë¥¢ï¿½É¥ì¥¹ï¿½ï¿½Ç§<font color="#FF0000">ï¿½ï¿½</font></font></td>
                                                             <td align="left">
                                                                 <input name="email2" type="text" id="email2" style="ime-mode:disabled;" size="40" />
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">¤ªÅÅÏÃÈÖ¹æ</font></td>
+                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½</font></td>
                                                             <td align="left">
                                                                 <input name="telnumber" type="text" id="telnumber" size="16" />
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">FAXÈÖ¹æ</font></td>
+                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">FAXï¿½Ö¹ï¿½</font></td>
                                                             <td align="left">
                                                                 <input name="faxnumber" type="text" id="faxnumber" size="16" />
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">¢©
+                                                            <td width="150" height="20" align="left" nowrap="nowrap"><font size="2">ï¿½ï¿½
                                                                 <input name="mode" type="hidden" id="mode" />
                                                             </font></td>
                                                             <td align="left">
                                                                 <input name="zipcode" type="text" id="zipcode" size="14" />
-                                                                <input name="zsearch" type="button" id="zsearch" onclick="zipsearch(this.form)" value="Í¹ÊØÈÖ¹æ¤«¤é½»½ê¤ò¸¡º÷" />
+                                                                <input name="zsearch" type="button" id="zsearch" onclick="zipsearch(this.form)" value="Í¹ï¿½ï¿½ï¿½Ö¹æ¤«ï¿½é½»ï¿½ï¿½ò¸¡ºï¿½" />
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="150" height="20" align="left" valign="top" nowrap="nowrap"><font size="2">½êºßÃÏ </font></td>
+                                                            <td width="150" height="20" align="left" valign="top" nowrap="nowrap"><font size="2">ï¿½ï¿½ï¿½ï¿½ï¿½ </font></td>
                                                             <td align="left">
                                                                 <input name="address" type="text" id="address" size="60" />
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td height="20" align="left" valign="top" nowrap="nowrap">¤ªÌä¤¤¹ç¤ï¤»·ïÌ¾</td>
+                                                            <td height="20" align="left" valign="top" nowrap="nowrap">ï¿½ï¿½ï¿½ä¤¤ï¿½ï¿½ï¤»ï¿½ï¿½Ì¾</td>
                                                             <td align="left">
                                                                 <input name="subject" type="text" id="subject" value="<?php 
 																		if($_GET["bid"]!=NULL) {
 																			$sbj="";
 																			if($re1data["bunrui"]==1) {
-																				$sbj="ÄÂÂßÊª·ï";
+																				$sbj="ï¿½ï¿½ï¿½ï¿½Êªï¿½ï¿½";
 																			}
 																			else if($re1data["bunrui"]==2){ 
-																				$sbj="ÇäÇãÊª·ï";
+																				$sbj="ï¿½ï¿½ï¿½ï¿½Êªï¿½ï¿½";
 																			}
 																			if($re1data["bukken_mei"]!="") {
 																				$sbj.="[".$re1data["bukken_mei"]."]";
 																			}
-																			echo $sbj.="¤Ë¤Ä¤¤¤Æ¤Î¤ªÌä¤¤¹ç¤ï¤»[Êª·ïÈÖ¹æ¡§".$re1data["bukkenn_id"]."]";
+																			echo $sbj.="ï¿½Ë¤Ä¤ï¿½ï¿½Æ¤Î¤ï¿½ï¿½ä¤¤ï¿½ï¿½ï¤»[Êªï¿½ï¿½ï¿½Ö¹æ¡§".$re1data["bukkenn_id"]."]";
 																		}
 																		
 																		?>" size="80" />
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="150" height="20" align="left" valign="top" nowrap="nowrap"><font size="2">¤ªÌä¤¤¹ç¤ï¤»ÆâÍÆ<font color="#FF0000">¢¨</font></font></td>
+                                                            <td width="150" height="20" align="left" valign="top" nowrap="nowrap"><font size="2">ï¿½ï¿½ï¿½ä¤¤ï¿½ï¿½ï¤»ï¿½ï¿½ï¿½ï¿½<font color="#FF0000">ï¿½ï¿½</font></font></td>
                                                             <td align="left">
                                                                 <textarea name="comment" cols="60" rows="10" id="comment"></textarea>
                                                             </td>
@@ -476,13 +458,13 @@ else {
                                                             <td align="left"><?php 
 																		if($_GET["rurl"]!=NULL) {
 																			echo 	"<br />".
-																						"Êª·ïURL¡§http://".$_SERVER['HTTP_HOST'].$_REQUEST["rurl"]."";
+																						"Êªï¿½ï¿½URLï¿½ï¿½http://".$_SERVER['HTTP_HOST'].$_REQUEST["rurl"]."";
 																		}
 																		?>
                                                                 <input name="psbukken" type="hidden" id="psbukken" value="<?php 
 																		if($_GET["rurl"]!=NULL) {
 																			echo 	"\n\n------------------------------------------------------------\n".
-																									"Êª·ïURL¡§http://".$_SERVER['HTTP_HOST'].$_REQUEST["rurl"]."";
+																									"Êªï¿½ï¿½URLï¿½ï¿½http://".$_SERVER['HTTP_HOST'].$_REQUEST["rurl"]."";
 																		}
 																		?>" />
                                                             </td>
@@ -494,7 +476,7 @@ else {
                                                         <tr>
                                                             <td width="150" height="20" valign="top" nowrap="nowrap">&nbsp;</td>
                                                             <td align="left">
-                                                                <input name="btm_send" type="button" id="btm_send" onclick="datachk(this.form)" value="¤ªÌä¹ç¤»" />
+                                                                <input name="btm_send" type="button" id="btm_send" onclick="datachk(this.form)" value="ï¿½ï¿½ï¿½ï¿½ç¤»" />
                                                             </td>
                                                         </tr>
                                                     </form>

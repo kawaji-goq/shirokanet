@@ -78,7 +78,7 @@ include "CUBE/Fudousan/template/header.php";
                         <p><a href="chintai.php?cid=1">・アパート・マンション</a>　<a href="chintai.php?cid=2">・戸建て</a>　<a href="chintai.php?cid=3">・事業用</a></p>
                     </td>
                     <td width="86" bgcolor="#FAFBFC"><img src="img/bukken/BukkenSearchCategoryBuy.jpg" width="86" height="25" /></td>
-                    <td width="294" bgcolor="#FAFBFC"><a href="baibai.php?cid=4">・戸建て・マンション</a>　<a href="baibai.php?cid=6">・事業用物件</a>　<a href="baibai.php?cid=5">・土地</a></td>
+                    <td width="294" bgcolor="#FAFBFC"><a href="baibai.php?cid=4">・戸建て・マンション</a>　<a href="baibai.php?cid=6">・事業用物件</a>　<a href="baibai.php?cid=5">・土地</a><a href="baibai.php?cid=5">・土地</a></td>
                     <td width="11" align="right"><img src="img/bukken/BukkenSearchCategoryRight.jpg" width="11" height="25" /></td>
                 </tr>
                 <tr>

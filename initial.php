@@ -2,7 +2,7 @@
 header("Content-type: text/html; charset=euc-jp");
 $_SERVER["DOCUMENT_ROOT"] = "/home/xb464987/shirokanet.com/public_html";
 session_start();
-ini_set("display_errors",1);
+ini_set("display_errors",0);
 include $_SERVER["DOCUMENT_ROOT"]."/CUBE/Fudousan/config.php";
 
 

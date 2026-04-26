@@ -1,28 +1,9 @@
 <?php
 session_start();
 $_SESSION["toiawase"]="";
-include "Cube/Fudousan/config.php";
-include "ITC/modules.php";
-	include $_SERVER["DOCUMENT_ROOT"]."/config/config.php";
+//include '../initial.php';
+$re1obj=new RealEstate($dbobj);
 
-	if($usedb==NULL||$usedb=="") {
-		$usedb="postgresql";
-	}
-	
-	$dbobj=Cube_DB :: UseDB($usedb);	
-	
-	if($dbname!=NULL&&$dbname!="") {
-			$dbobj->name=$dbname;
-	}
-	else {
-		$dbobj->name=str_replace("www.","",$_SERVER["HTTP_HOST"]);
-	}
-	
-	if($usedb=="mysql") {
-			$dbobj->user="admin";
-			$dbobj->pass="itc7310";
-	}
-$dbobj->Connect();
 $tenpodata=$dbobj->GetData("select * from tenpo_data");
 
 $re1obj=new RealEstate($dbobj);
